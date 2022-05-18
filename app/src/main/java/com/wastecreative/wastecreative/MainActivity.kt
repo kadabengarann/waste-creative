@@ -1,7 +1,8 @@
-package com.wastecreative.wastcreative
+package com.wastecreative.wastecreative
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.wastecreative.wastcreative.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,4 +1,4 @@
-package com.wastecreative.wastcreative
+package com.wastecreative.wastecreative
 
 import org.junit.Test
 
