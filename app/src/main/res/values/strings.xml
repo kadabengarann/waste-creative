@@ -30,4 +30,7 @@
     <string name="Title_boarding2">\'\'Manfaat kan kembali</string>
     <string name="Title_boarding3">Limbah rumah tangga anda\'\'</string>
     <string name="bt_boarding">Get Started</string>
+    <string name="verif_button">OK</string>
+    <string name="state_verif">Upload Berhasil</string>
+    <string name="failed_state">Upload Gagal</string>
 </resources>
