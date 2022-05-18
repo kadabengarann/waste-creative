@@ -5,4 +5,25 @@
     <string name="title_home">Home</string>
     <string name="title_marketplace">Marketplace</string>
     <string name="cd_scan_btn">scan button</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="signup">Register</string>
+    <string name="name">Username</string>
+    <string name="Title_Login2">Please enter your account here</string>
+    <string name="Title_Login">Welcome Back !</string>
+    <string name="Title_register1">Register</string>
+    <string name="Title_register2">Please enter your data here</string>
+    <string name="Title_login3">Don’t have any account?</string>
+    <string name="Title_login4">Sign up</string>
+    <string name="Title_register3">Already have an account?</string>
 </resources>

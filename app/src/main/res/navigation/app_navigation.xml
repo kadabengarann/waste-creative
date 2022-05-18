@@ -15,4 +15,14 @@
         android:name="com.wastecreative.wastecreative.presentation.view.marketplace.MarketplaceFragment"
         android:label="@string/title_marketplace"
         tools:layout="@layout/fragment_marketplace" />
+    <fragment
+        android:id="@+id/loginFragment2"
+        android:name="com.wastecreative.wastecreative.presentation.view.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.wastecreative.wastecreative.presentation.view.register.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
 </navigation>
