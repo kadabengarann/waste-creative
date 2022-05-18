@@ -26,4 +26,8 @@
     <string name="Title_login3">Don’t have any account?</string>
     <string name="Title_login4">Sign up</string>
     <string name="Title_register3">Already have an account?</string>
+    <string name="Title_onboarding1">Selamat Datang</string>
+    <string name="Title_boarding2">\'\'Manfaat kan kembali</string>
+    <string name="Title_boarding3">Limbah rumah tangga anda\'\'</string>
+    <string name="bt_boarding">Get Started</string>
 </resources>

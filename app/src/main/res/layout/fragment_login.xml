@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
         android:text="@string/Title_Login"
-        android:textSize="25dp"
+        android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,6 +40,7 @@
     </TextView>
 
     <ImageView
+        android:id="@+id/imgLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_launcher_foreground"
@@ -102,7 +103,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="156dp"
-        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintBottom_toTopOf="@+id/boardingButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordTextView"
@@ -121,7 +122,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/boardingButton"
         android:layout_width="0dp"
         android:layout_height="64dp"
         android:layout_marginStart="32dp"
@@ -141,7 +142,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.329"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton"
+        app:layout_constraintTop_toBottomOf="@+id/boardingButton"
         app:layout_constraintVertical_bias="0.129">
 
     </TextView>

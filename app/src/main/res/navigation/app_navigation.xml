@@ -25,4 +25,9 @@
         android:name="com.wastecreative.wastecreative.presentation.view.register.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/boardingFragment2"
+        android:name="com.wastecreative.wastecreative.presentation.view.boarding.BoardingFragment"
+        android:label="fragment_boarding"
+        tools:layout="@layout/fragment_boarding" />
 </navigation>
