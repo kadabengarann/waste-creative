@@ -14,6 +14,8 @@ import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.wastecreative.wastecreative.R
 import com.wastecreative.wastecreative.databinding.ActivityMainBinding
+import com.wastecreative.wastecreative.presentation.view.boarding.BoardingFragment
+import com.wastecreative.wastecreative.presentation.view.login.LoginFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,6 +28,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupBottomNavigation()
+
+
+
 
     }
 
@@ -78,5 +83,6 @@ class MainActivity : AppCompatActivity() {
             if (bool) performShow() else performHide()
         }
         binding.scanFab.visibility = if (bool) View.VISIBLE else View.GONE
+        binding.bottomAppBar.visibility = if (bool) View.VISIBLE else View.GONE
     }
 }

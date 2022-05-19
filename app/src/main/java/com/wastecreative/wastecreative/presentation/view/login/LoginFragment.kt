@@ -5,10 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.wastecreative.wastecreative.R
+import com.wastecreative.wastecreative.databinding.FragmentLoginBinding
 
 
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
 class LoginFragment : Fragment() {
 
@@ -16,7 +17,14 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        val binding = FragmentLoginBinding.inflate(layoutInflater)
+        binding.btnRegister.setOnClickListener {
+            findNavController().navigate(R.id.registerFragment)
+
+        }
+        binding.loginButton.setOnClickListener {
+            findNavController().navigate(R.id.navigation_home)
+        }
+        return binding.root
     }
 }
