@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.wastecreative.wastecreative.R
+import com.wastecreative.wastecreative.databinding.FragmentRegisterBinding
 
 
 class RegisterFragment : Fragment() {
@@ -23,7 +25,17 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
+        val binding = FragmentRegisterBinding.inflate(layoutInflater)
+
+        binding.signupButton.setOnClickListener {
+            findNavController().navigate(R.id.navigation_home)
+        }
+        binding.registerLogin.setOnClickListener {
+            findNavController().navigate(R.id.loginFragment2)
+        }
+        return binding.root
+
+
     }
 
 
