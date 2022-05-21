@@ -39,12 +39,6 @@ class MainActivity : AppCompatActivity() {
         bottomAppBar = binding.bottomAppBar
 
         val navView: BottomNavigationView = binding.navView
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-               R.id.navigation_home,R.id.navigation_marketplace
-            )
-        )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
 
         navView.setupWithNavController(navController)
 

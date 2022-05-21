@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="@string/profile"
+        android:id="@+id/menu_two"
+        app:showAsAction="ifRoom"
+        app:actionLayout="@layout/profile_menu_layout"/>
+    <item
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:id="@+id/menu_setting"
+        android:icon="@drawable/ic_more_vert_24"
+        android:title="@string/setting"
+        app:showAsAction="collapseActionView|always" />
+</menu>

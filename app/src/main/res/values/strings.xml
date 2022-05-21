@@ -5,4 +5,14 @@
     <string name="title_home">Home</string>
     <string name="title_marketplace">Marketplace</string>
     <string name="cd_scan_btn">scan button</string>
+    <string name="explore_crafts">Explore Crafts</string>
+    <string name="show_all">Show All</string>
+    <string name="like_craft">Like this craft?</string>
+    <string name="error_string">Error</string>
+    <string name="start_detecting_household_waste">Start detecting household waste</string>
+
+    <string name="lorem">Lorem Ipsum</string>
+    <string name="setting">Setting</string>
+    <string name="profile">Profile</string>
+
 </resources>
