@@ -58,8 +58,17 @@
     <style name="Theme.WasteCreative.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark">
         <item name="android:textColorSecondary">?attr/colorOnPrimary</item>
     </style>
+    <style name="Theme.WasteCreative.NoActionBar.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.WasteCreative.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">?attr/textColorPrimary</item>
+    </style>
     <style name="TitleToolbarCollapse">
         <item name="android:textColor">@android:color/transparent</item>
         <item name="android:textSize">0sp</item>
+    </style>
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="itemIconTint">@color/nav_bar_item_tint</item>
+        <item name="itemTextColor">@color/nav_bar_item_tint</item>
     </style>
 </resources>

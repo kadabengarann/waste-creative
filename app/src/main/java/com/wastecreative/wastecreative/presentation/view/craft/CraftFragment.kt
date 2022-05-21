@@ -1,22 +1,19 @@
-package com.wastecreative.wastecreative.presentation.view.home
+package com.wastecreative.wastecreative.presentation.view.craft
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.wastecreative.wastecreative.R
 import com.wastecreative.wastecreative.data.models.Craft
-import com.wastecreative.wastecreative.databinding.FragmentHomeBinding
+import com.wastecreative.wastecreative.databinding.FragmentCraftBinding
 import com.wastecreative.wastecreative.presentation.adapter.CraftsListAdapter
-import com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity
 
-
-class HomeFragment : Fragment() {
-    private var _binding: FragmentHomeBinding? = null
+class CraftFragment : Fragment() {
+    private var _binding: FragmentCraftBinding? = null
     private val binding get() = _binding!!
 
     private val craftListAdapter: CraftsListAdapter by lazy {
@@ -25,9 +22,9 @@ class HomeFragment : Fragment() {
         )
     }
     private val data = ArrayList<Craft>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -35,24 +32,22 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentCraftBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).apply {
+            setSupportActionBar(binding.toolbar)
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        }
         makeDummyData()
         showRecyclerList()
-        setupAction()
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
     private fun makeDummyData() {
         if (data.isEmpty()) {
-            for (i in 1..4) {
+            for (i in 1..20) {
                 val items = Craft(
                     i.toString(),
                     "Saifuddin$i",
@@ -66,16 +61,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setupAction() {
-        binding.apply {
-            contentHome.tvShowAll.setOnClickListener {
-                view?.findNavController()?.navigate(R.id.action_navigation_home_to_navigation_craft)
-            }
-        }
-    }
-
     private fun showRecyclerList() {
-        binding.contentHome.rvCrafts.apply {
+        binding.rvCrafts.apply {
             layoutManager = GridLayoutManager(context, 2)
             setHasFixedSize(true)
             adapter = craftListAdapter

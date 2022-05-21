@@ -9,10 +9,23 @@
         android:id="@+id/navigation_home"
         android:name="com.wastecreative.wastecreative.presentation.view.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_craft"
+            app:destination="@id/navigation_craft"
+            app:enterAnim="@animator/slide_in_right"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_marketplace"
         android:name="com.wastecreative.wastecreative.presentation.view.marketplace.MarketplaceFragment"
         android:label="@string/title_marketplace"
         tools:layout="@layout/fragment_marketplace" />
+    <fragment
+        android:id="@+id/navigation_craft"
+        android:name="com.wastecreative.wastecreative.presentation.view.craft.CraftFragment"
+        android:label="@string/explore_crafts"
+        tools:layout="@layout/fragment_craft" />
 </navigation>

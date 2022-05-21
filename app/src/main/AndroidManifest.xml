@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WasteCreative">
         <activity
+            android:name="com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity"
+            android:exported="false"
+            android:label="@string/title_activity_detail_craft"
+            android:theme="@style/Theme.WasteCreative.NoActionBar" />
+        <activity
             android:name="com.wastecreative.wastecreative.presentation.view.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.WasteCreative.NoActionBar">
@@ -23,5 +28,6 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
