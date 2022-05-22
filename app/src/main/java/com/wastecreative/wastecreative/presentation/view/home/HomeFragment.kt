@@ -13,6 +13,7 @@ import com.wastecreative.wastecreative.data.models.Craft
 import com.wastecreative.wastecreative.databinding.FragmentHomeBinding
 import com.wastecreative.wastecreative.presentation.adapter.CraftsListAdapter
 import com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity
+import com.wastecreative.wastecreative.presentation.view.scan.ScanActivity
 
 
 class HomeFragment : Fragment() {
@@ -68,6 +69,9 @@ class HomeFragment : Fragment() {
 
     private fun setupAction() {
         binding.apply {
+            ctaHome.setOnClickListener{
+                startActivity(Intent(requireActivity(), ScanActivity::class.java))
+            }
             contentHome.tvShowAll.setOnClickListener {
                 view?.findNavController()?.navigate(R.id.action_navigation_home_to_navigation_craft)
             }

@@ -4,7 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_home">Home</string>
     <string name="title_marketplace">Marketplace</string>
-    <string name="cd_scan_btn">scan button</string>
+    <string name="cd_scan_btn">Go to waste scan page</string>
     <string name="explore_crafts">Explore Crafts</string>
     <string name="show_all">Show All</string>
     <string name="like_craft">Like this craft?</string>
@@ -13,7 +13,13 @@
     <string name="tab_steps_text">Steps</string>
     <string name="tab_tools_and_material_text">Tools and Materials</string>
     <string name="title_activity_detail_craft">DetailCraftActivity</string>
-
+    <string name="cd_shutter_btn">Shutter</string>
+    <string name="cd_back_btn">Back</string>
+    <string name="cd_from_gallery">Select from gallery</string>
+    <string name="camera_disabled">Camera disabled</string>
+    <string name="turn_on">Turn on</string>
+    <string name="press_the_shutter_button_to_take_a_waste_picture">Press the shutter button to take a waste picture</string>
+    <string name="permission_failed">Failed to get app permission</string>
     <string name="lorem">Lorem Ipsum</string>
     <string name="setting">Setting</string>
     <string name="profile">Profile</string>
