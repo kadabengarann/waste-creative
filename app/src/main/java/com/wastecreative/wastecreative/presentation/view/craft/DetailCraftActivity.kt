@@ -40,7 +40,7 @@ class DetailCraftActivity : AppCompatActivity() {
         val dataCraft = intent.getParcelableExtra<Craft>(EXTRA_CRAFT) as Craft
 
         binding.apply {
-            tvUsername.text = dataCraft.userName
+            tvUsername.text = "Saifuddin"
             imgAvatar.loadImage(dataCraft.userPhoto,25)
             imgCraft.loadImage(dataCraft.photo,40)
             tvCraftName.text = dataCraft.name

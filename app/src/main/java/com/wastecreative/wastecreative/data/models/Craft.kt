@@ -7,8 +7,8 @@ import kotlinx.parcelize.Parcelize
 data class Craft (
     val id: String,
 
-    val userName: String,
-    val userPhoto: String,
+    val userName: String?,
+    val userPhoto: String?,
 
     val name: String,
     val photo: String,

@@ -56,7 +56,7 @@ class HomeFragment : Fragment() {
             for (i in 1..4) {
                 val items = Craft(
                     i.toString(),
-                    "Saifuddin$i",
+                    "Saifuddin",
                     "https://picsum.photos/300/300?random=$i",
                     "Kapal Mainan $i",
                     "https://picsum.photos/200/300?random=$i",

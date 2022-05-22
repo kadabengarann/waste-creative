@@ -18,22 +18,34 @@
 
     >
 
-        <ImageView
-            android:id="@+id/img_avatar"
-            android:layout_width="31dp"
-            android:layout_height="31dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/round_outline_small"
-            android:clipToOutline="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/gr_user_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:visibility="visible"
+        app:constraint_referenced_ids="img_avatar,tv_list_username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_avatar"
+        android:layout_width="31dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/round_outline_small"
+        android:clipToOutline="true"
+        tools:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
 
     <ImageView
         android:id="@+id/img_list_craft"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/round_outline"
@@ -42,7 +54,7 @@
         app:layout_constraintHeight_default="spread"
         app:layout_constraintHeight_max="151dp"
         app:layout_constraintHeight_min="151dp"
-        app:layout_constraintStart_toStartOf="@+id/img_avatar"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_avatar"
         tools:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
