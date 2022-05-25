@@ -33,6 +33,6 @@
     <string name="verif_button">OK</string>
     <string name="state_verif">Upload Berhasil</string>
     <string name="failed_state">Upload Gagal</string>
-    <string name="email_min">Email tidak valid !!!</string>
+    <string name="email_min">Email Tidak valid !!!</string>
 
 </resources>
