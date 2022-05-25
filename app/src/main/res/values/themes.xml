@@ -23,10 +23,12 @@
         <item name="android:fontFamily">@font/inter_bold</item>
         <item name="android:textSize">22sp</item>
     </style>
+
     <style name="Theme.WasteCreative.Header_2">
         <item name="android:fontFamily">@font/inter_bold</item>
         <item name="android:textSize">17sp</item>
     </style>
+
     <style name="Theme.WasteCreative.Header_3">
         <item name="android:fontFamily">@font/inter_bold</item>
         <item name="android:textSize">15sp</item>
@@ -36,10 +38,12 @@
         <item name="android:fontFamily">@font/inter_medium</item>
         <item name="android:textSize">17sp</item>
     </style>
+
     <style name="Theme.WasteCreative.Paragraph_2">
         <item name="android:fontFamily">@font/inter_medium</item>
         <item name="android:textSize">15sp</item>
     </style>
+
     <style name="Theme.WasteCreative.SmallText">
         <item name="android:fontFamily">@font/inter</item>
         <item name="android:textSize">12sp</item>
@@ -49,4 +53,8 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="Theme.WasteCreative.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.WasteCreative.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

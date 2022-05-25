@@ -158,14 +158,15 @@
                 app:passwordToggleEnabled="true" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/signupButton"
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="32dp"
-            android:backgroundTint="@color/green_500"
+            android:background="@drawable/bg_button"
+            android:textColor="?attr/colorOnSecondary"
             android:text="@string/signup"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

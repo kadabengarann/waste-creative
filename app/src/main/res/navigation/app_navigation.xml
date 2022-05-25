@@ -2,8 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/app_navigation"
-    app:startDestination="@id/boardingFragment2">
+    app:startDestination="@id/boardingFragment2"
+    android:id="@+id/app_navigation">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -44,5 +44,13 @@
         <action
             android:id="@+id/action_boardingFragment2_to_loginFragment2"
             app:destination="@id/loginFragment2" />
+        <action
+            android:id="@+id/action_boardingFragment2_to_profileActivity4"
+            app:destination="@id/profileActivity4" />
     </fragment>
+    <activity
+        android:id="@+id/profileActivity4"
+        android:name="com.wastecreative.wastecreative.presentation.view.profile.ProfileActivity"
+        android:label="activity_profile"
+        tools:layout="@layout/activity_profile" />
 </navigation>

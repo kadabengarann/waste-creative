@@ -120,7 +120,7 @@
             tools:ignore="SpeakableTextPresentCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/loginButton"
         android:layout_width="0dp"
         android:layout_height="64dp"
@@ -128,6 +128,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
         android:text="@string/login"
+        android:textColor="?attr/colorOnSecondary"
+        android:background="@drawable/bg_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout" />
