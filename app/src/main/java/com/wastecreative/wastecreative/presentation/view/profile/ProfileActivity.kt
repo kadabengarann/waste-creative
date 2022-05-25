@@ -30,6 +30,7 @@ class ProfileActivity : AppCompatActivity() {
 
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.title = "Profile"
 
         val sectionProfilAdapter = SectionProfilAdapter(this)
         val viewPager:ViewPager2 = binding.viewPagerDetailProfile
