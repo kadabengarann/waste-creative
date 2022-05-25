@@ -1,62 +1,67 @@
 package com.wastecreative.wastecreative.presentation.view.profile
 
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.wastecreative.wastecreative.R
-import com.wastecreative.wastecreative.presentation.view.profile.placeholder.PlaceholderContent
+import com.wastecreative.wastecreative.data.model.Craft
+import com.wastecreative.wastecreative.databinding.FragmentListBinding
 
-/**
- * A fragment representing a list of Items.
- */
+
 class KerajinanFragment : Fragment() {
+    private var _binding: FragmentListBinding? = null
+    private val binding get() = _binding!!
+    private val data = ArrayList<Craft>()
 
-    private var columnCount = 2
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
+    private val kerajinanViewAdapter: KerajinanViewAdapter by lazy {
+       KerajinanViewAdapter(
+            arrayListOf()
+        )
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_kerajinan_list, container, false)
+        _binding = FragmentListBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        makeDummyData()
+        showRecyclerList()
+    }
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = KerajinanViewAdapter(PlaceholderContent.ITEMS)
+
+
+    private fun makeDummyData() {
+        if (data.isEmpty()) {
+            for (i in 1..4) {
+                val items = Craft(
+                    i.toString(),
+                    "Saifuddin",
+                    "https://picsum.photos/300/300?random=$i",
+                    "Kapal Mainan $i",
+                    "https://picsum.photos/200/300?random=$i",
+                    "yoman $i"
+                )
+                data.add(items)
             }
         }
-        return view
+    }
+    private fun showRecyclerList() {
+        binding.rvKerajinan.apply {
+            layoutManager = GridLayoutManager(context, 2)
+            setHasFixedSize(true)
+            adapter = kerajinanViewAdapter
+        }
+        kerajinanViewAdapter.setData(data)
+
     }
 
-    companion object {
 
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-            KerajinanFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
-                }
-            }
-    }
 }

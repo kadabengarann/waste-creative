@@ -8,6 +8,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.wastecreative.wastecreative.R
 import com.wastecreative.wastecreative.adapter.SectionProfilAdapter
+import com.wastecreative.wastecreative.data.model.Craft
 
 
 import com.wastecreative.wastecreative.databinding.ActivityProfileBinding
@@ -16,6 +17,7 @@ import com.wastecreative.wastecreative.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
+
     companion object {
         @StringRes
         private val TAB_TITLES = intArrayOf(
