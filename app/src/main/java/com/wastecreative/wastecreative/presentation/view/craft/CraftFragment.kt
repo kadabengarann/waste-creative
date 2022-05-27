@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.wastecreative.wastecreative.R
 import com.wastecreative.wastecreative.data.models.Craft
 import com.wastecreative.wastecreative.databinding.FragmentCraftBinding
 import com.wastecreative.wastecreative.presentation.adapter.CraftsListAdapter
@@ -44,7 +46,15 @@ class CraftFragment : Fragment() {
         }
         makeDummyData()
         showRecyclerList()
+        setupAction()
     }
+
+    private fun setupAction() {
+        binding.fabAddCraft.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_navigation_craft_to_navigation_add_detail_craft)
+        }
+    }
+
     private fun makeDummyData() {
         if (data.isEmpty()) {
             for (i in 1..20) {

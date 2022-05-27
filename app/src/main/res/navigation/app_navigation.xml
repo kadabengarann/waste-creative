@@ -27,5 +27,42 @@
         android:id="@+id/navigation_craft"
         android:name="com.wastecreative.wastecreative.presentation.view.craft.CraftFragment"
         android:label="@string/explore_crafts"
-        tools:layout="@layout/fragment_craft" />
+        tools:layout="@layout/fragment_craft" >
+        <action
+            android:id="@+id/action_navigation_craft_to_navigation_add_detail_craft"
+            app:destination="@id/navigation_add_detail_craft"
+            app:enterAnim="@animator/slide_in_right"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@android:anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_add_detail_craft"
+        android:name="com.wastecreative.wastecreative.presentation.view.addcraft.AddDetailCraftFragment"
+        android:label="fragment_add_detail_craft"
+        tools:layout="@layout/fragment_add_detail_craft" >
+        <action
+            android:id="@+id/action_navigation_add_detail_craft_to_navigation_add_steps_craft"
+            app:destination="@id/navigation_add_steps_craft"
+            app:enterAnim="@animator/slide_in_right"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@android:anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_add_steps_craft"
+        android:name="com.wastecreative.wastecreative.presentation.view.addcraft.AddStepsCraftFragment"
+        android:label="fragment_add_steps_craft"
+        tools:layout="@layout/fragment_add_steps_craft" >
+        <action
+            android:id="@+id/action_navigation_add_steps_craft_to_navigation_craft"
+            app:destination="@id/navigation_craft"
+            app:enterAnim="@animator/slide_in_right"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/navigation_craft"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>
