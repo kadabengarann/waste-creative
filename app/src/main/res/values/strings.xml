@@ -62,8 +62,6 @@
     <string name="state_verif">Upload Berhasil</string>
     <string name="failed_state">Upload Gagal</string>
     <string name="email_min">Email Tidak valid !!!</string>
-    <string name="lorem">Lorem Ipsum</string>
-    <string name="like_craft">Like this craft?</string>
     <string name="edit">Edit Profile</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="tab_text_1">Kerajinan</string>

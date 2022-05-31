@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WasteCreative">
         <activity
-
             android:name="com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity"
             android:exported="false"
             android:label="@string/title_activity_detail_craft"
+            android:theme="@style/Theme.WasteCreative.NoActionBar" />
         <activity
             android:name="com.wastecreative.wastecreative.presentation.view.scan.ScanActivity"
             android:exported="false"
