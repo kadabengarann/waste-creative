@@ -62,8 +62,6 @@
     <TextView
         android:id="@+id/tv_list_username"
         style="@style/Theme.WasteCreative.SmallText"
-        android:layout_width="86dp"
-        android:layout_height="23dp"
         android:layout_marginStart="8dp"
         android:layout_toEndOf="@id/img_avatar"
         android:textColor="?attr/textColorPrimary"

@@ -18,8 +18,8 @@ fun ImageView.loadImage(url: String?, radius: Int) {
     Glide.with(this.context)
         .load(url)
         .transform(MultiTransformation(CenterCrop(),RoundedCorners(radius)))
-        .placeholder(R.drawable.ic_baseline_person_24)
-        .error(R.drawable.ic_baseline_person_24)
+        .placeholder(R.drawable.ic_broken_image_24)
+        .error(R.drawable.ic_broken_image_24)
         .into(this)
 }
 

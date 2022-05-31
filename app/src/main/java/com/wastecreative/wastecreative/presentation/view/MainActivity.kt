@@ -1,5 +1,6 @@
 package com.wastecreative.wastecreative.presentation.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -7,13 +8,12 @@ import android.view.ViewGroup
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.wastecreative.wastecreative.R
 import com.wastecreative.wastecreative.databinding.ActivityMainBinding
+import com.wastecreative.wastecreative.presentation.view.scan.ScanActivity
 import com.wastecreative.wastecreative.presentation.view.boarding.BoardingFragment
 import com.wastecreative.wastecreative.presentation.view.login.LoginFragment
 
@@ -28,29 +28,24 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupBottomNavigation()
-
-
-
-
+        setupAction()
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()
     }
 
-
+    private fun setupAction() {
+        binding.scanFab.setOnClickListener {
+            startActivity(Intent(this, ScanActivity::class.java))
+        }
+    }
     private fun setupBottomNavigation() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
         navController = navHostFragment.navController
         bottomAppBar = binding.bottomAppBar
 
         val navView: BottomNavigationView = binding.navView
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-               R.id.navigation_home,R.id.navigation_marketplace
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
 
         navView.setupWithNavController(navController)
 
