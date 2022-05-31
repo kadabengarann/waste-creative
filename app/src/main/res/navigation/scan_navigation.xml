@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scan_navigation"
+    app:startDestination="@id/navigation_camera">
+
+    <fragment
+        android:id="@+id/navigation_camera"
+        android:name="com.wastecreative.wastecreative.presentation.view.scan.ScanFragment"
+        android:label="fragment_scan"
+        tools:layout="@layout/fragment_scan" >
+        <action
+            android:id="@+id/action_navigation_camera_to_navigation_scan_result"
+            app:destination="@id/navigation_scan_result"
+            app:enterAnim="@animator/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_scan_result"
+        android:name="com.wastecreative.wastecreative.presentation.view.scan.ScanResultFragment"
+        android:label="fragment_scan_result"
+        tools:layout="@layout/fragment_scan_result" >
+        <argument
+            android:name="imgURL"
+            app:argType="android.net.Uri" />
+        <action
+            android:id="@+id/action_navigation_scan_result_to_navigation_craft_recommendation"
+            app:destination="@id/navigation_craft_recommendation"
+            app:enterAnim="@animator/slide_in_right"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/navigation_camera" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_craft_recommendation"
+        android:name="com.wastecreative.wastecreative.presentation.view.scan.CraftRecommendationFragment"
+        android:label="fragment_craft_recommendation"
+        tools:layout="@layout/fragment_craft_recommendation" />
+</navigation>

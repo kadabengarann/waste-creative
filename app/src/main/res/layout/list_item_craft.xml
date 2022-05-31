@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="9dp"
+
+        android:clickable="true"
+        android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+
+    >
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/gr_user_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:visibility="visible"
+        app:constraint_referenced_ids="img_avatar,tv_list_username"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_avatar"
+        android:layout_width="31dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/round_outline_small"
+        android:clipToOutline="true"
+        tools:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/img_list_craft"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/round_outline"
+        android:clipToOutline="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_default="spread"
+        app:layout_constraintHeight_max="151dp"
+        app:layout_constraintHeight_min="151dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_avatar"
+        tools:scaleType="centerCrop"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/tv_list_username"
+        style="@style/Theme.WasteCreative.SmallText"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@id/img_avatar"
+        android:textColor="?attr/textColorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/img_avatar"
+        app:layout_constraintStart_toEndOf="@+id/img_avatar"
+        app:layout_constraintTop_toTopOf="@+id/img_avatar"
+        tools:text="@string/lorem" />
+
+        <TextView
+            android:id="@+id/tv_list_craft_name"
+            style="@style/Theme.WasteCreative.Header_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/lorem"
+            android:textColor="?attr/textColorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/img_list_craft"
+            app:layout_constraintTop_toBottomOf="@+id/img_list_craft" />
+
+    <TextView
+        android:id="@+id/tv_list_likes"
+        style="@style/Theme.WasteCreative.SmallText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="1k Likes"
+        android:textColor="?attr/textColorSecondary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_list_craft_name"
+        app:layout_constraintTop_toBottomOf="@+id/tv_list_craft_name" />
+    <ImageView
+        android:id="@+id/dot_icon"
+        android:layout_width="7dp"
+        android:layout_height="7dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_list_likes"
+        app:layout_constraintStart_toEndOf="@+id/tv_list_likes"
+        app:layout_constraintTop_toTopOf="@+id/tv_list_likes"
+        app:srcCompat="@drawable/ic_circle_24"
+        app:tint="?attr/textColorSecondary" />
+
+    <TextView
+        android:id="@+id/tv_list_crafting_duration"
+        style="@style/Theme.WasteCreative.SmallText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="> 60 mins"
+        android:textColor="?attr/textColorSecondary"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_list_likes"
+        app:layout_constraintStart_toEndOf="@+id/dot_icon"
+        app:layout_constraintTop_toTopOf="@+id/tv_list_likes" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/round_outline_small"
+            app:layout_constraintEnd_toEndOf="@+id/img_list_craft"
+            app:layout_constraintTop_toTopOf="@+id/img_list_craft" />
+
+    <ImageView
+        android:id="@+id/iv_love"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:clickable="true"
+        android:contentDescription="@string/like_craft"
+        android:focusable="true"
+        android:src="@drawable/ic_favorite_border_24"
+        android:tag="Not Saved"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="@+id/view2"
+        app:layout_constraintTop_toTopOf="@+id/view2"
+        app:tint="@color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
