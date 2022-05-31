@@ -2,8 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/app_navigation"
-    app:startDestination="@id/navigation_home">
+    app:startDestination="@id/boardingFragment2"
+    android:id="@+id/app_navigation">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -15,4 +15,42 @@
         android:name="com.wastecreative.wastecreative.presentation.view.marketplace.MarketplaceFragment"
         android:label="@string/title_marketplace"
         tools:layout="@layout/fragment_marketplace" />
+    <fragment
+        android:id="@+id/loginFragment2"
+        android:name="com.wastecreative.wastecreative.presentation.view.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment2_to_navigation_home"
+            app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_loginFragment2_to_registerFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.wastecreative.wastecreative.presentation.view.register.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_registerFragment_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/boardingFragment2"
+        android:name="com.wastecreative.wastecreative.presentation.view.boarding.BoardingFragment"
+        android:label="fragment_boarding"
+        tools:layout="@layout/fragment_boarding" >
+        <action
+            android:id="@+id/action_boardingFragment2_to_loginFragment2"
+            app:destination="@id/loginFragment2" />
+        <action
+            android:id="@+id/action_boardingFragment2_to_profileActivity4"
+            app:destination="@id/profileActivity4" />
+    </fragment>
+    <activity
+        android:id="@+id/profileActivity4"
+        android:name="com.wastecreative.wastecreative.presentation.view.profile.ProfileActivity"
+        android:label="activity_profile"
+        tools:layout="@layout/activity_profile" />
 </navigation>

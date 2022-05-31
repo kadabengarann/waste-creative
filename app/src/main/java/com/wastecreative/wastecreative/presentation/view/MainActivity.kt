@@ -14,6 +14,8 @@ import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.wastecreative.wastecreative.R
 import com.wastecreative.wastecreative.databinding.ActivityMainBinding
+import com.wastecreative.wastecreative.presentation.view.boarding.BoardingFragment
+import com.wastecreative.wastecreative.presentation.view.login.LoginFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,11 +29,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupBottomNavigation()
 
+
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp()
     }
+
 
     private fun setupBottomNavigation() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
@@ -77,5 +83,6 @@ class MainActivity : AppCompatActivity() {
             if (bool) performShow() else performHide()
         }
         binding.scanFab.visibility = if (bool) View.VISIBLE else View.GONE
+        binding.bottomAppBar.visibility = if (bool) View.VISIBLE else View.GONE
     }
 }
