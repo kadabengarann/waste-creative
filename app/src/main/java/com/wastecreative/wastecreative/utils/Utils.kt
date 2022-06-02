@@ -35,6 +35,15 @@ fun createFile(application: Application): File {
     return File(outputDirectory, "${System.currentTimeMillis()}.jpg")
 }
 
+fun Int.formatK(): String{
+    return when {
+        this >= 1000000 -> (this / 1000000).toString() + "m"
+        this >= 1000 -> {
+            (this / 1000).toString() + "k"
+        }
+        else -> this.toString()
+    }
+}
 @ColorInt
 fun Context.getColorFromAttr(
     @AttrRes attrColor: Int,

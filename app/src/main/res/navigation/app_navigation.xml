@@ -35,6 +35,9 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@android:anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_navigation_craft_to_detailCraftActivity"
+            app:destination="@id/detailCraftActivity" />
     </fragment>
     <fragment
         android:id="@+id/navigation_add_detail_craft"
@@ -103,4 +106,14 @@
         android:name="com.wastecreative.wastecreative.presentation.view.profile.ProfileActivity"
         android:label="activity_profile"
         tools:layout="@layout/activity_profile" />
+    <activity
+        android:id="@+id/detailCraftActivity"
+        android:name="com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity"
+        android:label="activity_detail_craft"
+        tools:layout="@layout/activity_detail_craft" >
+        <argument
+            android:name="idCraft"
+            app:argType="string"
+            app:nullable="true" />
+    </activity>
 </navigation>

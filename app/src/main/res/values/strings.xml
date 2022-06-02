@@ -66,5 +66,6 @@
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="tab_text_1">Kerajinan</string>
     <string name="tab_text_2">Post</string>
+    <string name="retry_string">Retry</string>
 
 </resources>
