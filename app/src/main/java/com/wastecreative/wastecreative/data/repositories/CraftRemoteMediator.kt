@@ -68,10 +68,8 @@ class CraftRemoteMediator(
                         id = it.id,
                         it.userName,
                         it.userPhoto,
-                        it.createdAt,
                         it.like,
                         it.name,
-                        it.description,
                         it.photo,
                     )
                 }

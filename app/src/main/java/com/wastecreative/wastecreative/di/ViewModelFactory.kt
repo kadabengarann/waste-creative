@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.wastecreative.wastecreative.data.repositories.CraftRepository
 import com.wastecreative.wastecreative.presentation.view.craft.CraftViewModel
+import com.wastecreative.wastecreative.presentation.view.craft.DetailCraftViewModel
 
 class ViewModelFactory(private val craftRepository: CraftRepository) :
     ViewModelProvider.NewInstanceFactory() {
@@ -12,6 +13,7 @@ class ViewModelFactory(private val craftRepository: CraftRepository) :
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T = when (modelClass) {
         CraftViewModel::class.java -> CraftViewModel(craftRepository)
+        DetailCraftViewModel::class.java -> DetailCraftViewModel(craftRepository)
         else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     } as T
 

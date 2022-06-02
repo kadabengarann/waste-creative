@@ -104,7 +104,7 @@ class CraftFragment : Fragment() {
             showError()
         }
         craftListAdapter.setOnItemClickCallback(object : PagingCraftsListAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: CraftEntity) {
+            override fun onItemClicked(data: String) {
                 val intentToDetail = Intent(requireActivity(), DetailCraftActivity::class.java)
                 intentToDetail.putExtra(DetailCraftActivity.EXTRA_CRAFT, data)
                 startActivity(intentToDetail)

@@ -72,10 +72,8 @@ class CraftRecommendationFragment : Fragment() {
                     i.toString(),
                     null,
                     "https://picsum.photos/300/300?random=$i",
-                    "Kapal Mainan $i",
                     69,
                     "yoman $i",
-                    "oyoyoyomann",
                     "https://picsum.photos/200/300?random=$i"
                 )
                 data.add(items)
@@ -91,21 +89,9 @@ class CraftRecommendationFragment : Fragment() {
         }
         craftListAdapter.setData(data)
         craftListAdapter.setOnItemClickCallback(object : CraftsListAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Craft) {
-                val dataCraft =
-                    CraftEntity(
-                        id = data.id,
-                        data.userName,
-                        data.userPhoto,
-                        data.createdAt,
-                        data.like,
-                        data.name,
-                        data.description,
-                        data.photo,
-                    )
-
+            override fun onItemClicked(data: String) {
                 val intentToDetail = Intent(requireActivity(), DetailCraftActivity::class.java)
-                intentToDetail.putExtra(DetailCraftActivity.EXTRA_CRAFT, dataCraft)
+                intentToDetail.putExtra(DetailCraftActivity.EXTRA_CRAFT, data)
                 startActivity(intentToDetail)
             }
         })

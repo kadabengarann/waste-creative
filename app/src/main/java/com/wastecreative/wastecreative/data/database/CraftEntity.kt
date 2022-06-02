@@ -17,13 +17,9 @@ data class CraftEntity(
 
     val userPhoto: String?,
 
-    val createdAt: String,
-
     val like: Int,
 
     val name: String,
-
-    val description: String,
 
     var photo: String,
 ) : Parcelable

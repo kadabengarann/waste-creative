@@ -37,14 +37,14 @@ class PagingCraftsListAdapter:
                 imgListCraft.loadImage(craftItem.photo, 40)
                 tvListLikes.text = "${craftItem.like.formatK()} likes"
                 binding.root.setOnClickListener {
-                    onItemClickCallback.onItemClicked(craftItem)
+                    onItemClickCallback.onItemClicked(craftItem.id)
                 }
             }
         }
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: CraftEntity)
+        fun onItemClicked(data: String)
     }
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {

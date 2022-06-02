@@ -67,5 +67,7 @@
     <string name="tab_text_1">Kerajinan</string>
     <string name="tab_text_2">Post</string>
     <string name="retry_string">Retry</string>
+    <string name="tools_string">Tools</string>
+    <string name="materials_strings">Materials</string>
 
 </resources>

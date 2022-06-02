@@ -6,6 +6,7 @@ import androidx.paging.*
 import com.wastecreative.wastecreative.data.database.CraftEntity
 import com.wastecreative.wastecreative.data.database.WasteCreativeDB
 import com.wastecreative.wastecreative.data.models.Craft
+import com.wastecreative.wastecreative.data.models.CraftDetail
 import com.wastecreative.wastecreative.data.network.ApiService
 import com.wastecreative.wastecreative.data.network.Result
 import kotlinx.coroutines.Dispatchers
@@ -45,7 +46,7 @@ class CraftRepository(
             }
         }.flowOn(Dispatchers.IO)
     }
-    suspend fun fetchCraftDetail(id: String): Flow<Result<Craft>>{
+    suspend fun fetchCraftDetail(id: String): Flow<Result<CraftDetail>>{
         return flow {
             emit(Result.Loading)
             try {

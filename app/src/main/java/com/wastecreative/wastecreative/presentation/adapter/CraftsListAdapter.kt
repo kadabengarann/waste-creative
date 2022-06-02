@@ -49,7 +49,7 @@ class CraftsListAdapter(
                 tvListCraftName.text = userItem.name
                 imgListCraft.loadImage(userItem.photo, 40)
                 binding.root.setOnClickListener {
-                    onItemClickCallback.onItemClicked(userItem)
+                    onItemClickCallback.onItemClicked(userItem.id)
                 }
             }
         }
@@ -63,14 +63,14 @@ class CraftsListAdapter(
                 tvListCraftName.text = userItem.name
                 imgListCraft.loadImage(userItem.photo, 40)
                 binding.root.setOnClickListener {
-                    onItemClickCallback.onItemClicked(userItem)
+                    onItemClickCallback.onItemClicked(userItem.id)
                 }
             }
         }
     }
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: Craft)
+        fun onItemClicked(data: String)
     }
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
