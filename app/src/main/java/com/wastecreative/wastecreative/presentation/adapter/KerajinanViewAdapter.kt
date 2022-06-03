@@ -1,4 +1,4 @@
-package com.wastecreative.wastecreative.presentation.view.profile
+package com.wastecreative.wastecreative.presentation.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater

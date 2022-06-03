@@ -27,7 +27,7 @@ class BoardingFragment : Fragment()  {
         // Inflate the layout for this fragment
         val binding = FragmentBoardingBinding.inflate(layoutInflater)
         binding.boardingButton.setOnClickListener {
-            findNavController().navigate(R.id.navigation_home)
+            findNavController().navigate(R.id.action_boardingFragment_to_loginFragment)
 
         }
         return binding.root

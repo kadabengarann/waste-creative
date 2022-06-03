@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wastecreative.wastecreative">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,6 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WasteCreative">
         <activity
+            android:name=".presentation.view.MainActivity"
+            android:theme="@style/Theme.WasteCreative.NoActionBar"
+            android:exported="false" />
+        <activity
             android:name="com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity"
             android:exported="false"
             android:label="@string/title_activity_detail_craft"
@@ -20,15 +25,13 @@
         <activity
             android:name="com.wastecreative.wastecreative.presentation.view.scan.ScanActivity"
             android:exported="false"
-            android:theme="@style/Theme.WasteCreative.TransparentStatusBar"/>
- <activity
+            android:theme="@style/Theme.WasteCreative.TransparentStatusBar" />
+        <activity
             android:name=".presentation.view.profile.ProfileActivity"
             android:exported="false"
-            android:label="@string/title_activity_profile"/>
-<!--            android:theme="@style/Theme.WasteCreative.NoActionBar" />-->
-
+            android:label="@string/title_activity_profile" /> <!-- android:theme="@style/Theme.WasteCreative.NoActionBar" /> -->
         <activity
-            android:name="com.wastecreative.wastecreative.presentation.view.MainActivity"
+            android:name="com.wastecreative.wastecreative.presentation.auth.AuthActivity"
             android:exported="true"
             android:theme="@style/Theme.WasteCreative.NoActionBar">
             <intent-filter>

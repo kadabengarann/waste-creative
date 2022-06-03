@@ -7,8 +7,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.wastecreative.wastecreative.R
-import com.wastecreative.wastecreative.adapter.SectionProfilAdapter
-import com.wastecreative.wastecreative.data.model.Craft
+import com.wastecreative.wastecreative.presentation.adapter.SectionProfilAdapter
 
 
 import com.wastecreative.wastecreative.databinding.ActivityProfileBinding

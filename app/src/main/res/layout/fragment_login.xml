@@ -72,7 +72,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailTextView"
         app:startIconDrawable="@drawable/ic_baseline_email_24">
 
-        <com.wastecreative.wastecreative.custom.customEmail
+        <com.wastecreative.wastecreative.presentation.custom.customEmail
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

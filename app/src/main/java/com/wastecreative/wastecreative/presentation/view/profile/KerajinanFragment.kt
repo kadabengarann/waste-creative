@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.wastecreative.wastecreative.data.model.Craft
 import com.wastecreative.wastecreative.databinding.FragmentListBinding
+import com.wastecreative.wastecreative.presentation.adapter.KerajinanViewAdapter
 
 
 class KerajinanFragment : Fragment() {

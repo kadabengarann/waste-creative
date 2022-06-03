@@ -19,11 +19,11 @@ class LoginFragment : Fragment() {
     ): View? {
         val binding = FragmentLoginBinding.inflate(layoutInflater)
         binding.btnRegister.setOnClickListener {
-            findNavController().navigate(R.id.registerFragment)
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment2)
 
         }
         binding.loginButton.setOnClickListener {
-            findNavController().navigate(R.id.navigation_home)
+            findNavController().navigate(R.id.action_loginFragment_to_mainActivity)
         }
         return binding.root
     }

@@ -31,7 +31,7 @@ class RegisterFragment : Fragment() {
             findNavController().navigate(R.id.navigation_home)
         }
         binding.registerLogin.setOnClickListener {
-            findNavController().navigate(R.id.loginFragment2)
+
         }
         return binding.root
 
