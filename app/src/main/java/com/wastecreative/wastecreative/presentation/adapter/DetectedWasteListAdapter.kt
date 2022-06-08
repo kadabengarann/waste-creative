@@ -3,13 +3,7 @@ package com.wastecreative.wastecreative.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewbinding.ViewBinding
-import com.bumptech.glide.Glide
-import com.wastecreative.wastecreative.R
-import com.wastecreative.wastecreative.data.models.Craft
-import com.wastecreative.wastecreative.databinding.ListItemCraftBinding
 import com.wastecreative.wastecreative.databinding.ListItemDetectedWasteBinding
-import com.wastecreative.wastecreative.utils.loadImage
 
 class DetectedWasteListAdapter(
     private val data: ArrayList<String>

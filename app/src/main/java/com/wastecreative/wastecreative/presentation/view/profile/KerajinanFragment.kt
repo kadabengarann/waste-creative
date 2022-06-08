@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.wastecreative.wastecreative.data.model.Craft
+import com.wastecreative.wastecreative.data.models.model.Craft
 import com.wastecreative.wastecreative.databinding.FragmentListBinding
 import com.wastecreative.wastecreative.presentation.adapter.KerajinanViewAdapter
 

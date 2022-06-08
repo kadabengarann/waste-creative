@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.wastecreative.wastecreative.R
-import com.wastecreative.wastecreative.data.models.Craft
+import com.wastecreative.wastecreative.data.models.model.Craft
 import com.wastecreative.wastecreative.databinding.FragmentHomeBinding
 import com.wastecreative.wastecreative.presentation.adapter.CraftsListAdapter
 import com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity

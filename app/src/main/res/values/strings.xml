@@ -39,8 +39,6 @@
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome!"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password harus lebih dari 5 Karakter</string>
     <string name="login_failed">"Login failed"</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
@@ -66,5 +64,13 @@
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="tab_text_1">Kerajinan</string>
     <string name="tab_text_2">Post</string>
+    <string name="name_error">Masukan Username</string>
+    <string name="password_error">Masukan Password</string>
+    <string name="mail_error">Masukan Email</string>
+    <string name="password_min">Password kurang dari 6 karakter</string>
+    <string name="valid">Email dan password salah</string>
+    <string name="validkosong">Email dan password tidak boleh kosong</string>
+    <string name="waiting">Tunggu sebentar</string>
+    <string name="isempty">Email telah di gunakan</string>
 
 </resources>

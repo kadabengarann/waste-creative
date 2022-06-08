@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
-import com.wastecreative.wastecreative.data.model.Craft
+import com.wastecreative.wastecreative.data.models.model.Craft
 import com.wastecreative.wastecreative.databinding.ListItemCraftBinding
 import com.wastecreative.wastecreative.utils.loadImage
 import java.util.ArrayList

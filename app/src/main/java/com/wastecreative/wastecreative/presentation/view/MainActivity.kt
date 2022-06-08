@@ -14,8 +14,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.wastecreative.wastecreative.R
 import com.wastecreative.wastecreative.databinding.ActivityMainBinding
 import com.wastecreative.wastecreative.presentation.view.scan.ScanActivity
-import com.wastecreative.wastecreative.presentation.view.boarding.BoardingFragment
-import com.wastecreative.wastecreative.presentation.view.login.LoginFragment
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,12 +22,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var bottomAppBar: BottomAppBar
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupBottomNavigation()
         setupAction()
+
     }
 
     override fun onSupportNavigateUp(): Boolean {

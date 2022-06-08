@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.wastecreative.wastecreative.data.models.Post
+import com.wastecreative.wastecreative.data.models.model.Post
 import com.wastecreative.wastecreative.databinding.FragmentMarketplaceBinding
 import com.wastecreative.wastecreative.presentation.adapter.PostListAdapter
 

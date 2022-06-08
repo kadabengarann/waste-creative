@@ -14,9 +14,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WasteCreative">
         <activity
-            android:name=".presentation.view.MainActivity"
+            android:name=".presentation.auth.RegisterActivity"
             android:theme="@style/Theme.WasteCreative.NoActionBar"
             android:exported="false" />
+        <activity
+            android:name=".presentation.view.boarding.BoardingActivity"
+            android:exported="true"
+            android:theme="@style/Theme.WasteCreative.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".presentation.auth.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.WasteCreative.NoActionBar" />
+        <activity
+            android:name=".presentation.view.MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.WasteCreative.NoActionBar" />
         <activity
             android:name="com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity"
             android:exported="false"
@@ -30,17 +48,6 @@
             android:name=".presentation.view.profile.ProfileActivity"
             android:exported="false"
             android:label="@string/title_activity_profile" /> <!-- android:theme="@style/Theme.WasteCreative.NoActionBar" /> -->
-        <activity
-            android:name="com.wastecreative.wastecreative.presentation.auth.AuthActivity"
-            android:exported="true"
-            android:theme="@style/Theme.WasteCreative.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

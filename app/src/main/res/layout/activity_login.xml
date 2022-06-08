@@ -4,11 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/fragment_horizontal_margin"
-    android:paddingTop="@dimen/fragment_vertical_margin"
-    android:paddingRight="@dimen/fragment_horizontal_margin"
-    android:paddingBottom="@dimen/fragment_vertical_margin"
-    tools:context=".presentation.view.login.LoginFragment">
+    tools:context=".presentation.auth.LoginActivity">
 
     <TextView
         android:id="@+id/textView2"
@@ -39,12 +35,14 @@
 
     <ImageView
         android:id="@+id/imgLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_foreground"
+        android:layout_width="294dp"
+        android:layout_height="248dp"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toTopOf="@+id/emailTextView"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:layout_editor_absoluteX="138dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.572"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
     </ImageView>
 
@@ -52,11 +50,11 @@
         android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="176dp"
+        android:layout_marginTop="204dp"
         android:text="@string/email"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -76,8 +74,8 @@
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/email"
             android:ems="10"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             tools:ignore="SpeakableTextPresentCheck" />
 
@@ -102,11 +100,11 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="156dp"
+        android:hint="@string/password"
         app:layout_constraintBottom_toTopOf="@+id/loginButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordTextView"
-        android:hint="@string/password"
         app:passwordToggleEnabled="true"
         app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
@@ -127,9 +125,9 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
+        android:background="@drawable/bg_button"
         android:text="@string/login"
         android:textColor="?attr/colorOnSecondary"
-        android:background="@drawable/bg_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout" />
@@ -160,8 +158,6 @@
         app:layout_constraintTop_toTopOf="@+id/textView3">
 
     </TextView>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
