@@ -34,6 +34,10 @@
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/navigation_camera" />
+        <argument
+            android:name="isCamera"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/navigation_craft_recommendation"

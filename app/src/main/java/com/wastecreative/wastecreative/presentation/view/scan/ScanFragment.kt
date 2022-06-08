@@ -143,7 +143,10 @@ class ScanFragment : Fragment() {
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
+                    val isCamera = true
                     val toScanResultFragment = ScanFragmentDirections.actionNavigationCameraToNavigationScanResult(savedUri)
+                    toScanResultFragment.isCamera = isCamera
+                    toScanResultFragment.imgURL = savedUri
                     view?.findNavController()?.navigate(toScanResultFragment)
                 }
             }
