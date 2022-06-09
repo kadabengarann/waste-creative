@@ -18,7 +18,7 @@
             android:theme="@style/Theme.WasteCreative.NoActionBar"
             android:exported="false" />
         <activity
-            android:name=".presentation.view.boarding.BoardingActivity"
+            android:name=".presentation.view.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.WasteCreative.NoActionBar">
             <intent-filter>
@@ -32,9 +32,11 @@
             android:exported="false"
             android:theme="@style/Theme.WasteCreative.NoActionBar" />
         <activity
-            android:name=".presentation.view.MainActivity"
-            android:exported="false"
-            android:theme="@style/Theme.WasteCreative.NoActionBar" />
+            android:name=".presentation.view.boarding.BoardingActivity"
+            android:exported="true"
+            android:theme="@style/Theme.WasteCreative.NoActionBar" >
+
+        </activity>
         <activity
             android:name="com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity"
             android:exported="false"

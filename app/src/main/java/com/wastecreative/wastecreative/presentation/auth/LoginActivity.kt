@@ -29,24 +29,11 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(_binding.root)
-
-//        setUp()
-//        setUpVM()
+        setUpVM()
         setUpFirebase()
     }
 
-    private fun setUp() {
-        _binding.btnRegister.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
-        }
-        _binding.loginButton.setOnClickListener {
-            val emailUsers = _binding.emailEditText.text.toString().trim()
-            val passwordUsers = _binding.passwordEditText.text.toString().trim()
-            loginViewModel.getLogin(this, emailUsers, passwordUsers)
-            Toast.makeText(this, "Tunggu Sebentar", Toast.LENGTH_SHORT).show()
-        }
 
-    }
     private fun setUpVM(){
         loginViewModel = ViewModelProvider(
             this, ViewModelFactory(UserPreferences.getInstance(dataStores))
@@ -55,9 +42,6 @@ class LoginActivity : AppCompatActivity() {
             this.user = user
 
             if(this.user.isLogin){
-                Intent(this, MainActivity::class.java).let {
-                    startActivity(it)
-                }
                 Log.d("cek","login sukses{$user}")
             }
 
@@ -91,6 +75,8 @@ class LoginActivity : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
+                            loginViewModel.getLogin( email, password)
+                            loginViewModel.login(UserModel("",email,true))
                             var intent =Intent(this,MainActivity::class.java)
                             intent.putExtra("email",email)
                             startActivity(intent)

@@ -20,6 +20,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+
     private val craftListAdapter: CraftsListAdapter by lazy {
         CraftsListAdapter(
             arrayListOf()
@@ -93,4 +94,5 @@ class HomeFragment : Fragment() {
             }
         })
     }
+
 }

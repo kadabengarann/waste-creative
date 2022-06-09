@@ -7,7 +7,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.wastecreative.wastecreative.data.models.Response
 import com.wastecreative.wastecreative.data.models.ResponseItem
 import com.wastecreative.wastecreative.data.models.network.api.ApiConfig
 
@@ -15,7 +14,7 @@ import com.wastecreative.wastecreative.data.models.network.api.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
 
-class RegisterViewModel  : ViewModel()  {
+class RegisterViewModel() : ViewModel(){
     private val _sukses = MutableLiveData<Boolean>()
     val sukses : LiveData<Boolean> = _sukses
     private  val _passwordEmpty = MutableLiveData<Boolean>()
@@ -92,6 +91,7 @@ class RegisterViewModel  : ViewModel()  {
                         if(response.isSuccessful && _response != null){
                             _sukses.value = false
                             Log.d("LoginViewModel", "Reg Berhasil ,{$names},{$email}")
+
 
 
 

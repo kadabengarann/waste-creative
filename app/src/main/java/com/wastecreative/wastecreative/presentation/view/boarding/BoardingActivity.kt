@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.wastecreative.wastecreative.databinding.ActivityBoardingBinding
 import com.wastecreative.wastecreative.presentation.auth.LoginActivity
-import com.wastecreative.wastecreative.presentation.view.MainActivity
 
 class BoardingActivity : AppCompatActivity() {
     private lateinit var binding : ActivityBoardingBinding
@@ -15,11 +14,11 @@ class BoardingActivity : AppCompatActivity() {
         setContentView(binding.root)
         setAction()
 
-
     }
     private fun setAction(){
         binding.boardingButton.setOnClickListener{
             startActivity(Intent(this,LoginActivity::class.java))
         }
     }
+
 }

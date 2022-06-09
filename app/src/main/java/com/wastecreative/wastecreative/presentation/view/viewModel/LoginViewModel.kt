@@ -31,9 +31,9 @@ class LoginViewModel(private var preference: UserPreferences) : ViewModel() {
 
 
 
-    fun login(users: UserModel) {
+    fun login(userModel: UserModel) {
         viewModelScope.launch {
-            preference.loginPref(users)
+            preference.loginPref(userModel)
         }
     }
 
@@ -80,7 +80,7 @@ class LoginViewModel(private var preference: UserPreferences) : ViewModel() {
 
     }
 
-    fun getLogin(context: Context, email: String, password: String){
+    fun getLogin(email: String, password: String){
         if(formValidasi(email, password,)){
             ApiConfig.getApiService()
                 .getLogin(email, password)
@@ -92,6 +92,7 @@ class LoginViewModel(private var preference: UserPreferences) : ViewModel() {
                         val _response = response.body()
                         if(response.isSuccessful && _response != null){
                             Log.d("LoginViewModel", "Login Berhasil")
+//                            login(UserModel("",email,true))
 
 
                         } else{

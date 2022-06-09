@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
+import com.google.firebase.firestore.auth.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -15,18 +16,18 @@ class UserPreferences private constructor( private val dataStore: DataStore<Pref
     fun getUser(): Flow<UserModel> {
         return dataStore.data.map { preferences ->
             UserModel(
-                preferences[IDKEY] ?:"",
+
                 preferences[NAMEKEY] ?:"",
                 preferences[EMAILKEY] ?:"" ,
                 preferences[LOGINKEY] ?: false
             )
         }
     }
-    suspend fun loginPref(userModel: UserModel) {
+    suspend fun loginPref(userModel:UserModel) {
         dataStore.edit { preferences ->
-            preferences[IDKEY] =  userModel.userId
+//            preferences[IDKEY] =  userModel.userId
             preferences[NAMEKEY] = userModel.name
-            preferences[LOGINKEY] = userModel.isLogin
+            preferences[LOGINKEY] = true
             preferences[EMAILKEY] = userModel.email
         }
     }
@@ -37,7 +38,7 @@ class UserPreferences private constructor( private val dataStore: DataStore<Pref
 
         private val IDKEY= stringPreferencesKey("id")
         private val NAMEKEY= stringPreferencesKey("name")
-        private val LOGINKEY = booleanPreferencesKey("login")
+        private val LOGINKEY = booleanPreferencesKey("logins")
         private val EMAILKEY = stringPreferencesKey("email")
 
         fun getInstance(dataStore: DataStore<Preferences>): UserPreferences {
