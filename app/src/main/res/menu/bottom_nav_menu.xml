@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_24"
@@ -15,5 +16,11 @@
         android:contentDescription="@string/title_marketplace"
         android:icon="@drawable/ic_shopping_bag_24"
         android:title="@string/title_marketplace" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_profil"-->
+<!--        android:contentDescription="@string/title_marketplace"-->
+<!--        app:showAsAction="ifRoom"-->
+<!--        app:actionLayout="@layout/profile_menu_layout"-->
+<!--        android:title="@string/profile" />-->
 
 </menu>

@@ -6,7 +6,6 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import com.google.firebase.firestore.auth.User
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -25,10 +24,14 @@ class UserPreferences private constructor( private val dataStore: DataStore<Pref
     }
     suspend fun loginPref(userModel:UserModel) {
         dataStore.edit { preferences ->
-//            preferences[IDKEY] =  userModel.userId
             preferences[NAMEKEY] = userModel.name
             preferences[LOGINKEY] = true
             preferences[EMAILKEY] = userModel.email
+        }
+    }
+    suspend fun logout() {
+        dataStore.edit { preferences ->
+            preferences[LOGINKEY ] = false
         }
     }
 

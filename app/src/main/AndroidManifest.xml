@@ -14,9 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WasteCreative">
         <activity
-            android:name=".presentation.auth.RegisterActivity"
-            android:theme="@style/Theme.WasteCreative.NoActionBar"
+            android:name=".PengaturanActivity"
             android:exported="false" />
+        <activity
+            android:name=".presentation.auth.RegisterActivity"
+            android:exported="false"
+            android:theme="@style/Theme.WasteCreative.NoActionBar" />
         <activity
             android:name=".presentation.view.MainActivity"
             android:exported="true"
@@ -34,9 +37,7 @@
         <activity
             android:name=".presentation.view.boarding.BoardingActivity"
             android:exported="true"
-            android:theme="@style/Theme.WasteCreative.NoActionBar" >
-
-        </activity>
+            android:theme="@style/Theme.WasteCreative.NoActionBar"></activity>
         <activity
             android:name="com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity"
             android:exported="false"

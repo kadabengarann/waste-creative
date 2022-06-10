@@ -72,5 +72,6 @@
     <string name="validkosong">Email dan password tidak boleh kosong</string>
     <string name="waiting">Tunggu sebentar</string>
     <string name="isempty">Email telah di gunakan</string>
+    <string name="keluar">Logout</string>
 
 </resources>

@@ -5,8 +5,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -22,6 +25,7 @@ import com.wastecreative.wastecreative.ViewModelFactory
 import com.wastecreative.wastecreative.data.models.model.preference.UserPreferences
 import com.wastecreative.wastecreative.databinding.ActivityMainBinding
 import com.wastecreative.wastecreative.presentation.view.boarding.BoardingActivity
+import com.wastecreative.wastecreative.presentation.view.pengaturan.PengaturanActivity
 import com.wastecreative.wastecreative.presentation.view.scan.ScanActivity
 import com.wastecreative.wastecreative.presentation.view.viewModel.MainViewModel
 
@@ -100,7 +104,7 @@ class MainActivity : AppCompatActivity() {
             this,
             ViewModelFactory(UserPreferences.getInstance(dataStore))
         )[MainViewModel::class.java]
-//
+
         mainViewModel.getUser().observe(this, { user ->
             if (user.isLogin){
                 Log.d("cek","{$user}")

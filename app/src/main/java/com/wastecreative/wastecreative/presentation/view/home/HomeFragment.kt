@@ -2,9 +2,8 @@ package com.wastecreative.wastecreative.presentation.view.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -13,6 +12,7 @@ import com.wastecreative.wastecreative.data.models.model.Craft
 import com.wastecreative.wastecreative.databinding.FragmentHomeBinding
 import com.wastecreative.wastecreative.presentation.adapter.CraftsListAdapter
 import com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity
+import com.wastecreative.wastecreative.presentation.view.pengaturan.PengaturanActivity
 import com.wastecreative.wastecreative.presentation.view.scan.ScanActivity
 
 
@@ -30,6 +30,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -93,6 +94,19 @@ class HomeFragment : Fragment() {
                 startActivity(intentToDetail)
             }
         })
+    }
+    override fun onCreateOptionsMenu(menu: Menu , inflater: MenuInflater){
+        setHasOptionsMenu(true)
+        super.onCreateOptionsMenu(menu,inflater)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_setting ->
+                // Not implemented here
+                return false
+            else -> {}
+        }
+        return false
     }
 
 }
