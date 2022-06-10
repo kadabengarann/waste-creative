@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.wastecreative.wastecreative.databinding.ActivityBoardingBinding
-import com.wastecreative.wastecreative.presentation.auth.LoginActivity
+import com.wastecreative.wastecreative.presentation.view.auth.LoginActivity
 
 class BoardingActivity : AppCompatActivity() {
     private lateinit var binding : ActivityBoardingBinding

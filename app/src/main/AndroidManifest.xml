@@ -17,7 +17,7 @@
             android:name=".PengaturanActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.auth.RegisterActivity"
+            android:name="com.wastecreative.wastecreative.presentation.view.auth.RegisterActivity"
             android:exported="false"
             android:theme="@style/Theme.WasteCreative.NoActionBar" />
         <activity
@@ -31,7 +31,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.auth.LoginActivity"
+            android:name="com.wastecreative.wastecreative.presentation.view.auth.LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.WasteCreative.NoActionBar" />
         <activity

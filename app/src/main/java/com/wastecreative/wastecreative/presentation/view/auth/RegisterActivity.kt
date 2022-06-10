@@ -1,4 +1,4 @@
-package com.wastecreative.wastecreative.presentation.auth
+package com.wastecreative.wastecreative.presentation.view.auth
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
