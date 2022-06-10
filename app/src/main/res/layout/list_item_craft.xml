@@ -1,32 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="4dp"
+    android:layout_marginTop="1dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginBottom="9dp"
+    app:cardCornerRadius="17dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    >
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="9dp"
-
-        android:clickable="true"
-        android:focusable="true"
-    android:foreground="?android:attr/selectableItemBackground"
-
-    >
+        android:padding="8dp"    >
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/gr_user_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:visibility="visible"
         app:constraint_referenced_ids="img_avatar,tv_list_username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/img_avatar"
@@ -62,61 +64,49 @@
     <TextView
         android:id="@+id/tv_list_username"
         style="@style/Theme.WasteCreative.SmallText"
+        android:layout_width="0dp"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:layout_toEndOf="@id/img_avatar"
+        android:ellipsize="end"
+        android:singleLine="true"
         android:textColor="?attr/textColorPrimary"
         app:layout_constraintBottom_toBottomOf="@+id/img_avatar"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/img_avatar"
         app:layout_constraintTop_toTopOf="@+id/img_avatar"
+        app:layout_constraintVertical_bias="0.615"
         tools:text="@string/lorem" />
 
         <TextView
             android:id="@+id/tv_list_craft_name"
             style="@style/Theme.WasteCreative.Header_2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:ellipsize="end"
+            android:singleLine="true"
             android:text="@string/lorem"
             android:textColor="?attr/textColorPrimary"
+            app:layout_constraintBottom_toTopOf="@+id/tv_list_likes"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/img_list_craft"
             app:layout_constraintTop_toBottomOf="@+id/img_list_craft" />
 
-    <TextView
-        android:id="@+id/tv_list_likes"
-        style="@style/Theme.WasteCreative.SmallText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="1k Likes"
-        android:textColor="?attr/textColorSecondary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tv_list_craft_name"
-        app:layout_constraintTop_toBottomOf="@+id/tv_list_craft_name" />
-    <ImageView
-        android:id="@+id/dot_icon"
-        android:layout_width="7dp"
-        android:layout_height="7dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_list_likes"
-        app:layout_constraintStart_toEndOf="@+id/tv_list_likes"
-        app:layout_constraintTop_toTopOf="@+id/tv_list_likes"
-        app:srcCompat="@drawable/ic_circle_24"
-        app:tint="?attr/textColorSecondary" />
+        <TextView
+            android:id="@+id/tv_list_likes"
+            style="@style/Theme.WasteCreative.SmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="1k Likes"
+            android:textColor="?attr/textColorSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_list_craft_name" />
 
-    <TextView
-        android:id="@+id/tv_list_crafting_duration"
-        style="@style/Theme.WasteCreative.SmallText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="> 60 mins"
-        android:textColor="?attr/textColorSecondary"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_list_likes"
-        app:layout_constraintStart_toEndOf="@+id/dot_icon"
-        app:layout_constraintTop_toTopOf="@+id/tv_list_likes" />
-
-        <View
+    <View
             android:id="@+id/view2"
             android:layout_width="32dp"
             android:layout_height="32dp"
@@ -142,3 +132,4 @@
         app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

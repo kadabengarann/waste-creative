@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "517751309327",
+    "project_id": "graphic-perigee-250402",
+    "storage_bucket": "graphic-perigee-250402.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:517751309327:android:c1bd622dcfe2cd73038f7a",
+        "android_client_info": {
+          "package_name": "com.wastecreative.wastecreative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "517751309327-u1acfu76tv5act43j56b10aihmdv0opa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wastecreative.wastecreative",
+            "certificate_hash": "735ff86388f551741ff2d51e7aaa34039bcb6db0"
+          }
+        },
+        {
+          "client_id": "517751309327-m8gngkcg6kd6mjo9hr78t7fbnji6p2md.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYe5FhI8V8Y2zSZX7Jwo3kN4O625NYRpM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "517751309327-m8gngkcg6kd6mjo9hr78t7fbnji6p2md.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

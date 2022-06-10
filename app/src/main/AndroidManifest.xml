@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wastecreative.wastecreative">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.CAMERA" />
+
     <application
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WasteCreative">
         <activity
-            android:name="com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity"
+            android:name=".PengaturanActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.wastecreative.wastecreative.presentation.view.auth.RegisterActivity"
             android:exported="false"
-            android:label="@string/title_activity_detail_craft"
             android:theme="@style/Theme.WasteCreative.NoActionBar" />
         <activity
-            android:name="com.wastecreative.wastecreative.presentation.view.scan.ScanActivity"
-            android:exported="false"
-            android:theme="@style/Theme.WasteCreative.TransparentStatusBar"/>
- <activity
-            android:name=".presentation.view.profile.ProfileActivity"
-            android:exported="false"
-            android:label="@string/title_activity_profile"/>
-<!--            android:theme="@style/Theme.WasteCreative.NoActionBar" />-->
-
-        <activity
-            android:name="com.wastecreative.wastecreative.presentation.view.MainActivity"
+            android:name=".presentation.view.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.WasteCreative.NoActionBar">
             <intent-filter>
@@ -37,7 +31,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name="com.wastecreative.wastecreative.presentation.view.auth.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.WasteCreative.NoActionBar" />
+        <activity
+            android:name=".presentation.view.boarding.BoardingActivity"
+            android:exported="true"
+            android:theme="@style/Theme.WasteCreative.NoActionBar"></activity>
+        <activity
+            android:name="com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity"
+            android:exported="false"
+            android:label="@string/title_activity_detail_craft"
+            android:theme="@style/Theme.WasteCreative.NoActionBar" />
+        <activity
+            android:name="com.wastecreative.wastecreative.presentation.view.scan.ScanActivity"
+            android:exported="false"
+            android:theme="@style/Theme.WasteCreative.TransparentStatusBar" />
+        <activity
+            android:name=".presentation.view.profile.ProfileActivity"
+            android:exported="false"
+            android:label="@string/title_activity_profile" /> <!-- android:theme="@style/Theme.WasteCreative.NoActionBar" /> -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

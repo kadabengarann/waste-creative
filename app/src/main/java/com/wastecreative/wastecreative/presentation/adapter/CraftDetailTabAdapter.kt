@@ -4,9 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.wastecreative.wastecreative.data.models.CraftDetail
 import com.wastecreative.wastecreative.presentation.view.craft.DetailCraftTabFragment
 
 class CraftDetailTabAdapter(activity: AppCompatActivity): FragmentStateAdapter(activity)  {
+    private lateinit var craft : CraftDetail
     override fun getItemCount() = 2
 
     override fun createFragment(position: Int): Fragment {
@@ -15,5 +17,8 @@ class CraftDetailTabAdapter(activity: AppCompatActivity): FragmentStateAdapter(a
             putInt(DetailCraftTabFragment.ARG_SECTION_NUMBER, position + 1)
         }
         return fragment
+    }
+    fun setDetail(craftDetail: CraftDetail) {
+        this.craft = craftDetail
     }
 }

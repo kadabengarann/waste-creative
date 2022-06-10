@@ -2,23 +2,26 @@ package com.wastecreative.wastecreative.presentation.view.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.wastecreative.wastecreative.R
+import com.wastecreative.wastecreative.data.database.CraftEntity
 import com.wastecreative.wastecreative.data.models.Craft
 import com.wastecreative.wastecreative.databinding.FragmentHomeBinding
 import com.wastecreative.wastecreative.presentation.adapter.CraftsListAdapter
 import com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity
+import com.wastecreative.wastecreative.presentation.view.pengaturan.PengaturanActivity
 import com.wastecreative.wastecreative.presentation.view.scan.ScanActivity
 
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
 
     private val craftListAdapter: CraftsListAdapter by lazy {
         CraftsListAdapter(
@@ -29,6 +32,7 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -58,9 +62,9 @@ class HomeFragment : Fragment() {
                     i.toString(),
                     "Saifuddin",
                     "https://picsum.photos/300/300?random=$i",
-                    "Kapal Mainan $i",
-                    "https://picsum.photos/200/300?random=$i",
-                    "yoman $i"
+                    69,
+                    "yoman $i",
+                    "https://picsum.photos/200/300?random=$i"
                 )
                 data.add(items)
             }
@@ -70,7 +74,7 @@ class HomeFragment : Fragment() {
     private fun setupAction() {
         binding.apply {
             ctaHome.setOnClickListener{
-                startActivity(Intent(requireActivity(), ScanActivity::class.java))
+                view?.findNavController()?.navigate(R.id.action_navigation_home_to_navigation_craft_search)
             }
             contentHome.tvShowAll.setOnClickListener {
                 view?.findNavController()?.navigate(R.id.action_navigation_home_to_navigation_craft)
@@ -86,11 +90,25 @@ class HomeFragment : Fragment() {
         }
         craftListAdapter.setData(data)
         craftListAdapter.setOnItemClickCallback(object : CraftsListAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Craft) {
+            override fun onItemClicked(data: String) {
                 val intentToDetail = Intent(requireActivity(), DetailCraftActivity::class.java)
                 intentToDetail.putExtra(DetailCraftActivity.EXTRA_CRAFT, data)
                 startActivity(intentToDetail)
             }
         })
     }
+    override fun onCreateOptionsMenu(menu: Menu , inflater: MenuInflater){
+        setHasOptionsMenu(true)
+        super.onCreateOptionsMenu(menu,inflater)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_setting ->
+                // Not implemented here
+                return false
+            else -> {}
+        }
+        return false
+    }
+
 }

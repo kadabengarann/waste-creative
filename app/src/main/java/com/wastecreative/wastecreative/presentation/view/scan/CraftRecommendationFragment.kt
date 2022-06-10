@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.wastecreative.wastecreative.data.database.CraftEntity
 import com.wastecreative.wastecreative.data.models.Craft
 import com.wastecreative.wastecreative.databinding.FragmentCraftRecommendationBinding
 import com.wastecreative.wastecreative.presentation.adapter.CraftsListAdapter
@@ -71,9 +72,9 @@ class CraftRecommendationFragment : Fragment() {
                     i.toString(),
                     null,
                     "https://picsum.photos/300/300?random=$i",
-                    "Kapal Mainan $i",
-                    "https://picsum.photos/200/300?random=$i",
-                    "yoman $i"
+                    69,
+                    "yoman $i",
+                    "https://picsum.photos/200/300?random=$i"
                 )
                 data.add(items)
             }
@@ -88,7 +89,7 @@ class CraftRecommendationFragment : Fragment() {
         }
         craftListAdapter.setData(data)
         craftListAdapter.setOnItemClickCallback(object : CraftsListAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: Craft) {
+            override fun onItemClicked(data: String) {
                 val intentToDetail = Intent(requireActivity(), DetailCraftActivity::class.java)
                 intentToDetail.putExtra(DetailCraftActivity.EXTRA_CRAFT, data)
                 startActivity(intentToDetail)
