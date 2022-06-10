@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.wastecreative.wastecreative.R
-import com.wastecreative.wastecreative.data.models.model.preference.UserModel
 import com.wastecreative.wastecreative.databinding.ActivityRegisterBinding
 import com.wastecreative.wastecreative.presentation.view.viewModel.RegisterViewModel
 
@@ -24,7 +23,6 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(_binding.root)
         setuUPVm()
         setUpFirebase()
-
     }
 
     private fun isSukses(value: Boolean){
@@ -114,8 +112,6 @@ class RegisterActivity : AppCompatActivity() {
             else{
                 Toast.makeText(this,getString(R.string.validkosong), Toast.LENGTH_LONG).show()
             }
-
-
         }
     }
 

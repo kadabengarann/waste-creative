@@ -18,6 +18,7 @@ class BoardingActivity : AppCompatActivity() {
     private fun setAction(){
         binding.boardingButton.setOnClickListener{
             startActivity(Intent(this,LoginActivity::class.java))
+            finish()
         }
     }
 
