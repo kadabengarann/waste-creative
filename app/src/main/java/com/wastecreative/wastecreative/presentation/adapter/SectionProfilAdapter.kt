@@ -1,4 +1,4 @@
-package com.wastecreative.wastecreative.adapter
+package com.wastecreative.wastecreative.presentation.adapter
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment

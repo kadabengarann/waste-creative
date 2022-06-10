@@ -1,4 +1,4 @@
-package com.wastecreative.wastecreative.data.models
+package com.wastecreative.wastecreative.data.models.model
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

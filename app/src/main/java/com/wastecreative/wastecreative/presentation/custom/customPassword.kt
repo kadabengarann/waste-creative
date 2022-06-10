@@ -1,4 +1,4 @@
-package com.wastecreative.wastecreative.custom
+package com.wastecreative.wastecreative.presentation.custom
 
 import android.content.Context
 import android.text.Editable
@@ -27,7 +27,7 @@ class customPassword : AppCompatEditText {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(s.toString().isNotEmpty()){
                     if(passwordValidation(s.toString())) setError(null) else setError(context.getString(
-                        R.string.invalid_password))
+                        R.string.password_min))
                 }
             }
 
