@@ -75,6 +75,14 @@
     <style name="Theme.WasteCreative.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <item name="colorControlNormal">?attr/textColorPrimary</item>
+
+        <item name="android:textColorPrimary">?attr/textColorPrimary</item>
+        <item name="android:textColorSecondary">?attr/textColorSecondary</item>
+        <item name="actionMenuTextColor">?attr/textColorPrimary</item>
+        <item name="actionOverflowButtonStyle">?attr/textColorPrimary</item>
+        <item name="drawerArrowStyle">?attr/textColorPrimary</item>
+        <item name="android:textColorHint">?attr/textColorSecondary</item>
+
     </style>
     <style name="TitleToolbarCollapse">
         <item name="android:textColor">@android:color/transparent</item>

@@ -121,6 +121,7 @@ class CraftFragment : Fragment() {
     private fun String.insert(insertAt: Int, string: String): String {
         return this.substring(0, insertAt) + string + this.substring(insertAt, this.length)
     }
+
     private fun showError() {
         binding.btnError.setOnClickListener {
             binding.grError.visibility = View.GONE

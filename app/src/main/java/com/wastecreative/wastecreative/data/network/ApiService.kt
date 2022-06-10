@@ -22,4 +22,9 @@ interface ApiService {
         @Query("page") page: Int,
         @Query("limit") size: Int,
     ): List<Craft>
+
+    @GET("craft")
+    suspend fun getSearcCraftList(
+        @Query("search") query: String
+    ): List<Craft>
 }
