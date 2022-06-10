@@ -2,10 +2,9 @@ package com.wastecreative.wastecreative
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.wastecreative.wastecreative.data.models.model.preference.UserPreferences
+import com.wastecreative.wastecreative.data.models.preference.UserPreferences
 import com.wastecreative.wastecreative.presentation.view.viewModel.LoginViewModel
 import com.wastecreative.wastecreative.presentation.view.viewModel.MainViewModel
-import com.wastecreative.wastecreative.presentation.view.viewModel.RegisterViewModel
 
 class ViewModelFactory(private val pref: UserPreferences) : ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")

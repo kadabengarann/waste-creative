@@ -1,4 +1,4 @@
-package com.wastecreative.wastecreative.data.models.model.preference
+package com.wastecreative.wastecreative.data.models.preference
 
 data class UserModel (
 //    val userId: String,

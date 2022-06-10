@@ -3,7 +3,7 @@ package com.wastecreative.wastecreative.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.wastecreative.wastecreative.data.models.model.Post
+import com.wastecreative.wastecreative.data.models.Post
 import com.wastecreative.wastecreative.databinding.ListItemPostBinding
 import com.wastecreative.wastecreative.utils.loadImage
 

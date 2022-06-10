@@ -1,15 +1,13 @@
 package com.wastecreative.wastecreative.presentation.view.viewModel
 
 import android.content.ContentValues
-import android.content.Context
 import android.text.TextUtils
 import android.util.Log
 import androidx.lifecycle.*
 import com.wastecreative.wastecreative.data.models.Response
-import com.wastecreative.wastecreative.data.models.ResponseItem
-import com.wastecreative.wastecreative.data.models.model.preference.UserModel
-import com.wastecreative.wastecreative.data.models.model.preference.UserPreferences
-import com.wastecreative.wastecreative.data.models.network.api.ApiConfig
+import com.wastecreative.wastecreative.data.models.preference.UserModel
+import com.wastecreative.wastecreative.data.models.preference.UserPreferences
+import com.wastecreative.wastecreative.data.network.ApiConfig
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback

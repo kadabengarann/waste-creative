@@ -2,7 +2,6 @@ package com.wastecreative.wastecreative.presentation.view.pengaturan
 
 
 import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.datastore.core.DataStore
@@ -10,7 +9,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.lifecycle.ViewModelProvider
 import com.wastecreative.wastecreative.ViewModelFactory
-import com.wastecreative.wastecreative.data.models.model.preference.UserPreferences
+import com.wastecreative.wastecreative.data.models.preference.UserPreferences
 import com.wastecreative.wastecreative.databinding.ActivityPengaturanBinding
 import com.wastecreative.wastecreative.presentation.view.viewModel.MainViewModel
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")

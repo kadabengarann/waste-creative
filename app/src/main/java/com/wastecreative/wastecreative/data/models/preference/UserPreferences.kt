@@ -1,4 +1,4 @@
-package com.wastecreative.wastecreative.data.models.model.preference
+package com.wastecreative.wastecreative.data.models.preference
 
 
 import androidx.datastore.core.DataStore
@@ -22,7 +22,7 @@ class UserPreferences private constructor( private val dataStore: DataStore<Pref
             )
         }
     }
-    suspend fun loginPref(userModel:UserModel) {
+    suspend fun loginPref(userModel: UserModel) {
         dataStore.edit { preferences ->
             preferences[NAMEKEY] = userModel.name
             preferences[LOGINKEY] = true

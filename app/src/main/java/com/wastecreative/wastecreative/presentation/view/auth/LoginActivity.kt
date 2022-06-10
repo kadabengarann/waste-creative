@@ -13,8 +13,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.wastecreative.wastecreative.R
 import com.wastecreative.wastecreative.ViewModelFactory
-import com.wastecreative.wastecreative.data.models.model.preference.UserModel
-import com.wastecreative.wastecreative.data.models.model.preference.UserPreferences
+import com.wastecreative.wastecreative.data.models.preference.UserModel
+import com.wastecreative.wastecreative.data.models.preference.UserPreferences
 import com.wastecreative.wastecreative.databinding.ActivityLoginBinding
 import com.wastecreative.wastecreative.presentation.view.MainActivity
 import com.wastecreative.wastecreative.presentation.view.viewModel.LoginViewModel

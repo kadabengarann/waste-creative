@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.wastecreative.wastecreative.data.models.model.Craft
+import com.wastecreative.wastecreative.data.models.Craft
 import com.wastecreative.wastecreative.databinding.FragmentListBinding
 import com.wastecreative.wastecreative.presentation.adapter.MarketViewAdapter
 
@@ -45,9 +45,9 @@ class FragmentMarket : Fragment() {
                     i.toString(),
                     "Saifuddin",
                     "https://picsum.photos/300/300?random=$i",
-                    "Kapal Mainan $i",
-                    "https://picsum.photos/200/300?random=$i",
-                    "yoman $i"
+                    69,
+                    "yoman $i",
+                    "https://picsum.photos/200/300?random=$i"
                 )
                 data.add(items)
             }

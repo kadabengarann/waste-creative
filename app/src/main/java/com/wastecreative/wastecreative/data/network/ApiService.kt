@@ -2,9 +2,10 @@ package com.wastecreative.wastecreative.data.network
 
 import com.wastecreative.wastecreative.data.models.Craft
 import com.wastecreative.wastecreative.data.models.CraftDetail
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import com.wastecreative.wastecreative.data.models.Response
+import com.wastecreative.wastecreative.data.models.ResponseItem
+import retrofit2.Call
+import retrofit2.http.*
 
 interface ApiService {
 
@@ -27,4 +28,19 @@ interface ApiService {
     suspend fun getSearcCraftList(
         @Query("search") query: String
     ): List<Craft>
+
+    @FormUrlEncoded
+    @POST("users")
+    fun getLogin(
+        @Field("email") email : String,
+        @Field("password") password: String
+    ): Call<Response>
+
+    @FormUrlEncoded
+    @POST("users")
+    fun postRegister(
+        @Field("name") name: String,
+        @Field("email") email : String,
+        @Field("password") password: String
+    ): Call<ResponseItem>
 }

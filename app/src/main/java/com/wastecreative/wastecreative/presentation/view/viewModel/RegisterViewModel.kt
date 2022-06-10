@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.wastecreative.wastecreative.data.models.ResponseItem
-import com.wastecreative.wastecreative.data.models.network.api.ApiConfig
+import com.wastecreative.wastecreative.data.network.ApiConfig
 
 
 import retrofit2.Call
