@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.wastecreative.wastecreative.R
@@ -71,7 +72,7 @@ class HomeFragment : Fragment() {
     private fun setupAction() {
         binding.apply {
             ctaHome.setOnClickListener{
-                startActivity(Intent(requireActivity(), ScanActivity::class.java))
+                view?.findNavController()?.navigate(R.id.action_navigation_home_to_navigation_craft_search)
             }
             contentHome.tvShowAll.setOnClickListener {
                 view?.findNavController()?.navigate(R.id.action_navigation_home_to_navigation_craft)

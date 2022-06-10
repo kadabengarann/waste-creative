@@ -58,6 +58,19 @@ class CraftRepository(
             }
         }.flowOn(Dispatchers.IO)
     }
+
+    suspend fun fetchCraftSearchResult(query: String): Flow<Result<List<Craft>>?> {
+        return flow {
+            emit(Result.Loading)
+            try {
+                val result = apiService.getSearcCraftList(query)
+                emit(Result.Success(result))
+            } catch (e: Exception) {
+                Log.d("CraftRepository", "fetchCraftSearchResult: ${e.message.toString()} ")
+                emit(Result.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
     companion object {
         @Volatile
         private var instance: CraftRepository? = null

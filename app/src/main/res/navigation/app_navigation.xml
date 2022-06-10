@@ -17,6 +17,9 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_craft_search"
+            app:destination="@id/navigation_craft_search" />
     </fragment>
     <fragment
         android:id="@+id/navigation_marketplace"
@@ -116,4 +119,9 @@
             app:argType="string"
             app:nullable="true" />
     </activity>
+    <fragment
+        android:id="@+id/navigation_craft_search"
+        android:name="com.wastecreative.wastecreative.presentation.view.craftSearch.CraftSearchFragment"
+        android:label="fragment_craft_search"
+        tools:layout="@layout/fragment_craft_search" />
 </navigation>
