@@ -28,7 +28,7 @@
     <string name="craft_name">Craft Name</string>
     <string name="description">Description</string>
     <string name="tools_and_materials">Tools and Materials</string>
-    <string name="video_tutorial_link">Video tutorial link</string>
+    <string name="video_tutorial_link">Video tutorial link (optional)</string>
     <string name="steps">Steps</string>
     <string name="back">Back</string>
     <string name="next">Next</string>

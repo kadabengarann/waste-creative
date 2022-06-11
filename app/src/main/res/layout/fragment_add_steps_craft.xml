@@ -125,7 +125,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="206dp" />
-
+    <include
+        android:id="@+id/inc_progress"
+        layout="@layout/progress_overlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

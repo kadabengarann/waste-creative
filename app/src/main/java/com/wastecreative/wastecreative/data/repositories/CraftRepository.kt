@@ -7,12 +7,16 @@ import com.wastecreative.wastecreative.data.database.CraftEntity
 import com.wastecreative.wastecreative.data.database.WasteCreativeDB
 import com.wastecreative.wastecreative.data.models.Craft
 import com.wastecreative.wastecreative.data.models.CraftDetail
+import com.wastecreative.wastecreative.data.models.UploadResponse
 import com.wastecreative.wastecreative.data.network.ApiService
 import com.wastecreative.wastecreative.data.network.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+
 class CraftRepository(
     private val wasteCreativeDB: WasteCreativeDB,
     private val apiService: ApiService,
@@ -67,6 +71,26 @@ class CraftRepository(
                 emit(Result.Success(result))
             } catch (e: Exception) {
                 Log.d("CraftRepository", "fetchCraftSearchResult: ${e.message.toString()} ")
+                emit(Result.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+    suspend fun postCraft(
+        file: MultipartBody.Part,
+        name: RequestBody,
+        materials: RequestBody,
+        tools: RequestBody,
+        steps: ArrayList<String>,
+        video: RequestBody,
+        user_id: RequestBody,
+    ): Flow<Result<UploadResponse>> {
+        return flow {
+            emit(Result.Loading)
+            try {
+                val result = apiService.uploadCraft(file, name, materials, tools, steps, video, user_id)
+                emit(Result.Success(result))
+            } catch (e: Exception) {
+                Log.d("StoryRepository", "UploadStory: ${e.message.toString()} ")
                 emit(Result.Error(e.message.toString()))
             }
         }.flowOn(Dispatchers.IO)

@@ -1,9 +1,8 @@
 package com.wastecreative.wastecreative.data.network
 
-import com.wastecreative.wastecreative.data.models.Craft
-import com.wastecreative.wastecreative.data.models.CraftDetail
-import com.wastecreative.wastecreative.data.models.Response
-import com.wastecreative.wastecreative.data.models.ResponseItem
+import com.wastecreative.wastecreative.data.models.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -28,6 +27,18 @@ interface ApiService {
     suspend fun getSearcCraftList(
         @Query("search") query: String
     ): List<Craft>
+
+    @Multipart
+    @POST("craft")
+    suspend fun uploadCraft(
+        @Part file: MultipartBody.Part,
+        @Part("nama") nama: RequestBody,
+        @Part("bahan") bahan: RequestBody,
+        @Part("alat") alat: RequestBody,
+        @Part("langkah[]") langkah: ArrayList<String>,
+        @Part("video") video: RequestBody,
+        @Part("pengguna_id") pengguna_id: RequestBody,
+    ): UploadResponse
 
     @FormUrlEncoded
     @POST("users")

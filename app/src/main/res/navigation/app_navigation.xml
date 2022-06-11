@@ -54,6 +54,9 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@android:anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_navigation_add_detail_craft_to_pickerDialogFragment"
+            app:destination="@id/pickerDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_add_steps_craft"
@@ -86,5 +89,9 @@
         android:name="com.wastecreative.wastecreative.presentation.view.craftSearch.CraftSearchFragment"
         android:label="fragment_craft_search"
         tools:layout="@layout/fragment_craft_search" />
-        
+    <dialog
+        android:id="@+id/pickerDialogFragment"
+        android:name="com.wastecreative.wastecreative.presentation.view.addcraft.PickerDialogFragment"
+        android:label="PickerDialogFragment" />
+
 </navigation>

@@ -32,8 +32,11 @@ data class CraftDetail  (
     @field:SerializedName("photo")
     var photo: String,
 
-    @field:SerializedName("toolsAndMaterials")
-    val toolsAndMaterials: List<String>,
+    @field:SerializedName("tools")
+    val tools: List<String>,
+
+    @field:SerializedName("materials")
+    val materials: List<String>,
 
     @field:SerializedName("steps")
     val steps: List<String>

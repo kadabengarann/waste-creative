@@ -30,3 +30,10 @@ data class ResponseItem(
 	val username: String
 
 )
+data class UploadResponse(
+	@field:SerializedName("success")
+	val success: Boolean,
+
+	@field:SerializedName("message")
+	val message: String
+)
