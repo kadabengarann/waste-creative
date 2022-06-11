@@ -1,21 +1,20 @@
 package com.wastecreative.wastecreative.data.models.preference
 
 
+import android.content.Context
 import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.booleanPreferencesKey
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.*
+import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 
-class UserPreferences private constructor( private val dataStore: DataStore<Preferences>) {
+class UserPreferences private constructor( private val context: Context) {
 
     fun getUser(): Flow<UserModel> {
-        return dataStore.data.map { preferences ->
+        return context.dataStores.data.map { preferences ->
             UserModel(
-
+                preferences[IDKEY] ?: -1,
                 preferences[NAMEKEY] ?:"",
                 preferences[EMAILKEY] ?:"" ,
                 preferences[LOGINKEY] ?: false
@@ -23,14 +22,15 @@ class UserPreferences private constructor( private val dataStore: DataStore<Pref
         }
     }
     suspend fun loginPref(userModel: UserModel) {
-        dataStore.edit { preferences ->
+        context.dataStores.edit { preferences ->
+            preferences[IDKEY] = userModel.id
             preferences[NAMEKEY] = userModel.name
             preferences[LOGINKEY] = true
             preferences[EMAILKEY] = userModel.email
         }
     }
     suspend fun logout() {
-        dataStore.edit { preferences ->
+        context.dataStores.edit { preferences ->
             preferences[LOGINKEY ] = false
         }
     }
@@ -38,15 +38,15 @@ class UserPreferences private constructor( private val dataStore: DataStore<Pref
     companion object {
         @Volatile
         private var INSTANCE: UserPreferences? = null
-
-        private val IDKEY= stringPreferencesKey("id")
+        private val IDKEY= intPreferencesKey("id")
         private val NAMEKEY= stringPreferencesKey("name")
         private val LOGINKEY = booleanPreferencesKey("logins")
         private val EMAILKEY = stringPreferencesKey("email")
+        private val Context.dataStores: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
-        fun getInstance(dataStore: DataStore<Preferences>): UserPreferences {
+        fun getInstance(context: Context): UserPreferences {
             return INSTANCE ?: synchronized(this) {
-                val instance = UserPreferences(dataStore)
+                val instance = UserPreferences(context)
                 INSTANCE = instance
                 instance
             }

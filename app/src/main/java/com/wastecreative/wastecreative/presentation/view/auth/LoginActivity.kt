@@ -6,25 +6,32 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.wastecreative.wastecreative.R
-import com.wastecreative.wastecreative.ViewModelFactory
+import com.wastecreative.wastecreative.di.ViewModelFactory
 import com.wastecreative.wastecreative.data.models.preference.UserModel
 import com.wastecreative.wastecreative.data.models.preference.UserPreferences
 import com.wastecreative.wastecreative.databinding.ActivityLoginBinding
 import com.wastecreative.wastecreative.presentation.view.MainActivity
+import com.wastecreative.wastecreative.presentation.view.craft.CraftViewModel
 import com.wastecreative.wastecreative.presentation.view.viewModel.LoginViewModel
 
 class LoginActivity : AppCompatActivity() {
-    private val Context.dataStores: DataStore<Preferences> by preferencesDataStore(name = "settings")
     private lateinit var _binding : ActivityLoginBinding
-    private lateinit var loginViewModel: LoginViewModel
     private lateinit var user: UserModel
     private lateinit var auth: FirebaseAuth
+    private val factory by lazy {
+        ViewModelFactory.getInstance(this)
+    }
+    private val loginViewModel: LoginViewModel by viewModels {
+        factory
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -35,9 +42,9 @@ class LoginActivity : AppCompatActivity() {
 
 
     private fun setUpVM(){
-        loginViewModel = ViewModelProvider(
-            this, ViewModelFactory(UserPreferences.getInstance(dataStores))
-        )[LoginViewModel::class.java]
+//        loginViewModel = ViewModelProvider(
+//            this, ViewModelFactory(UserPreferences.getInstance(dataStores))
+//        )[LoginViewModel::class.java]
         loginViewModel.getUser().observe(this, { user ->
             this.user = user
 
@@ -76,7 +83,7 @@ class LoginActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             loginViewModel.getLogin( email, password)
-                            loginViewModel.login(UserModel("",email,true))
+                            loginViewModel.login(UserModel(69,"",email,true))
                             var intent =Intent(this,MainActivity::class.java)
                             intent.putExtra("email",email)
                             startActivity(intent)
