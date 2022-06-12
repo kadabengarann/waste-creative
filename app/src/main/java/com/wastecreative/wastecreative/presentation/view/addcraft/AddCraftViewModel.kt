@@ -1,5 +1,6 @@
 package com.wastecreative.wastecreative.presentation.view.addcraft
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,6 +16,8 @@ import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
+import okhttp3.MultipartBody.Part.Companion.createFormData
+import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
@@ -45,6 +48,7 @@ class AddCraftViewModel (private val craftRepository: CraftRepository, private v
         _name = ""
         _image.value = null
         _request.value = null
+        _uploadResult.value = null
         _materials.clear()
         _tools.clear()
         _steps.clear()
@@ -72,21 +76,31 @@ class AddCraftViewModel (private val craftRepository: CraftRepository, private v
     fun uploadCraft(){
         val file = reduceFileImage(_image.value as File)
         val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
-        val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
-            "foto",
-            file.name,
-            requestImageFile
-        )
-
-        val name = _name.toString().toRequestBody("text/plain".toMediaType())
         val materials = _materials
         val tools = _tools
         val steps = _steps
-        val video = _request.value?.video.toString().toRequestBody("text/plain".toMediaType())
-        val user_id = _userData.id.toString().toRequestBody("text/plain".toMediaType())
+        val requestBodyMats = MultipartBody.Builder().setType(MultipartBody.FORM).apply {
+            addFormDataPart(
+                "foto",
+                file.name,
+                requestImageFile
+            )
+            addFormDataPart("nama", _name)
+            addFormDataPart("video", _request.value?.video.toString())
+            addFormDataPart("pengguna_id", _userData.id.toString())
+            materials.forEach{
+                addFormDataPart("bahan[]", it)
+            }
+            tools.forEach{
+                addFormDataPart("alat[]", it)
+            }
+            steps.forEach{
+                addFormDataPart("langkah[]", it)
+            }
+        }.build()
 
         viewModelScope.launch {
-            craftRepository.postCraft(imageMultipart, name, materials, tools, steps, video, user_id).collect {
+            craftRepository.postCraft(requestBodyMats).collect {
                 _uploadResult.postValue(it)
             }
         }

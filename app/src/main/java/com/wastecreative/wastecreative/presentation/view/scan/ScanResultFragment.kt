@@ -39,6 +39,7 @@ class ScanResultFragment : Fragment() {
     private var getFile: File? = null
     private var isCamera: Boolean? = false
 
+    private var objectList= ArrayList<String>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -81,7 +82,9 @@ class ScanResultFragment : Fragment() {
                     else
                         Log.d("TAGAGAGAGAGGA", "onViewCreated: NOT EXIST")
                 }
-                view.findNavController().navigate(R.id.action_navigation_scan_result_to_navigation_craft_recommendation)
+                val toScanRecommFragment = ScanResultFragmentDirections.actionNavigationScanResultToNavigationCraftRecommendation(data.toTypedArray())
+                toScanRecommFragment.objList = data.toTypedArray()
+                view?.findNavController()?.navigate(toScanRecommFragment)
             }
         }
         setViewAndDetect(getBitmapImg())
@@ -148,6 +151,7 @@ class ScanResultFragment : Fragment() {
         activity?.runOnUiThread {
             resultScanIv.setImageBitmap(imgWithResult)
             detectedWasteListAdapter.setData(data)
+            objectList.addAll(data)
         }
     }
     private fun drawDetectionResult(

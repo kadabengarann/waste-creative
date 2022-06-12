@@ -17,6 +17,7 @@ import kotlinx.coroutines.flow.flowOn
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
+
 class CraftRepository(
     private val wasteCreativeDB: WasteCreativeDB,
     private val apiService: ApiService,
@@ -75,19 +76,25 @@ class CraftRepository(
             }
         }.flowOn(Dispatchers.IO)
     }
+    suspend fun fetchCraftRecommendation(query: ArrayList<String>): Flow<Result<List<Craft>>?> {
+        return flow {
+            emit(Result.Loading)
+            try {
+                val result = apiService.getRecommendCraft(query)
+                emit(Result.Success(result.data))
+            } catch (e: Exception) {
+                Log.d("CraftRepository", "fetchCraftSearchResult: ${e.message.toString()} ")
+                emit(Result.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
     suspend fun postCraft(
-        file: MultipartBody.Part,
-        name: RequestBody,
-        materials: ArrayList<String>,
-        tools: ArrayList<String>,
-        steps: ArrayList<String>,
-        video: RequestBody,
-        user_id: RequestBody,
+        body: RequestBody
     ): Flow<Result<UploadResponse>> {
         return flow {
             emit(Result.Loading)
             try {
-                val result = apiService.uploadCraft(file, name, materials, tools, steps, video, user_id)
+                val result = apiService.uploadCraft(body)
                 emit(Result.Success(result))
             } catch (e: Exception) {
                 Log.d("StoryRepository", "UploadStory: ${e.message.toString()} ")

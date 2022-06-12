@@ -43,5 +43,9 @@
         android:id="@+id/navigation_craft_recommendation"
         android:name="com.wastecreative.wastecreative.presentation.view.scan.CraftRecommendationFragment"
         android:label="fragment_craft_recommendation"
-        tools:layout="@layout/fragment_craft_recommendation" />
+        tools:layout="@layout/fragment_craft_recommendation" >
+        <argument
+            android:name="objList"
+            app:argType="string[]" />
+    </fragment>
 </navigation>

@@ -24,21 +24,19 @@ interface ApiService {
         @Query("limit") size: Int,
     ): ResponseListCraft
 
-    @GET("craft")
+    @GET("search-craft")
     suspend fun getSearcCraftList(
-        @Query("search") query: String
+        @Query("s") query: String
+    ): ResponseListCraft
+    @FormUrlEncoded
+    @POST("recommend-craft")
+    suspend fun getRecommendCraft(
+        @Field("bahan") materials: ArrayList<String>,
     ): ResponseListCraft
 
-    @Multipart
     @POST("craft")
     suspend fun uploadCraft(
-        @Part file: MultipartBody.Part,
-        @Part("nama") nama: RequestBody,
-        @Part("bahan[]") bahan: ArrayList<String>,
-        @Part("alat[]") alat: ArrayList<String>,
-        @Part("langkah[]") langkah: ArrayList<String>,
-        @Part("video") video: RequestBody,
-        @Part("pengguna_id") pengguna_id: RequestBody,
+        @Body body: RequestBody,
     ): UploadResponse
 
     @GET("marketplace")

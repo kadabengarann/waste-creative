@@ -14,6 +14,7 @@ import com.wastecreative.wastecreative.presentation.view.craftSearch.CraftSearch
 import com.wastecreative.wastecreative.presentation.view.detailMarketplace.DetailMarketplaceViewModel
 import com.wastecreative.wastecreative.presentation.view.home.HomeViewModel
 import com.wastecreative.wastecreative.presentation.view.marketplace.MarketplaceViewModel
+import com.wastecreative.wastecreative.presentation.view.scan.CraftRecommendViewModel
 import com.wastecreative.wastecreative.presentation.view.viewModel.LoginViewModel
 
 class ViewModelFactory(private val craftRepository: CraftRepository, private val marketplaceRepository: MarketplaceRepository, private val pref: UserPreferences) :
@@ -24,6 +25,7 @@ class ViewModelFactory(private val craftRepository: CraftRepository, private val
         CraftViewModel::class.java -> CraftViewModel(craftRepository)
         DetailCraftViewModel::class.java -> DetailCraftViewModel(craftRepository)
         CraftSearchViewModel::class.java -> CraftSearchViewModel(craftRepository)
+        CraftRecommendViewModel::class.java -> CraftRecommendViewModel(craftRepository)
         HomeViewModel::class.java -> HomeViewModel(craftRepository)
         AddCraftViewModel::class.java -> AddCraftViewModel(craftRepository,pref)
         MarketplaceViewModel::class.java -> MarketplaceViewModel(marketplaceRepository)
