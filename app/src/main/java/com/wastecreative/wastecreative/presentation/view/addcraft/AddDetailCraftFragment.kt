@@ -2,17 +2,21 @@ package com.wastecreative.wastecreative.presentation.view.addcraft
 
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.wastecreative.wastecreative.R
 import com.wastecreative.wastecreative.databinding.FragmentAddDetailCraftBinding
 import com.wastecreative.wastecreative.di.ViewModelFactory
+import com.wastecreative.wastecreative.presentation.adapter.InputListAdapter
 import java.io.File
 
 
@@ -26,7 +30,11 @@ class AddDetailCraftFragment : Fragment() {
     private val addCraftViewModel: AddCraftViewModel by activityViewModels {
         factory
     }
-
+    private val inputListAdapter: InputListAdapter by lazy {
+        InputListAdapter(
+            arrayListOf()
+        )
+    }
     override fun onDestroy() {
         super.onDestroy()
 
@@ -47,7 +55,12 @@ class AddDetailCraftFragment : Fragment() {
             setSupportActionBar(binding.toolbar)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
-
+        binding.rvMats.apply {
+            layoutManager = LinearLayoutManager(context)
+            isVerticalScrollBarEnabled = true
+            setHasFixedSize(true)
+            adapter = inputListAdapter
+        }
         setupAction()
         observeData()
     }
@@ -56,6 +69,7 @@ class AddDetailCraftFragment : Fragment() {
         addCraftViewModel.image.observe(viewLifecycleOwner){
             processImage(it)
         }
+        inputListAdapter.setData(addCraftViewModel._materials)
     }
 
     private fun processImage(file: File?) {
@@ -71,9 +85,19 @@ class AddDetailCraftFragment : Fragment() {
     }
 
     private fun setupAction() {
+        validateMatsInput()
         binding.apply {
             nextBtn.setOnClickListener {
                 submitForm()
+            }
+            addMatsBtn.setOnClickListener {
+                val item =craftMaterialsInput.text.toString()
+                inputListAdapter.addList(item)
+                Log.d("TAGAGA", "HAIYAAAA: ${inputListAdapter.getData()}")
+
+                addCraftViewModel.setMats(inputListAdapter.getData())
+                addCraftViewModel._materials.addAll(inputListAdapter.getData())
+                binding.craftMaterialsInput.text = null
             }
             addCraftPhoto.setOnClickListener {
                 view?.findNavController()
@@ -83,14 +107,16 @@ class AddDetailCraftFragment : Fragment() {
                 view?.findNavController()
                     ?.navigate(R.id.action_navigation_add_detail_craft_to_pickerDialogFragment)
             }
+            craftMaterialsInput.doOnTextChanged { _, _, _, _ ->
+                validateMatsInput()
+            }
         }
     }
 
     private fun submitForm() {
         val name = binding.craftNameInput.text.toString()
-        val desc = binding.craftDescInput.text.toString()
         if (validate()){
-            addCraftViewModel.setDetailCraft(name, desc)
+            addCraftViewModel.setName(name)
             view?.findNavController()?.navigate(R.id.action_navigation_add_detail_craft_to_navigation_add_steps_craft)
         }else{
             Toast.makeText(requireContext(),"Please fill all required field", Toast.LENGTH_SHORT).show()
@@ -115,17 +141,20 @@ class AddDetailCraftFragment : Fragment() {
             true
         }
     }
-    private fun validateDesc():Boolean{
-        val desc = binding.craftDescInput.text.toString().trim{it<=' '}.isEmpty()
-        return if (desc) {
-            binding.craftDescEditTextLayout.helperText = "Please fill this field!"
+    private fun validateMatsInput():Boolean{
+        val item = binding.craftMaterialsInput.text.toString().trim{it<=' '}.isEmpty()
+        return if (item) {
+            binding.addMatsBtn.isEnabled = false
+            binding.addMatsBtn.isClickable = false
             false
         }else {
-            binding.craftDescEditTextLayout.helperText = null
+            binding.addMatsBtn.isEnabled = true
+            binding.addMatsBtn.isClickable = true
             true
         }
     }
+    private fun validateMats():Boolean = addCraftViewModel._materials.isNotEmpty()
 
-    private fun validate(): Boolean = validateName() && validateDesc() && validatePhoto()
+    private fun validate(): Boolean = validateName() && validateMats() && validatePhoto()
 
 }

@@ -89,7 +89,7 @@ class DetailCraftTabFragment : Fragment() {
             }
         }
         contentListAdapter.setData(data.tools)
-        contentListAdapter2.setData(data.steps)
+        contentListAdapter2.setData(data.materials)
     }
 
     private fun observeStepsContent() {

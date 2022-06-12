@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [CraftEntity::class, CraftRemoteKeys::class],
+    entities = [CraftEntity::class, CraftRemoteKeys::class, MarketplaceEntity::class, MarketplaceRemoteKeys::class],
     version = 1,
     exportSchema = false
 )
@@ -14,6 +14,8 @@ abstract class WasteCreativeDB : RoomDatabase() {
 
     abstract fun remoteKeysDao(): CraftRemoteKeysDao
     abstract fun craftDao(): CraftDao
+    abstract fun marketRemoteKeysDao(): MarketplaceRemoteKeysDao
+    abstract fun marketDao(): MarketplaceDao
 
     companion object {
         @Volatile

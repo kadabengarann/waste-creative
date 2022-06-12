@@ -25,7 +25,15 @@
         android:id="@+id/navigation_marketplace"
         android:name="com.wastecreative.wastecreative.presentation.view.marketplace.MarketplaceFragment"
         android:label="@string/title_marketplace"
-        tools:layout="@layout/fragment_marketplace" />
+        tools:layout="@layout/fragment_marketplace" >
+        <action
+            android:id="@+id/action_navigation_marketplace_to_navigation_add_marketplace"
+            app:destination="@id/navigation_add_marketplace"
+            app:enterAnim="@animator/slide_in_right"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@android:anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/navigation_craft"
         android:name="com.wastecreative.wastecreative.presentation.view.craft.CraftFragment"
@@ -92,6 +100,25 @@
     <dialog
         android:id="@+id/pickerDialogFragment"
         android:name="com.wastecreative.wastecreative.presentation.view.addcraft.PickerDialogFragment"
+        android:label="PickerDialogFragment" />
+    <fragment
+        android:id="@+id/navigation_add_marketplace"
+        android:name="com.wastecreative.wastecreative.presentation.view.addMarketplace.AddMarketplaceFragment"
+        android:label="fragment_add_marketplace"
+        tools:layout="@layout/fragment_add_marketplace" >
+        <action
+            android:id="@+id/action_navigation_add_marketplace_to_post_pickerDialogFragment"
+            app:destination="@id/post_pickerDialogFragment" />
+        <action
+            android:id="@+id/action_navigation_add_marketplace_to_navigation_marketplace"
+            app:destination="@id/navigation_marketplace"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/navigation_marketplace"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <dialog
+        android:id="@+id/post_pickerDialogFragment"
+        android:name="com.wastecreative.wastecreative.presentation.view.addMarketplace.PickerDialogFragment"
         android:label="PickerDialogFragment" />
 
 </navigation>

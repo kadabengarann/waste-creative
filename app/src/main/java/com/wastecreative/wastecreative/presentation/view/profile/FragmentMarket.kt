@@ -45,7 +45,6 @@ class FragmentMarket : Fragment() {
                     i.toString(),
                     "Saifuddin",
                     "https://picsum.photos/300/300?random=$i",
-                    69,
                     "yoman $i",
                     "https://picsum.photos/200/300?random=$i"
                 )

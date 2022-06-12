@@ -76,5 +76,7 @@
     <string name="waiting">Tunggu sebentar</string>
     <string name="isempty">Email telah di gunakan</string>
     <string name="keluar">Logout</string>
+    <string name="comments">Comments</string>
+    <string name="success">Success!</string>
 
 </resources>

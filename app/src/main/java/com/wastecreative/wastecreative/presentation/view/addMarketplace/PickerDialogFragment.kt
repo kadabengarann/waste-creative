@@ -1,4 +1,4 @@
-package com.wastecreative.wastecreative.presentation.view.addcraft
+package com.wastecreative.wastecreative.presentation.view.addMarketplace
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -26,7 +26,7 @@ import java.io.File
 class PickerDialogFragment: BottomSheetDialogFragment() {
 
     private var _binding: FragmentPickerDialogBinding? = null
-    private val viewModel: AddCraftViewModel by activityViewModels()
+    private val viewModel: AddMarketplaceViewModel by activityViewModels()
 
     private lateinit var currentPhotoPath: String
     private var getFile: File? = null
@@ -131,7 +131,6 @@ class PickerDialogFragment: BottomSheetDialogFragment() {
             dismiss()
         }
     }
-
     private fun showError(error: String) {
         AlertDialog.Builder(requireContext()).apply {
             setTitle("Failed")

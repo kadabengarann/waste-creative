@@ -4,15 +4,14 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
-
 @Parcelize
-data class CraftDetail  (
+data class MarketplaceDetail (
 
     @field:SerializedName("id")
-    val id: Int,
+    val id: String,
 
     @field:SerializedName("pengguna_id")
-    val user_id: Int,
+    val pengguna_id: Int,
 
     @field:SerializedName("userName")
     val userName: String?,
@@ -20,18 +19,22 @@ data class CraftDetail  (
     @field:SerializedName("userPhoto")
     val userPhoto: String?,
 
-    @field:SerializedName("nama")
-    val name: String,
+    @field:SerializedName("like")
+    val like: Int,
+
+    @field:SerializedName("judul")
+    val title: String,
 
     @field:SerializedName("foto")
-    var photo: String,
+    var foto: String,
 
-    @field:SerializedName("alat")
-    val tools: List<String>,
+    @field:SerializedName("deskripsi")
+    var description: String,
 
-    @field:SerializedName("bahan")
-    val materials: List<String>,
+    @field:SerializedName("komentar")
+    var comments: Int,
 
-    @field:SerializedName("langkah")
-    val steps: List<String>
+    @field:SerializedName("harga")
+    var price: Int,
+
     ): Parcelable

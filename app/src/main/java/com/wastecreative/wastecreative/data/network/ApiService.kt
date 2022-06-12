@@ -10,34 +10,72 @@ interface ApiService {
 
     @GET("craft")
     suspend fun getCraftList(
-    ): List<Craft>
+        @Query("limit") size: Int,
+    ): ResponseListCraft
 
     @GET("craft/{id}")
     suspend fun getCraftDetail(
         @Path("id") id: String
-    ): CraftDetail
+    ): ResponseCraftDetail
 
     @GET("craft")
     suspend fun getCrafts(
         @Query("page") page: Int,
         @Query("limit") size: Int,
-    ): List<Craft>
+    ): ResponseListCraft
 
     @GET("craft")
     suspend fun getSearcCraftList(
         @Query("search") query: String
-    ): List<Craft>
+    ): ResponseListCraft
 
     @Multipart
     @POST("craft")
     suspend fun uploadCraft(
         @Part file: MultipartBody.Part,
         @Part("nama") nama: RequestBody,
-        @Part("bahan") bahan: RequestBody,
-        @Part("alat") alat: RequestBody,
+        @Part("bahan[]") bahan: ArrayList<String>,
+        @Part("alat[]") alat: ArrayList<String>,
         @Part("langkah[]") langkah: ArrayList<String>,
         @Part("video") video: RequestBody,
         @Part("pengguna_id") pengguna_id: RequestBody,
+    ): UploadResponse
+
+    @GET("marketplace")
+    suspend fun getPostsList(
+    ): ResponseListMarketplace
+
+    @GET("marketplace/{id}")
+    suspend fun getPostsDetail(
+        @Path("id") id: Int
+    ): ResponseMarketplaceDetail
+
+    @GET("marketplace")
+    suspend fun getPosts(
+        @Query("page") page: Int,
+        @Query("limit") size: Int,
+    ): ResponseListMarketplace
+    @Multipart
+    @POST("marketplace")
+    suspend fun uploadMarketplace(
+        @Part file: MultipartBody.Part,
+        @Part("judul") title: RequestBody,
+        @Part("deskripsi") desc: RequestBody,
+        @Part("harga") price: RequestBody,
+        @Part("alamat") address: RequestBody,
+        @Part("pengguna_id") pengguna_id: RequestBody,
+    ): UploadResponse
+    @GET("marketplace-comment/{id}")
+    suspend fun getCommentList(
+        @Path("id") id: Int
+    ): ResponseComment
+
+    @Multipart
+    @POST("marketplace-comment/")
+    suspend fun postComment(
+        @Part("komentar") comment: RequestBody,
+        @Part("marketplace_id") marketplace_id: RequestBody,
+        @Part("pengguna_id") user_id: RequestBody,
     ): UploadResponse
 
     @FormUrlEncoded

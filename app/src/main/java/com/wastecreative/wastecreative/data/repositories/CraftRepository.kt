@@ -42,8 +42,8 @@ class CraftRepository(
         return flow {
             emit(Result.Loading)
             try {
-                val result = apiService.getCraftList()
-                emit(Result.Success(result))
+                val result = apiService.getCraftList(4)
+                emit(Result.Success(result.data))
             } catch (e: Exception) {
                 Log.d("CraftRepository", "fetchCraftList: ${e.message.toString()} ")
                 emit(Result.Error(e.message.toString()))
@@ -55,7 +55,7 @@ class CraftRepository(
             emit(Result.Loading)
             try {
                 val result = apiService.getCraftDetail(id)
-                emit(Result.Success(result))
+                emit(Result.Success(result.data))
             } catch (e: Exception) {
                 Log.d("CraftRepository", "fetchCraftList: ${e.message.toString()} ")
                 emit(Result.Error(e.message.toString()))
@@ -68,7 +68,7 @@ class CraftRepository(
             emit(Result.Loading)
             try {
                 val result = apiService.getSearcCraftList(query)
-                emit(Result.Success(result))
+                emit(Result.Success(result.data))
             } catch (e: Exception) {
                 Log.d("CraftRepository", "fetchCraftSearchResult: ${e.message.toString()} ")
                 emit(Result.Error(e.message.toString()))
@@ -78,8 +78,8 @@ class CraftRepository(
     suspend fun postCraft(
         file: MultipartBody.Part,
         name: RequestBody,
-        materials: RequestBody,
-        tools: RequestBody,
+        materials: ArrayList<String>,
+        tools: ArrayList<String>,
         steps: ArrayList<String>,
         video: RequestBody,
         user_id: RequestBody,

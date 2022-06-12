@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="24dp"
+    android:paddingTop="17dp"
+    android:paddingEnd="24dp"
+    android:paddingBottom="17dp"
+    tools:context=".presentation.view.detailMarketplace.PostDetailFragment">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24000001" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/gr_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="tv_heading_top,tv_heading_top2,tv_heading_top3,post_description_tv,post_price_tv,post_address_tv"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="17dp" />
+
+    <TextView
+        android:id="@+id/tv_heading_top"
+        style="@style/Theme.WasteCreative.Header_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:textColor="?attr/textColorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_heading_top2"
+        style="@style/Theme.WasteCreative.Header_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Price"
+        android:textColor="?attr/textColorPrimary"
+        app:layout_constraintStart_toStartOf="@+id/post_description_tv"
+        app:layout_constraintTop_toBottomOf="@+id/post_description_tv" />
+
+    <TextView
+        android:id="@+id/tv_heading_top3"
+        style="@style/Theme.WasteCreative.Header_3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Address"
+        android:textColor="?attr/textColorPrimary"
+        app:layout_constraintStart_toStartOf="@+id/post_price_tv"
+        app:layout_constraintTop_toBottomOf="@+id/post_price_tv" />
+
+    <TextView
+        android:id="@+id/post_description_tv"
+        style="@style/Theme.WasteCreative.SmallText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/lorem"
+        android:textColor="?attr/textColorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_heading_top"
+        app:layout_constraintTop_toBottomOf="@id/tv_heading_top" />
+
+    <TextView
+        android:id="@+id/post_price_tv"
+        style="@style/Theme.WasteCreative.SmallText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/lorem"
+        android:textColor="?attr/textColorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_heading_top2"
+        app:layout_constraintTop_toBottomOf="@+id/tv_heading_top2" />
+
+    <TextView
+        android:id="@+id/post_address_tv"
+        style="@style/Theme.WasteCreative.SmallText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/lorem"
+        android:textColor="?attr/textColorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_heading_top3"
+        app:layout_constraintTop_toBottomOf="@+id/tv_heading_top3" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

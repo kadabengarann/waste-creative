@@ -1,16 +1,21 @@
 package com.wastecreative.wastecreative.utils
 
+import android.app.Activity
 import android.app.Application
 import android.content.ContentResolver
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
 import android.util.TypedValue
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
@@ -20,6 +25,8 @@ import de.hdodenhof.circleimageview.CircleImageView
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
+import com.wastecreative.wastecreative.BuildConfig
+
 
 private const val FILENAME_FORMAT = "dd-MMM-yyyy"
 
@@ -29,8 +36,9 @@ val timeStamp: String = SimpleDateFormat(
 ).format(System.currentTimeMillis())
 
 fun ImageView.loadImage(url: String?, radius: Int) {
+    val urls = BuildConfig.BASE_URL_IMG+ url
     Glide.with(this.context)
-        .load(url)
+        .load(urls)
         .transform(MultiTransformation(CenterCrop(),RoundedCorners(radius)))
         .placeholder(R.drawable.ic_broken_image_24)
         .error(R.drawable.ic_broken_image_24)
@@ -66,6 +74,17 @@ fun Int.formatK(): String{
         else -> this.toString()
     }
 }
+fun Fragment.hideKeyboard() {
+    view?.let { activity?.hideKeyboard(it) }
+}
+fun Activity.hideKeyboard() {
+    hideKeyboard(currentFocus ?: View(this))
+}
+fun Context.hideKeyboard(view: View) {
+    val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+}
+
 @ColorInt
 fun Context.getColorFromAttr(
     @AttrRes attrColor: Int,

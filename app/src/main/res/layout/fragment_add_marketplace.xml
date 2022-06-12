@@ -4,17 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.view.addcraft.AddDetailCraftFragment">
+    tools:context=".presentation.view.addMarketplace.AddMarketplaceFragment"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/next_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/bg_button"
+                android:paddingStart="32dp"
+                android:paddingTop="19dp"
+                android:paddingEnd="32dp"
+                android:paddingBottom="19dp"
+                android:text="@string/next"
+                android:textColor="?attr/colorOnSecondary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <ScrollView
-            android:id="@+id/scrollView4"
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:fitsSystemWindows="true"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -23,17 +55,10 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:layout_editor_absoluteY="56dp">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
 
-                <Button
-                    android:id="@+id/add_mats_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:text="Add"
-                    app:layout_constraintBottom_toBottomOf="@+id/craft_materials_edit_text_layout"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/craft_materials_edit_text_layout" />
+                app:layout_constraintTop_toTopOf="parent">
 
                 <Button
                     android:id="@+id/change_img_btn"
@@ -58,7 +83,7 @@
                     tools:src="@tools:sample/backgrounds/scenic" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/add_craft_photo"
+                    android:id="@+id/add_post_photo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -66,7 +91,7 @@
                     android:layout_marginEnd="24dp"
                     android:background="@drawable/round_outline"
                     android:clickable="true"
-                    android:contentDescription="@string/add_craft_photo"
+                    android:contentDescription="Add product photo"
                     android:focusable="true"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -127,72 +152,71 @@
                     android:orientation="horizontal"
                     app:layout_constraintGuide_begin="230dp" />
 
-                <androidx.core.widget.NestedScrollView
-                    android:id="@+id/nestedScrollView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:background="@drawable/round_outline"
-                    android:fillViewport="true"
-                    android:minHeight="200dp"
-                    android:paddingTop="1dp"
-                    android:paddingBottom="1dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/craft_materials_edit_text_layout">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_mats"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:scrollbars="vertical"
-                            tools:itemCount="4"
-                            tools:listitem="@layout/list_item_input" />
-                    </LinearLayout>
-                </androidx.core.widget.NestedScrollView>
-
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/craft_materials_edit_text_layout"
+                    android:id="@+id/post_desc_edit_text_layout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="8dp"
-                    android:hint="@string/materials_strings"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="Product description"
+                    android:maxHeight="300dp"
+                    android:minHeight="100dp"
                     app:boxStrokeColor="@color/outline_stroke_color"
                     app:helperTextTextColor="@color/red_500"
                     app:hintTextColor="?attr/textColorPrimary"
-                    app:layout_constraintEnd_toStartOf="@+id/add_mats_btn"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/craft_name_edit_text_layout">
+                    app:layout_constraintTop_toBottomOf="@+id/post_name_edit_text_layout">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/craft_materials_input"
+                        android:id="@+id/post_desc_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:singleLine="true" />
+                        android:gravity="top|start"
+                        android:inputType="textMultiLine"
+                        android:maxLines="10"
+                        android:minHeight="100dp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/craft_name_edit_text_layout"
+                    android:id="@+id/post_address_edit_text_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:hint="Product description"
+                    android:minHeight="100dp"
+                    app:boxStrokeColor="@color/outline_stroke_color"
+                    app:helperTextTextColor="@color/red_500"
+                    app:hintTextColor="?attr/textColorPrimary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/post_price_edit_text_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/post_address_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="top|start"
+                        android:inputType="textMultiLine"
+                        android:maxLines="10"
+                        android:minHeight="100dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/post_name_edit_text_layout"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
-                    android:hint="@string/craft_name"
+                    android:hint="Post title"
                     app:boxStrokeColor="@color/outline_stroke_color"
                     app:helperTextTextColor="@color/red_500"
                     app:hintTextColor="?attr/textColorPrimary"
@@ -201,43 +225,51 @@
                     app:layout_constraintTop_toBottomOf="@id/guideline6">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/craft_name_input"
+                        android:id="@+id/post_name_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:singleLine="true" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/post_price_edit_text_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="Price"
+                    app:boxStrokeColor="@color/outline_stroke_color"
+                    app:helperTextTextColor="@color/red_500"
+                    app:hintTextColor="?attr/textColorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/post_desc_edit_text_layout">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/post_price_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:singleLine="true" />
+                </com.google.android.material.textfield.TextInputLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <include
+            android:id="@+id/inc_progress"
+            layout="@layout/progress_overlay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/next_btn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_button"
-                android:paddingStart="32dp"
-                android:paddingTop="19dp"
-                android:paddingEnd="32dp"
-                android:paddingBottom="19dp"
-                android:text="@string/next"
-                android:textColor="?attr/colorOnSecondary"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.appbar.AppBarLayout
@@ -252,7 +284,7 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/Theme.WasteCreative.NoActionBar.PopupOverlay"
             app:theme="@style/ToolbarTheme"
-            app:title="Add New Craft"
+            app:title="Add New Post"
             app:titleTextColor="?attr/textColorPrimary" />
 
     </com.google.android.material.appbar.AppBarLayout>

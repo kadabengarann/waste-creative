@@ -92,4 +92,11 @@
         <item name="itemIconTint">@color/nav_bar_item_tint</item>
         <item name="itemTextColor">@color/nav_bar_item_tint</item>
     </style>
+
+    <style name="AlertDialog" parent="Base.Theme.AppCompat.Dialog">
+        <item name="android:textColor">?attr/textColorPrimary</item>
+        <item name="android:textColorPrimary">?attr/textColorPrimary</item>
+        <item name="android:colorAccent">?attr/colorSecondary</item>
+        <item name="android:background">@color/white</item>
+    </style>
 </resources>

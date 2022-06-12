@@ -5,17 +5,15 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import com.wastecreative.wastecreative.data.database.CraftEntity
-import com.wastecreative.wastecreative.data.database.CraftRemoteKeys
-import com.wastecreative.wastecreative.data.database.WasteCreativeDB
+import com.wastecreative.wastecreative.data.database.*
 import com.wastecreative.wastecreative.data.network.ApiService
 
 
 @OptIn(ExperimentalPagingApi::class)
-class CraftRemoteMediator(
+class MarketplaceRemoteMediator(
     private val database: WasteCreativeDB,
     private val apiService: ApiService
-) : RemoteMediator<Int, CraftEntity>() {
+) : RemoteMediator<Int, MarketplaceEntity>() {
 
     private companion object {
         const val INITIAL_PAGE_INDEX = 1
@@ -27,7 +25,7 @@ class CraftRemoteMediator(
 
     override suspend fun load(
         loadType: LoadType,
-        state: PagingState<Int, CraftEntity>
+        state: PagingState<Int, MarketplaceEntity>
     ): MediatorResult {
         val page = when (loadType) {
             LoadType.REFRESH -> {
@@ -49,32 +47,34 @@ class CraftRemoteMediator(
         }
 
         try {
-            val responseData = apiService.getCrafts(page, state.config.pageSize)
+            val responseData = apiService.getPosts(page, state.config.pageSize)
 
             val endOfPaginationReached = responseData.data.isEmpty()
 
             database.withTransaction {
                 if (loadType == LoadType.REFRESH) {
                     database.remoteKeysDao().deleteRemoteKeys()
-                    database.craftDao().deleteAll()
+                    database.marketDao().deleteAll()
                 }
                 val prevKey = if (page == 1) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1
                 val keys = responseData.data.map {
-                    CraftRemoteKeys(id = it.id, prevKey = prevKey, nextKey = nextKey)
+                    MarketplaceRemoteKeys(id = it.id, prevKey = prevKey, nextKey = nextKey)
                 }
-                val craftData = responseData.data.map {
-                    CraftEntity(
+                val marketplaceData = responseData.data.map {
+                    MarketplaceEntity(
                         id = it.id,
+                        it.pengguna_id,
                         it.userName,
                         it.userPhoto,
-                        0,
-                        it.name,
-                        it.photo,
+                        it.like,
+                        it.judul,
+                        it.foto,
+                        it.komentar,
                     )
                 }
-                database.remoteKeysDao().insertAll(keys)
-                database.craftDao().insertCrafts(craftData)
+                database.marketRemoteKeysDao().insertAll(keys)
+                database.marketDao().insertMarketplace(marketplaceData)
             }
             return MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
         } catch (exception: Exception) {
@@ -82,22 +82,22 @@ class CraftRemoteMediator(
         }
     }
 
-    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, CraftEntity>): CraftRemoteKeys? {
+    private suspend fun getRemoteKeyForLastItem(state: PagingState<Int, MarketplaceEntity>): MarketplaceRemoteKeys? {
         return state.pages.lastOrNull { it.data.isNotEmpty() }?.data?.lastOrNull()?.let { data ->
-            database.remoteKeysDao().getRemoteKeysId(data.id)
+            database.marketRemoteKeysDao().getRemoteKeysId(data.id)
         }
     }
 
-    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, CraftEntity>): CraftRemoteKeys? {
+    private suspend fun getRemoteKeyForFirstItem(state: PagingState<Int, MarketplaceEntity>): MarketplaceRemoteKeys? {
         return state.pages.firstOrNull { it.data.isNotEmpty() }?.data?.firstOrNull()?.let { data ->
-            database.remoteKeysDao().getRemoteKeysId(data.id)
+            database.marketRemoteKeysDao().getRemoteKeysId(data.id)
         }
     }
 
-    private suspend fun getRemoteKeyClosestToCurrentPosition(state: PagingState<Int, CraftEntity>): CraftRemoteKeys? {
+    private suspend fun getRemoteKeyClosestToCurrentPosition(state: PagingState<Int, MarketplaceEntity>): MarketplaceRemoteKeys? {
         return state.anchorPosition?.let { position ->
             state.closestItemToPosition(position)?.id?.let { id ->
-                database.remoteKeysDao().getRemoteKeysId(id)
+                database.marketRemoteKeysDao().getRemoteKeysId(id)
             }
         }
     }
