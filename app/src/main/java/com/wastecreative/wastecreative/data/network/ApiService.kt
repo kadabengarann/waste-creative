@@ -34,13 +34,20 @@ interface ApiService {
     fun getLogin(
         @Field("email") email : String,
         @Field("password") password: String
-    ): Call<Response>
+
+    ): Call<ResponseItem>
 
     @FormUrlEncoded
     @POST("users")
     fun postRegister(
-        @Field("name") name: String,
+        @Field("username") name: String,
         @Field("email") email : String,
         @Field("password") password: String
     ): Call<ResponseItem>
+
+    @FormUrlEncoded
+    @POST("users")
+    fun getUserDetail(
+        @Path("id") username : String
+    ) : Call<ResponseItem>
 }

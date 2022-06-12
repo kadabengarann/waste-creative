@@ -5,6 +5,7 @@ import android.text.TextUtils
 import android.util.Log
 import androidx.lifecycle.*
 import com.wastecreative.wastecreative.data.models.Response
+import com.wastecreative.wastecreative.data.models.ResponseItem
 import com.wastecreative.wastecreative.data.models.preference.UserModel
 import com.wastecreative.wastecreative.data.models.preference.UserPreferences
 import com.wastecreative.wastecreative.data.network.ApiConfig
@@ -13,6 +14,8 @@ import retrofit2.Call
 import retrofit2.Callback
 
 class LoginViewModel(private var preference: UserPreferences) : ViewModel() {
+        private lateinit var data : ResponseItem
+
         private val EmailEmpty = MutableLiveData<Boolean>()
         val _EmailEmpty : LiveData<Boolean> = EmailEmpty
         private  val _passwordEmpty = MutableLiveData<Boolean>()
@@ -23,16 +26,17 @@ class LoginViewModel(private var preference: UserPreferences) : ViewModel() {
         val passwordValidasi : LiveData<Boolean> = _passwordValidasi
 
 
-    fun getUser(): LiveData<UserModel> {
+    fun getUser(): LiveData<ResponseItem> {
         return preference.getUser().asLiveData()
     }
 
-
-
-    fun login(userModel: UserModel) {
+    fun logins(responseItem: ResponseItem) {
         viewModelScope.launch {
-            preference.loginPref(userModel)
+            preference.loginPrefs(responseItem)
+
+
         }
+//
     }
 
     private fun checkEmptyForm(email : String , password : String): Boolean{
@@ -82,16 +86,21 @@ class LoginViewModel(private var preference: UserPreferences) : ViewModel() {
         if(formValidasi(email, password,)){
             ApiConfig.getApiService()
                 .getLogin(email, password)
-                .enqueue(object : Callback<Response>{
+                .enqueue(object : Callback<ResponseItem>{
                     override fun onResponse(
-                        call: Call<Response>,
-                        response: retrofit2.Response<Response>
+                        call: Call<ResponseItem>,
+                        response: retrofit2.Response<ResponseItem>
                     ) {
                         val _response = response.body()
                         if(response.isSuccessful && _response != null){
-                            Log.d("LoginViewModel", "Login Berhasil")
-//                            login(UserModel("",email,true))
-
+                            Log.d("LoginViewModel", "sukses")
+                            val data = ResponseItem(
+                                "",
+                                "",
+                                _response.avatar,
+                                "","",_response.username,true
+                            )
+                            logins(data)
 
                         } else{
                             Log.d("LoginViewModel", "Akun salah")
@@ -101,7 +110,7 @@ class LoginViewModel(private var preference: UserPreferences) : ViewModel() {
 
                     }
 
-                    override fun onFailure(call: Call<Response>, t: Throwable) {
+                    override fun onFailure(call: Call<ResponseItem>, t: Throwable) {
                         Log.e(ContentValues.TAG, "onFailure: ${t.message.toString()}")
 
                     }

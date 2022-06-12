@@ -23,6 +23,6 @@ data class Craft (
     val name: String,
 
     @field:SerializedName("photo")
-    var photo: String,
+    var  photo: String,
 
 ): Parcelable

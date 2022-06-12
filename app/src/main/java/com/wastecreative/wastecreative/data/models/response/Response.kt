@@ -1,6 +1,8 @@
 package com.wastecreative.wastecreative.data.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class Response(
 
@@ -8,25 +10,27 @@ data class Response(
 	val response: List<ResponseItem>,
 
 )
-
+@Parcelize
 data class ResponseItem(
 
 	@field:SerializedName("createdAt")
 	val createdAt: String,
 
 	@field:SerializedName("password")
-	val password: String,
+	var password: String,
 
 	@field:SerializedName("avatar")
-	val avatar: String,
+	var avatar: String,
 
 	@field:SerializedName("id")
-	val id: String,
+	var id: String,
 
 	@field:SerializedName("email")
-	val email: String,
+	var email: String,
 
 	@field:SerializedName("username")
-	val username: String
+	var username: String,
 
-)
+	var isLogin: Boolean
+
+) : Parcelable

@@ -11,9 +11,12 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.wastecreative.wastecreative.R
 import com.wastecreative.wastecreative.data.models.Craft
+import com.wastecreative.wastecreative.data.models.Response
 import com.wastecreative.wastecreative.databinding.FragmentHomeBinding
 import com.wastecreative.wastecreative.presentation.adapter.CraftsListAdapter
 import com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity
+import com.wastecreative.wastecreative.presentation.view.pengaturan.PengaturanActivity
+import com.wastecreative.wastecreative.presentation.view.profile.ProfileActivity
 import com.wastecreative.wastecreative.presentation.view.scan.ScanActivity
 import com.wastecreative.wastecreative.utils.loadImage
 import de.hdodenhof.circleimageview.CircleImageView
@@ -110,11 +113,16 @@ class HomeFragment : Fragment() {
         val profileMenu = menu.findItem(R.id.menu_two)
         val layoutProfileMenu = profileMenu.actionView as FrameLayout
         val avatarImg = layoutProfileMenu.findViewById(R.id.toolbar_profile_image) as CircleImageView
+//        val img = Response(
+//
+//
+//        )
         avatarImg.loadImage("https://picsum.photos/300/300?random=69") // Change to user Avatar
         avatarImg.setOnClickListener {
-            val intent =Intent(requireContext(), ScanActivity::class.java)
+            val intent =Intent(requireContext(), ProfileActivity::class.java)
             startActivity(intent)
-            Toast.makeText(requireContext(), getString(R.string.title_home), Toast.LENGTH_SHORT).show()
+
+
         }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
