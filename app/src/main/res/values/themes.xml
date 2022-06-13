@@ -17,7 +17,7 @@
         <item name="textColorSecondary">@color/blue_bell</item>
         <item name="outlineColor">@color/gray_500</item>
         <item name="formColor">@color/gray_200</item>
-
+        <item name="android:actionMenuTextColor">?attr/textColorPrimary</item>
     </style>
 
     <style name="Theme.WasteCreative.WrappedView">
@@ -86,10 +86,19 @@
     </style>
     <style name="TitleToolbarCollapse">
         <item name="android:textColor">@android:color/transparent</item>
+        <item name="android:textColorPrimary">?attr/textColorPrimary</item>
+        <item name="android:textColorSecondary">?attr/textColorPrimary</item>
         <item name="android:textSize">0sp</item>
     </style>
     <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
         <item name="itemIconTint">@color/nav_bar_item_tint</item>
         <item name="itemTextColor">@color/nav_bar_item_tint</item>
+    </style>
+
+    <style name="AlertDialog" parent="Base.Theme.AppCompat.Dialog">
+        <item name="android:textColor">?attr/textColorPrimary</item>
+        <item name="android:textColorPrimary">?attr/textColorPrimary</item>
+        <item name="android:colorAccent">?attr/colorSecondary</item>
+        <item name="android:background">@color/white</item>
     </style>
 </resources>

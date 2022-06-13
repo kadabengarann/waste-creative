@@ -1,15 +1,11 @@
 package com.wastecreative.wastecreative.presentation.view
 
-import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -27,7 +23,6 @@ import com.wastecreative.wastecreative.presentation.view.viewModel.MainViewModel
 
 
 class MainActivity : AppCompatActivity() {
-    private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private lateinit var bottomAppBar: BottomAppBar
@@ -98,7 +93,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupViewModel() {
         mainViewModel = ViewModelProvider(
             this,
-            ViewModelFactory(UserPreferences.getInstance(dataStore))
+            ViewModelFactory(UserPreferences.getInstance(this))
         )[MainViewModel::class.java]
 
         mainViewModel.getUser().observe(this, { user ->
