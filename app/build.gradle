@@ -19,8 +19,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "BASE_URL", '"http://192.168.197.39:1233/"')
-        buildConfigField("String", "BASE_URL_IMG", '"http://192.168.197.39:1233/images/"')
+        buildConfigField("String", "BASE_URL", '"https://waste-creative-api.herokuapp.com/"')
+        buildConfigField("String", "BASE_URL_IMG", '"https://waste-creative-api.herokuapp.com/images/"')
     }
 
     buildTypes {

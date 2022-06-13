@@ -73,6 +73,7 @@
                             android:layout_width="7dp"
                             android:layout_height="7dp"
                             android:layout_marginStart="8dp"
+                            android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="@+id/tv_likes"
                             app:layout_constraintStart_toEndOf="@+id/tv_likes"
                             app:layout_constraintTop_toTopOf="@+id/tv_likes"
@@ -101,7 +102,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="20dp"
                             android:layout_marginBottom="20dp"
-                            android:text="1k Likes"
                             android:textColor="?attr/textColorSecondary"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/img_craft"
@@ -117,7 +117,8 @@
                             android:textColor="?attr/textColorSecondary"
                             app:layout_constraintBottom_toBottomOf="@+id/tv_likes"
                             app:layout_constraintStart_toEndOf="@+id/dot_icon"
-                            app:layout_constraintTop_toTopOf="@+id/tv_likes" />
+                            app:layout_constraintTop_toTopOf="@+id/tv_likes"
+                            android:visibility="gone" />
 
                         <TextView
                             android:id="@+id/tv_username"
@@ -148,6 +149,7 @@
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="16dp"
                             android:background="@drawable/round_outline_small"
+                            android:visibility="gone"
                             app:layout_constraintEnd_toEndOf="@+id/img_craft"
                             app:layout_constraintTop_toTopOf="@+id/img_craft" />
 
@@ -159,6 +161,7 @@
                             android:focusable="true"
                             android:src="@drawable/ic_favorite_border_24"
                             android:tag="Not Saved"
+                            android:visibility="gone"
                             app:layout_constraintBottom_toBottomOf="@+id/view2"
                             app:layout_constraintEnd_toEndOf="@+id/view2"
                             app:layout_constraintStart_toStartOf="@+id/view2"

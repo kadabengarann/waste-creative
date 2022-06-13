@@ -9,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.wastecreative.wastecreative.data.models.MarketplaceDetail
 import com.wastecreative.wastecreative.data.network.Result
 import com.wastecreative.wastecreative.databinding.FragmentPostDetailBinding
+import java.text.NumberFormat
+import java.util.*
 
 class PostDetailFragment : Fragment() {
 
@@ -57,11 +59,15 @@ class PostDetailFragment : Fragment() {
     }
 
     private fun setContent(data: MarketplaceDetail) {
+        val localeID = Locale("in", "ID")
+        val format: NumberFormat = NumberFormat.getCurrencyInstance(localeID)
+        format.maximumFractionDigits = 0
+
         binding?.apply {
             grContent.visibility = View.VISIBLE
             postDescriptionTv.visibility = View.VISIBLE
             postDescriptionTv.text = data.description
-            postPriceTv.text = data.price.toString()
+            postPriceTv.text = format.format(data.price)
             postAddressTv.text = data.description
         }
     }

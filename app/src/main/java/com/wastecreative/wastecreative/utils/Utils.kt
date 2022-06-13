@@ -7,7 +7,6 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.os.Build
 import android.os.Environment
 import android.util.TypedValue
 import android.view.View
@@ -20,12 +19,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.wastecreative.wastecreative.BuildConfig
 import com.wastecreative.wastecreative.R
 import de.hdodenhof.circleimageview.CircleImageView
 import java.io.*
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
-import com.wastecreative.wastecreative.BuildConfig
 
 
 private const val FILENAME_FORMAT = "dd-MMM-yyyy"
