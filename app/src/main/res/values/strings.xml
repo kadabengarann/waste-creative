@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">WasteCreative</string>
 
+    <string name="dateFormat">Uploaded on %1$s</string>
+    <string name="link_string"><u>click here</u></string>
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_home">Home</string>
     <string name="title_marketplace">Marketplace</string>
@@ -78,5 +81,7 @@
     <string name="keluar">Logout</string>
     <string name="comments">Comments</string>
     <string name="success">Success!</string>
+    <string name="hi_string">Hi, %s</string>
+    <string name="success_upload">Upload success</string>
 
 </resources>

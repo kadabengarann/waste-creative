@@ -37,4 +37,7 @@ data class MarketplaceDetail (
     @field:SerializedName("harga")
     var price: Int,
 
+    @field:SerializedName("tgl")
+    var date: String,
+
     ): Parcelable

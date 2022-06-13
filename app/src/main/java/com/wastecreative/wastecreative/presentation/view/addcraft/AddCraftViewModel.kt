@@ -48,15 +48,15 @@ class AddCraftViewModel (private val craftRepository: CraftRepository, private v
 
     fun clearData(){
         _name = ""
-        _image.value = null
-        _request.value = null
-        _uploadResult.value = null
+        _image.postValue(null)
+        _request.postValue(null)
+        _uploadResult.postValue(null)
         _materials.clear()
         _tools.clear()
         _steps.clear()
     }
     fun setImage(file: File?){
-        _image.value = file
+        _image.postValue(file)
     }
     fun setMats(mats: ArrayList<String>){
         _request.value?.materials?.clear()
@@ -75,7 +75,7 @@ class AddCraftViewModel (private val craftRepository: CraftRepository, private v
         _name = name
     }
 
-    fun uploadCraft(){
+    fun uploadCraft(vid:String?){
         val file = reduceFileImage(_image.value as File)
         val requestImageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
         val materials = _materials
@@ -88,7 +88,9 @@ class AddCraftViewModel (private val craftRepository: CraftRepository, private v
                 requestImageFile
             )
             addFormDataPart("nama", _name)
-            addFormDataPart("video", _request.value?.video.toString())
+            if (vid != null) {
+                addFormDataPart("video", vid)
+            }
             addFormDataPart("pengguna_id", _userData.id.toString())
             materials.forEach{
                 addFormDataPart("bahan[]", it)

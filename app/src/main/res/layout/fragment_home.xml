@@ -32,10 +32,9 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/tv_username"
                     style="@style/Theme.WasteCreative.SmallText"
                     android:layout_marginStart="16dp"
-                    android:text="Hi, Jhonny"
                     android:textColor="?attr/colorOnSecondary"
                     app:layout_constraintBottom_toTopOf="@+id/guideline2"
                     app:layout_constraintStart_toStartOf="parent"
@@ -50,8 +49,8 @@
                     android:text="Let's turn the waste around you into a useful craft!"
                     android:textColor="?attr/colorOnSecondary"
                     app:layout_constraintEnd_toStartOf="@+id/guideline3"
-                    app:layout_constraintStart_toStartOf="@+id/textView"
-                    app:layout_constraintTop_toBottomOf="@+id/textView" />
+                    app:layout_constraintStart_toStartOf="@+id/tv_username"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_username" />
 
                 <View
                     android:id="@+id/view3"

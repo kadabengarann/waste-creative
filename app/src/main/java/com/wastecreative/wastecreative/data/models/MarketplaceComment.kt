@@ -17,5 +17,8 @@ data class MarketplaceComment (
     val userPhoto: String?,
 
     @field:SerializedName("komentar")
-    val comment: String
+    val comment: String,
+
+    @field:SerializedName("tgl")
+    val date: String
 )

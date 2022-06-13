@@ -31,4 +31,7 @@ data class Marketplace (
     @field:SerializedName("komentar")
     var komentar: Int,
 
+    @field:SerializedName("tgl")
+    var date: String,
+
 ): Parcelable

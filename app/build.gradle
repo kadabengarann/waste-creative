@@ -19,8 +19,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField("String", "BASE_URL", '"https://waste-creative-api.herokuapp.com/"')
-        buildConfigField("String", "BASE_URL_IMG", '"https://waste-creative-api.herokuapp.com/images/"')
+        buildConfigField("String", "BASE_URL", '"http://34.128.100.77/"')
+        buildConfigField("String", "BASE_URL_IMG", '"http://34.128.100.77/images/"')
     }
 
     buildTypes {
@@ -39,6 +39,9 @@ android {
     }
     buildFeatures {
         viewBinding true
+    }
+    lintOptions {
+        abortOnError false
     }
     namespace 'com.wastecreative.wastecreative'
 }
@@ -95,7 +98,7 @@ dependencies {
     //Gson service
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
-    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
+    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6"
     // Import the Firebase BoM
     implementation platform('com.google.firebase:firebase-bom:30.0.1')
     implementation 'com.google.firebase:firebase-auth'

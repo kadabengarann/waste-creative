@@ -55,7 +55,7 @@ class CraftFragment : Fragment() {
             setSupportActionBar(binding.toolbar)
             supportActionBar?.setDisplayHomeAsUpEnabled(true)
         }
-
+        reFetch = CraftFragmentArgs.fromBundle(arguments as Bundle).reFetch
         setupAction()
         setupViewModel()
         binding.rvCrafts.apply {

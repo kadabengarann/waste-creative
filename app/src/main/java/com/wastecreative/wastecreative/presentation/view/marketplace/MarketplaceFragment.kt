@@ -19,6 +19,7 @@ import com.wastecreative.wastecreative.presentation.adapter.LoadingStateAdapter
 import com.wastecreative.wastecreative.presentation.adapter.PagingCraftsListAdapter
 import com.wastecreative.wastecreative.presentation.adapter.PagingMarketplaceListAdapter
 import com.wastecreative.wastecreative.presentation.adapter.PostListAdapter
+import com.wastecreative.wastecreative.presentation.view.craft.CraftFragmentArgs
 import com.wastecreative.wastecreative.presentation.view.craft.CraftViewModel
 import com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity
 import com.wastecreative.wastecreative.presentation.view.detailMarketplace.DetailMarketplaceActivity
@@ -50,6 +51,7 @@ class MarketplaceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        reFetch = MarketplaceFragmentArgs.fromBundle(arguments as Bundle).reFetch
         setupViewModel()
         setupAction()
         binding.rvCrafts.apply {

@@ -71,6 +71,7 @@ class MarketplaceRemoteMediator(
                         it.judul,
                         it.foto,
                         it.komentar,
+                        it.date,
                     )
                 }
                 database.marketRemoteKeysDao().insertAll(keys)

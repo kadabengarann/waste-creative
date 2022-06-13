@@ -15,6 +15,7 @@ import com.wastecreative.wastecreative.R
 import com.wastecreative.wastecreative.data.network.Result
 import com.wastecreative.wastecreative.databinding.FragmentAddMarketplaceBinding
 import com.wastecreative.wastecreative.di.ViewModelFactory
+import com.wastecreative.wastecreative.presentation.view.addcraft.AddStepsCraftFragmentDirections
 import java.io.File
 
 
@@ -69,7 +70,10 @@ class AddMarketplaceFragment : Fragment() {
                         Toast.LENGTH_SHORT
                     ).show()
                     addPostViewModel.clearData()
-                    view?.findNavController()?.navigate(R.id.action_navigation_add_marketplace_to_navigation_marketplace)
+                    val toListPage =
+                        AddMarketplaceFragmentDirections.actionNavigationAddMarketplaceToNavigationMarketplace()
+                    toListPage.reFetch = true
+                    view?.findNavController()?.navigate(toListPage)
                 }
                 is Result.Error -> {
                     showLoading(false)

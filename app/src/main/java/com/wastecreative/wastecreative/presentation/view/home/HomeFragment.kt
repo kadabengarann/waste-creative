@@ -82,15 +82,15 @@ class HomeFragment : Fragment() {
             if (result != null) {
                 when (result) {
                     is Result.Loading -> {
-//                        showLoading(true)
+                        showLoading(true)
                     }
                     is Result.Success -> {
-//                        showLoading(false)
+                        showLoading(false)
                         setContent(result.data)
                     }
                     is Result.Error -> {
-//                        showLoading(false)
-//                        showError()
+                        showLoading(false)
+                        showError(result.error)
                     }
                 }
             }
@@ -103,14 +103,19 @@ class HomeFragment : Fragment() {
     }
 
     private fun setContent(data: List<Craft>) {
-        craftListAdapter.setData(data)
-        craftListAdapter.setOnItemClickCallback(object : CraftsListAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: String) {
-                val intentToDetail = Intent(requireActivity(), DetailCraftActivity::class.java)
-                intentToDetail.putExtra(DetailCraftActivity.EXTRA_CRAFT, data)
-                startActivity(intentToDetail)
-            }
-        })
+        if (data.isEmpty()) {
+            hideAll()
+            binding.contentHome.grNoSearchResult.visibility = View.VISIBLE
+        } else {
+            craftListAdapter.setData(data)
+            craftListAdapter.setOnItemClickCallback(object : CraftsListAdapter.OnItemClickCallback {
+                override fun onItemClicked(data: String) {
+                    val intentToDetail = Intent(requireActivity(), DetailCraftActivity::class.java)
+                    intentToDetail.putExtra(DetailCraftActivity.EXTRA_CRAFT, data)
+                    startActivity(intentToDetail)
+                }
+            })
+        }
     }
 
     override fun onDestroy() {
@@ -146,6 +151,7 @@ class HomeFragment : Fragment() {
         }
         viewModel.userData.observe(viewLifecycleOwner){
             avatarImg.loadImage(it.avatar)
+            binding.tvUsername.text = getString(R.string.hi_string, it.name)
         }
 
     }
@@ -160,4 +166,35 @@ class HomeFragment : Fragment() {
         return false
     }
 
+    private fun hideAll() {
+        binding.contentHome.apply {
+            rvCrafts.visibility = View.GONE
+            progressBar.visibility = View.GONE
+            grNoSearchResult.visibility = View.GONE
+            grError.visibility = View.GONE
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.contentHome.apply {
+            progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        }
+    }
+
+    private fun showError(msg: String) {
+        Toast.makeText(
+            requireContext(),
+            "Gagal mengambil gambar.",
+            Toast.LENGTH_SHORT
+        ).show()
+        hideAll()
+        binding.contentHome.apply {
+            grError.visibility = View.VISIBLE
+            tvError.text = msg
+            btnError.setOnClickListener {
+                    viewModel.getCrafts()
+                grError.visibility = View.GONE
+            }
+        }
+    }
 }

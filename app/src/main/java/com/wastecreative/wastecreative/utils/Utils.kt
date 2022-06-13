@@ -40,7 +40,7 @@ fun ImageView.loadImage(url: String?, radius: Int) {
     Glide.with(this.context)
         .load(urls)
         .transform(MultiTransformation(CenterCrop(),RoundedCorners(radius)))
-        .placeholder(R.drawable.ic_broken_image_24)
+        .placeholder(R.drawable.loading_img)
         .error(R.drawable.ic_broken_image_24)
         .into(this)
 }
@@ -49,7 +49,7 @@ fun CircleImageView.loadImage(urls: String?) {
     Glide.with(this.context)
         .load(url)
         .circleCrop()
-        .placeholder(R.drawable.ic_broken_image_24)
+        .placeholder(R.drawable.loading_img)
         .error(R.drawable.ic_broken_image_24)
         .into(this)
 }

@@ -3,8 +3,10 @@ package com.wastecreative.wastecreative.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.wastecreative.wastecreative.R
 import com.wastecreative.wastecreative.data.models.MarketplaceComment
 import com.wastecreative.wastecreative.databinding.ListItemCommentBinding
+import com.wastecreative.wastecreative.utils.getTimeAgo
 import com.wastecreative.wastecreative.utils.loadImage
 
 class CommentListAdapter(
@@ -35,6 +37,7 @@ class CommentListAdapter(
                 imgAvatar.loadImage(comment.userPhoto, 25)
                 tvListUsername.text = comment.userName
                 tvListComment.text = comment.comment
+                tvListCommentDate.text = itemView.context.getString(R.string.dateFormat, comment.date.getTimeAgo())
             }
         }
     }

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".presentation.view.craft.DetailCraftTabFragment"
+    >
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".presentation.view.craft.DetailCraftTabFragment">
 
 
@@ -14,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:text="@string/hello_blank_fragment"
+        tools:text="@string/hello_blank_fragment"
         android:textColor="?attr/textColorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/hello_blank_fragment"
+        tools:text="@string/hello_blank_fragment"
         android:textColor="?attr/textColorPrimary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_craft_tab" />
@@ -40,8 +46,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_heading_top"
         app:layout_constraintTop_toBottomOf="@+id/tv_heading_top"
-        tools:itemCount="4"
-        tools:listitem="@layout/list_item_craft_content" >
+        tools:itemCount="69"
+        tools:listitem="@layout/list_item_craft_content">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -51,10 +57,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tv_heading_top"
         app:layout_constraintTop_toBottomOf="@+id/tv_heading_bottom"
         tools:itemCount="4"
         tools:listitem="@layout/list_item_craft_content" />
 
+    <TextView
+        android:id="@+id/tv_link_video"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="76dp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tv_heading_bottom"
+        app:layout_constraintTop_toBottomOf="@+id/tv_heading_bottom"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

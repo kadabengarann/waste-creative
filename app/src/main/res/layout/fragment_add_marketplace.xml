@@ -240,7 +240,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="24dp"
                     android:layout_marginEnd="24dp"
-                    android:hint="Price"
+                    android:hint="Price (in Rp)"
                     app:boxStrokeColor="@color/outline_stroke_color"
                     app:helperTextTextColor="@color/red_500"
                     app:hintTextColor="?attr/textColorPrimary"

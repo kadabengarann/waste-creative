@@ -5,10 +5,12 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.wastecreative.wastecreative.R
 import com.wastecreative.wastecreative.data.database.CraftEntity
 import com.wastecreative.wastecreative.data.database.MarketplaceEntity
 import com.wastecreative.wastecreative.databinding.ListItemPostBinding
 import com.wastecreative.wastecreative.utils.formatK
+import com.wastecreative.wastecreative.utils.getTimeAgo
 import com.wastecreative.wastecreative.utils.loadImage
 
 class PagingMarketplaceListAdapter:
@@ -37,6 +39,7 @@ class PagingMarketplaceListAdapter:
                 tvListPostTitle.text = marketplaceItem.judul
                 imgListCraft.loadImage(marketplaceItem.foto, 40)
                 tvListLikes.text = "${marketplaceItem.like.formatK()} likes"
+                tvListLikes.text = itemView.context.getString(R.string.dateFormat, marketplaceItem.date.getTimeAgo())
                 binding.root.setOnClickListener {
                     onItemClickCallback.onItemClicked(marketplaceItem.id)
                 }

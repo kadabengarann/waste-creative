@@ -98,16 +98,15 @@ tools:context=".presentation.view.detailMarketplace.DetailMarketplaceActivity">
                     <TextView
                         android:id="@+id/tv_likes"
                         style="@style/Theme.WasteCreative.SmallText"
-                        android:layout_width="47dp"
+                        android:layout_width="0dp"
                         android:layout_height="22dp"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="16dp"
                         android:layout_marginBottom="20dp"
-                        android:text="1k Likes"
                         android:textColor="?attr/textColorSecondary"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/img_craft"
-                        app:layout_constraintTop_toBottomOf="@+id/img_craft" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_craft_name" />
 
                     <TextView
                         android:id="@+id/tv_crafting_duration"
@@ -115,9 +114,8 @@ tools:context=".presentation.view.detailMarketplace.DetailMarketplaceActivity">
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="> 60 mins"
                         android:textColor="?attr/textColorSecondary"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_likes"
                         app:layout_constraintStart_toEndOf="@+id/dot_icon"
                         app:layout_constraintTop_toTopOf="@+id/tv_likes" />
@@ -176,10 +174,8 @@ tools:context=".presentation.view.detailMarketplace.DetailMarketplaceActivity">
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:layout_marginBottom="32dp"
-                        android:text="@string/lorem"
+                        tools:text="@string/lorem"
                         android:textColor="?attr/textColorPrimary"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/img_craft"
                         app:layout_constraintTop_toBottomOf="@+id/img_craft" />
                 </androidx.constraintlayout.widget.ConstraintLayout>

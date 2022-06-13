@@ -27,4 +27,6 @@ data class MarketplaceEntity(
 
     var komentar: Int,
 
+    var date: String,
+
 ) : Parcelable

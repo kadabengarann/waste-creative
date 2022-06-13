@@ -37,7 +37,7 @@ class HomeViewModel (private val craftRepository: CraftRepository, private val u
         }
     }
 
-    private fun getCrafts() {
+    fun getCrafts() {
         viewModelScope.launch {
             craftRepository.fetchCraftList().collect {
                 _listCraft.postValue(it)

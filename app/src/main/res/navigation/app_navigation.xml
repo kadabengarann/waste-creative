@@ -33,6 +33,10 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@android:anim/slide_out_right"/>
+        <argument
+            android:name="reFetch"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/navigation_craft"
@@ -49,6 +53,10 @@
         <action
             android:id="@+id/action_navigation_craft_to_detailCraftActivity"
             app:destination="@id/detailCraftActivity" />
+        <argument
+            android:name="reFetch"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/navigation_add_detail_craft"

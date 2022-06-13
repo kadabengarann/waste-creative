@@ -76,11 +76,14 @@ class AddStepsCraftFragment : Fragment() {
                     showLoading(false)
                     Toast.makeText(
                         requireContext(),
-                        "getString(R.string.success_upload_story)",
+                        getString(R.string.success_upload),
                         Toast.LENGTH_SHORT
                     ).show()
                     viewModel.clearData()
-                    view?.findNavController()?.navigate(R.id.action_navigation_add_steps_craft_to_navigation_craft)
+                    val toListPage =
+                        AddStepsCraftFragmentDirections.actionNavigationAddStepsCraftToNavigationCraft()
+                    toListPage.reFetch = true
+                    view?.findNavController()?.navigate(toListPage)
                 }
                 is Result.Error -> {
                     showLoading(false)
@@ -125,7 +128,8 @@ class AddStepsCraftFragment : Fragment() {
 
     private fun submitForm() {
         if (validate()){
-            viewModel.uploadCraft()
+            val tutor = binding.craftVidLinkInput.text.toString()
+            viewModel.uploadCraft(tutor)
         }else{
             Toast.makeText(requireContext(),"Please fill all required field", Toast.LENGTH_SHORT).show()
         }

@@ -13,6 +13,7 @@ import com.wastecreative.wastecreative.data.network.Result
 import com.wastecreative.wastecreative.databinding.ActivityDetailMarketplaceBinding
 import com.wastecreative.wastecreative.di.ViewModelFactory
 import com.wastecreative.wastecreative.presentation.adapter.TabPageAdapter
+import com.wastecreative.wastecreative.utils.getTimeAgo
 import com.wastecreative.wastecreative.utils.loadImage
 import okhttp3.internal.immutableListOf
 
@@ -96,6 +97,7 @@ class DetailMarketplaceActivity : AppCompatActivity() {
             imgAvatar.loadImage(data.userPhoto,25)
             imgCraft.loadImage(data.foto,40)
             tvCraftName.text = data.title
+            tvCraftingDuration.text = getString(R.string.dateFormat, data.date.getTimeAgo())
             toolbarLayout.title = data.title
         }
     }

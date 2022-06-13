@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [CraftEntity::class, CraftRemoteKeys::class, MarketplaceEntity::class, MarketplaceRemoteKeys::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class WasteCreativeDB : RoomDatabase() {

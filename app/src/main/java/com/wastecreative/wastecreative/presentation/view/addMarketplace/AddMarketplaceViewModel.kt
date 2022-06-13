@@ -39,12 +39,12 @@ class AddMarketplaceViewModel (private val marketplaceRepository: MarketplaceRep
     }
 
     fun clearData(){
-        _image.value = null
-        _request.value = null
-        _uploadResult.value = null
+        _image.postValue(null)
+        _request.postValue(null)
+        _uploadResult.postValue(null)
     }
     fun setImage(file: File?){
-        _image.value = file
+        _image.postValue(file)
     }
 
     fun submitDetailPost(title: String, desc: String, price: Int, address: String){

@@ -45,6 +45,7 @@ class UserPreferences private constructor( private val context: Context) {
         private val LOGINKEY = booleanPreferencesKey("logins")
         private val EMAILKEY = stringPreferencesKey("email")
         private val AVATARKEY = stringPreferencesKey("avatar")
+        private val THEMERKEY = stringPreferencesKey("theme")
         private val Context.dataStores: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
         fun getInstance(context: Context): UserPreferences {

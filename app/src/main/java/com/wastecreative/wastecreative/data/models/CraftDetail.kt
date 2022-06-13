@@ -33,5 +33,8 @@ data class CraftDetail  (
     val materials: List<String>,
 
     @field:SerializedName("langkah")
-    val steps: List<String>
+    val steps: List<String>,
+
+    @field:SerializedName("video")
+    val video: String
     ): Parcelable

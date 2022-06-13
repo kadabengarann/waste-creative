@@ -1,6 +1,11 @@
 package com.wastecreative.wastecreative.presentation.view.craft
 
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.Paint
+import android.net.Uri
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -126,7 +131,21 @@ class DetailCraftTabFragment : Fragment() {
                 setHasFixedSize(true)
                 adapter = contentListAdapter
             }
-            tvHeadingBottom.visibility = View.GONE
+            tvHeadingBottom.visibility = View.VISIBLE
+            tvHeadingBottom.text = "Video tutorial"
+            tvLinkVideo.visibility = View.VISIBLE
+            if (data.video != "" && data.video != null){
+                tvLinkVideo.text = getString(R.string.link_string)
+                tvLinkVideo.setTextColor(Color.BLUE)
+                tvLinkVideo.paintFlags = Paint.UNDERLINE_TEXT_FLAG
+                tvLinkVideo.setOnClickListener {
+                    val urlIntent = Intent(Intent.ACTION_VIEW, Uri.parse(data.video))
+                    startActivity(urlIntent)
+                }
+
+            }else{
+                tvLinkVideo.text = "---"
+            }
             rvCraftTab2.visibility = View.GONE
         }
         contentListAdapter.setData(data.steps)
