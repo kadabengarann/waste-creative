@@ -1,5 +1,6 @@
 package com.wastecreative.wastecreative.presentation.view.auth
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +18,7 @@ import com.wastecreative.wastecreative.R
 import com.wastecreative.wastecreative.di.ViewModelFactory
 import com.wastecreative.wastecreative.data.models.preference.UserModel
 import com.wastecreative.wastecreative.data.models.preference.UserPreferences
+import com.wastecreative.wastecreative.data.network.Result
 import com.wastecreative.wastecreative.databinding.ActivityLoginBinding
 import com.wastecreative.wastecreative.presentation.view.MainActivity
 import com.wastecreative.wastecreative.presentation.view.craft.CraftViewModel
@@ -82,12 +84,27 @@ class LoginActivity : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            loginViewModel.getLogin( email, password)
-                            loginViewModel.login(UserModel(69,"",email,true))
-                            var intent =Intent(this,MainActivity::class.java)
-                            intent.putExtra("email",email)
-                            startActivity(intent)
-                            finish()
+//                            loginViewModel.getLogin( email, password)
+                            loginViewModel.fetchUserLogin(email, password)
+                            loginViewModel.userLogin.observe(this){result->
+                                when (result) {
+                                    is Result.Success -> {
+                                        result.data.id
+                                        loginViewModel.login(UserModel(result.data.id,result.data.username,result.data.email,true, result.data.avatar))
+                                        Log.d("TAGAGAGAGAGA", "setUpFirebase: ${result.data.id}")
+                                        Log.d("TAGAGAGAGAGA", "setUpFirebase: ${result.data.username}")
+                                        Log.d("TAGAGAGAGAGA", "setUpFirebase: ${result.data.avatar}")
+                                        var intent =Intent(this,MainActivity::class.java)
+                                        intent.putExtra("email",email)
+                                        startActivity(intent)
+                                        finish()
+                                    }
+                                    is Result.Error -> {
+                                        Toast.makeText(this,"Gagal Login", Toast.LENGTH_LONG).show()
+                                    }
+                                }
+                            }
+
                         } else {
                             Toast.makeText(this, getString(R.string.valid), Toast.LENGTH_LONG).show()
                         }

@@ -17,7 +17,8 @@ class UserPreferences private constructor( private val context: Context) {
                 preferences[IDKEY] ?: -1,
                 preferences[NAMEKEY] ?:"",
                 preferences[EMAILKEY] ?:"" ,
-                preferences[LOGINKEY] ?: false
+                preferences[LOGINKEY] ?: false,
+                preferences[AVATARKEY] ?:"" ,
             )
         }
     }
@@ -27,6 +28,7 @@ class UserPreferences private constructor( private val context: Context) {
             preferences[NAMEKEY] = userModel.name
             preferences[LOGINKEY] = true
             preferences[EMAILKEY] = userModel.email
+            preferences[AVATARKEY]  = userModel.avatar
         }
     }
     suspend fun logout() {
@@ -42,6 +44,7 @@ class UserPreferences private constructor( private val context: Context) {
         private val NAMEKEY= stringPreferencesKey("name")
         private val LOGINKEY = booleanPreferencesKey("logins")
         private val EMAILKEY = stringPreferencesKey("email")
+        private val AVATARKEY = stringPreferencesKey("avatar")
         private val Context.dataStores: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
         fun getInstance(context: Context): UserPreferences {

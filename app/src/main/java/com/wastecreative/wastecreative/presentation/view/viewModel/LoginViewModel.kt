@@ -4,15 +4,22 @@ import android.content.ContentValues
 import android.text.TextUtils
 import android.util.Log
 import androidx.lifecycle.*
+import com.wastecreative.wastecreative.data.models.MarketplaceDetail
 import com.wastecreative.wastecreative.data.models.Response
 import com.wastecreative.wastecreative.data.models.preference.UserModel
 import com.wastecreative.wastecreative.data.models.preference.UserPreferences
+import com.wastecreative.wastecreative.data.models.userResponse
 import com.wastecreative.wastecreative.data.network.ApiConfig
+import com.wastecreative.wastecreative.data.network.Result
+import com.wastecreative.wastecreative.data.repositories.UserRepository
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
+import kotlinx.coroutines.flow.collect
 
-class LoginViewModel(private var preference: UserPreferences) : ViewModel() {
+class LoginViewModel(private var preference: UserPreferences, private var userRepository: UserRepository) : ViewModel() {
         private val EmailEmpty = MutableLiveData<Boolean>()
         val _EmailEmpty : LiveData<Boolean> = EmailEmpty
         private  val _passwordEmpty = MutableLiveData<Boolean>()
@@ -22,6 +29,8 @@ class LoginViewModel(private var preference: UserPreferences) : ViewModel() {
         private val _passwordValidasi = MutableLiveData<Boolean>()
         val passwordValidasi : LiveData<Boolean> = _passwordValidasi
 
+    private val _userLogin = MutableLiveData<Result<userResponse>>()
+    val userLogin: LiveData<Result<userResponse>> = _userLogin
 
     fun getUser(): LiveData<UserModel> {
         return preference.getUser().asLiveData()
@@ -107,6 +116,13 @@ class LoginViewModel(private var preference: UserPreferences) : ViewModel() {
                     }
 
                 })
+        }
+    }
+    fun fetchUserLogin(email: String, password: String) {
+        viewModelScope.launch {
+            userRepository.fetctUserLoginData(email, password).collect {
+                _userLogin.postValue(it)
+            }
         }
     }
 }

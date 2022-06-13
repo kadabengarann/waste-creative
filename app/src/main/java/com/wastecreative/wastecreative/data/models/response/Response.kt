@@ -8,7 +8,39 @@ data class Response(
 	val response: List<ResponseItem>,
 
 )
+data class getUserResponse(
+	@field:SerializedName("success")
+	val success: Boolean,
 
+	@field:SerializedName("message")
+	val message: String,
+
+	@field:SerializedName("data")
+	val data: userResponse,
+)
+data class postUserResponse(
+	@field:SerializedName("success")
+	val success: Boolean,
+
+	@field:SerializedName("message")
+	val message: String,
+)
+data class userResponse(
+	@field:SerializedName("id")
+	val id: Int,
+
+	@field:SerializedName("email")
+	val email: String,
+
+	@field:SerializedName("password")
+	val password: String,
+
+	@field:SerializedName("username")
+	val username: String,
+
+	@field:SerializedName("foto")
+	val avatar: String,
+)
 data class ResponseItem(
 
 	@field:SerializedName("createdAt")

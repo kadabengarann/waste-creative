@@ -90,4 +90,20 @@ interface ApiService {
         @Field("email") email : String,
         @Field("password") password: String
     ): Call<ResponseItem>
+
+    @FormUrlEncoded
+    @POST("pengguna/login")
+    suspend fun fetchLogin(
+        @Field("email") email: String,
+        @Field("password") password: String
+    ): getUserResponse
+
+    @FormUrlEncoded
+    @POST("pengguna/add")
+    suspend fun postUser(
+        @Field("username") name: String,
+        @Field("email") email : String,
+        @Field("password") password: String,
+        @Field("foto") avatar: String
+    ): postUserResponse
 }

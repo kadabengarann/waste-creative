@@ -21,6 +21,8 @@ import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
+import kotlinx.coroutines.flow.collect
+
 
 class AddCraftViewModel (private val craftRepository: CraftRepository, private val preference: UserPreferences) : ViewModel() {
     private val _image = MutableLiveData<File>()

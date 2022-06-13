@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.wastecreative.wastecreative.data.models.preference.UserPreferences
 import com.wastecreative.wastecreative.data.repositories.CraftRepository
 import com.wastecreative.wastecreative.data.repositories.MarketplaceRepository
+import com.wastecreative.wastecreative.data.repositories.UserRepository
 import com.wastecreative.wastecreative.presentation.view.addMarketplace.AddMarketplaceViewModel
 import com.wastecreative.wastecreative.presentation.view.addcraft.AddCraftViewModel
 import com.wastecreative.wastecreative.presentation.view.craft.CraftViewModel
@@ -16,8 +17,9 @@ import com.wastecreative.wastecreative.presentation.view.home.HomeViewModel
 import com.wastecreative.wastecreative.presentation.view.marketplace.MarketplaceViewModel
 import com.wastecreative.wastecreative.presentation.view.scan.CraftRecommendViewModel
 import com.wastecreative.wastecreative.presentation.view.viewModel.LoginViewModel
+import com.wastecreative.wastecreative.presentation.view.viewModel.RegisterViewModel
 
-class ViewModelFactory(private val craftRepository: CraftRepository, private val marketplaceRepository: MarketplaceRepository, private val pref: UserPreferences) :
+class ViewModelFactory(private val craftRepository: CraftRepository, private val marketplaceRepository: MarketplaceRepository, private val userRepository: UserRepository, private val pref: UserPreferences) :
     ViewModelProvider.NewInstanceFactory() {
 
     @Suppress("UNCHECKED_CAST")
@@ -26,12 +28,13 @@ class ViewModelFactory(private val craftRepository: CraftRepository, private val
         DetailCraftViewModel::class.java -> DetailCraftViewModel(craftRepository)
         CraftSearchViewModel::class.java -> CraftSearchViewModel(craftRepository)
         CraftRecommendViewModel::class.java -> CraftRecommendViewModel(craftRepository)
-        HomeViewModel::class.java -> HomeViewModel(craftRepository)
+        HomeViewModel::class.java -> HomeViewModel(craftRepository, pref)
         AddCraftViewModel::class.java -> AddCraftViewModel(craftRepository,pref)
         MarketplaceViewModel::class.java -> MarketplaceViewModel(marketplaceRepository)
         DetailMarketplaceViewModel::class.java -> DetailMarketplaceViewModel(marketplaceRepository, pref)
         AddMarketplaceViewModel::class.java -> AddMarketplaceViewModel(marketplaceRepository,pref)
-        LoginViewModel::class.java -> LoginViewModel(pref)
+        LoginViewModel::class.java -> LoginViewModel(pref, userRepository)
+        RegisterViewModel::class.java -> RegisterViewModel(userRepository)
         else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     } as T
 
@@ -43,6 +46,7 @@ class ViewModelFactory(private val craftRepository: CraftRepository, private val
                 instance ?: ViewModelFactory(
                     Injection.provideCraftRepository(context),
                     Injection.provideMarketplaceRepository(context),
+                    Injection.provideUserRepository(),
                     Injection.provideUserPreference(context))
             }.also { instance = it }
     }

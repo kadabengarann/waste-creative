@@ -14,6 +14,7 @@ import com.wastecreative.wastecreative.data.repositories.MarketplaceRepository
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
+import kotlinx.coroutines.flow.collect
 
 class DetailMarketplaceViewModel (private val marketplaceRepository: MarketplaceRepository, private val preference: UserPreferences) : ViewModel() {
 

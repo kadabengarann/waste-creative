@@ -44,7 +44,8 @@ fun ImageView.loadImage(url: String?, radius: Int) {
         .error(R.drawable.ic_broken_image_24)
         .into(this)
 }
-fun CircleImageView.loadImage(url: String?) {
+fun CircleImageView.loadImage(urls: String?) {
+    val url = BuildConfig.BASE_URL_IMG+ urls
     Glide.with(this.context)
         .load(url)
         .circleCrop()

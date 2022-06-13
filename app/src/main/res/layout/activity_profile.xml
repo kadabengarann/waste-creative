@@ -45,7 +45,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/bg_button"
-            android:text="@string/edit"
+            android:text="Log out"
             android:textColor="?attr/colorOnSecondary"
             app:layout_constraintBottom_toTopOf="@+id/tabLayout"
             app:layout_constraintEnd_toEndOf="parent"

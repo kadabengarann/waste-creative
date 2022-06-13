@@ -6,6 +6,7 @@ import com.wastecreative.wastecreative.data.models.preference.UserPreferences
 import com.wastecreative.wastecreative.data.network.ApiConfig
 import com.wastecreative.wastecreative.data.repositories.CraftRepository
 import com.wastecreative.wastecreative.data.repositories.MarketplaceRepository
+import com.wastecreative.wastecreative.data.repositories.UserRepository
 
 object Injection {
     fun provideCraftRepository(context: Context): CraftRepository {
@@ -18,6 +19,10 @@ object Injection {
         val apiService = ApiConfig.getApiService()
         val wasteCreativeDB = WasteCreativeDB.getDatabase(context)
         return MarketplaceRepository.getInstance(wasteCreativeDB, apiService)
+    }
+    fun provideUserRepository(): UserRepository {
+        val apiService = ApiConfig.getApiService()
+        return UserRepository.getInstance(apiService)
     }
     fun provideUserPreference(context: Context): UserPreferences {
         return UserPreferences.getInstance(context)

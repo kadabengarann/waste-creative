@@ -4,17 +4,21 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.wastecreative.wastecreative.R
+import com.wastecreative.wastecreative.data.network.Result
 import com.wastecreative.wastecreative.databinding.ActivityRegisterBinding
+import com.wastecreative.wastecreative.di.ViewModelFactory
+import com.wastecreative.wastecreative.presentation.view.viewModel.LoginViewModel
 import com.wastecreative.wastecreative.presentation.view.viewModel.RegisterViewModel
 
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var _binding : ActivityRegisterBinding
-    private lateinit var registerViewModel : RegisterViewModel
+//    private lateinit var registerViewModel : RegisterViewModel
     private lateinit var auth: FirebaseAuth
     private lateinit var db : FirebaseFirestore
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +27,12 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(_binding.root)
         setuUPVm()
         setUpFirebase()
+    }
+    private val factory by lazy {
+        ViewModelFactory.getInstance(this)
+    }
+    private val registerViewModel : RegisterViewModel by viewModels {
+        factory
     }
 
     private fun isSukses(value: Boolean){
@@ -33,7 +43,7 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
     private fun setuUPVm(){
-        registerViewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
+//        registerViewModel = ViewModelProvider(this).get(RegisterViewModel::class.java)
         registerViewModel.sukses.observe(this,{
             isSukses(it)
 
@@ -83,18 +93,30 @@ class RegisterActivity : AppCompatActivity() {
                             tasks->
                         if(tasks.isEmpty)
                         {
-                            registerViewModel.getRegister(this@RegisterActivity,name,email,password)
+//                            registerViewModel.getRegister(this@RegisterActivity,name,email,password)
                             auth.createUserWithEmailAndPassword(email,password)
                                 .addOnCompleteListener(this){
                                         task->
                                     if(task.isSuccessful)
                                     {
-                                        Users.document(email).set(user)
-                                        val intent=Intent(this,LoginActivity::class.java)
-                                        Toast.makeText(this,getString(R.string.waiting), Toast.LENGTH_SHORT).show()
-                                        intent.putExtra("email",email)
-                                        startActivity(intent)
-                                        finish()
+                                        registerViewModel.postUserRegister(name, email, password)
+                                        registerViewModel.regSuccess.observe(this){result->
+                                            when (result) {
+                                                is Result.Success -> {
+                                                    Toast.makeText(this,"Register Berhasil", Toast.LENGTH_SHORT).show()
+                                                    Users.document(email).set(user)
+                                                    val intent=Intent(this,LoginActivity::class.java)
+                                                    Toast.makeText(this,getString(R.string.waiting), Toast.LENGTH_SHORT).show()
+                                                    intent.putExtra("email",email)
+                                                    startActivity(intent)
+                                                    finish()
+                                                }
+                                                is Result.Error -> {
+                                                    Toast.makeText(this,"Authentication Failed", Toast.LENGTH_LONG).show()
+                                                }
+                                            }
+                                        }
+
                                     }
                                     else
                                     {
