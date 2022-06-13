@@ -14,6 +14,7 @@ import com.bumptech.glide.load.MultiTransformation
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.wastecreative.wastecreative.R
+import de.hdodenhof.circleimageview.CircleImageView
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
@@ -32,6 +33,14 @@ fun ImageView.loadImage(url: String?, radius: Int) {
     Glide.with(this.context)
         .load(url)
         .transform(MultiTransformation(CenterCrop(),RoundedCorners(radius)))
+        .placeholder(R.drawable.ic_broken_image_24)
+        .error(R.drawable.ic_broken_image_24)
+        .into(this)
+}
+fun CircleImageView.loadImage(url: String?) {
+    Glide.with(this.context)
+        .load(url)
+        .circleCrop()
         .placeholder(R.drawable.ic_broken_image_24)
         .error(R.drawable.ic_broken_image_24)
         .into(this)

@@ -2,20 +2,21 @@ package com.wastecreative.wastecreative.presentation.view.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
+import android.widget.FrameLayout
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.wastecreative.wastecreative.R
-import com.wastecreative.wastecreative.data.database.CraftEntity
 import com.wastecreative.wastecreative.data.models.Craft
 import com.wastecreative.wastecreative.databinding.FragmentHomeBinding
 import com.wastecreative.wastecreative.presentation.adapter.CraftsListAdapter
 import com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity
-import com.wastecreative.wastecreative.presentation.view.pengaturan.PengaturanActivity
 import com.wastecreative.wastecreative.presentation.view.scan.ScanActivity
+import com.wastecreative.wastecreative.utils.loadImage
+import de.hdodenhof.circleimageview.CircleImageView
 
 
 class HomeFragment : Fragment() {
@@ -46,6 +47,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as AppCompatActivity).apply {
+            setSupportActionBar(binding.toolbar)
+        }
+        setHasOptionsMenu(true)
         makeDummyData()
         showRecyclerList()
         setupAction()
@@ -98,8 +103,19 @@ class HomeFragment : Fragment() {
         })
     }
     override fun onCreateOptionsMenu(menu: Menu , inflater: MenuInflater){
-        setHasOptionsMenu(true)
+        menu.clear()
         super.onCreateOptionsMenu(menu,inflater)
+        inflater.inflate(R.menu.home_menu, menu)
+
+        val profileMenu = menu.findItem(R.id.menu_two)
+        val layoutProfileMenu = profileMenu.actionView as FrameLayout
+        val avatarImg = layoutProfileMenu.findViewById(R.id.toolbar_profile_image) as CircleImageView
+        avatarImg.loadImage("https://picsum.photos/300/300?random=69") // Change to user Avatar
+        avatarImg.setOnClickListener {
+            val intent =Intent(requireContext(), ScanActivity::class.java)
+            startActivity(intent)
+            Toast.makeText(requireContext(), getString(R.string.title_home), Toast.LENGTH_SHORT).show()
+        }
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
