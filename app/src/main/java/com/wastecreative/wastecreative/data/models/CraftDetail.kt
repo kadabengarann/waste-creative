@@ -9,7 +9,10 @@ import kotlinx.parcelize.Parcelize
 data class CraftDetail  (
 
     @field:SerializedName("id")
-    val id: String,
+    val id: Int,
+
+    @field:SerializedName("pengguna_id")
+    val user_id: Int,
 
     @field:SerializedName("userName")
     val userName: String?,
@@ -17,24 +20,18 @@ data class CraftDetail  (
     @field:SerializedName("userPhoto")
     val userPhoto: String?,
 
-    @field:SerializedName("createdAt")
-    val createdAt: String,
-
-    @field:SerializedName("like")
-    val like: Int,
-
-    @field:SerializedName("name")
+    @field:SerializedName("nama")
     val name: String,
 
-    @field:SerializedName("description")
-    val description: String,
-
-    @field:SerializedName("photo")
+    @field:SerializedName("foto")
     var photo: String,
 
-    @field:SerializedName("toolsAndMaterials")
-    val toolsAndMaterials: List<String>,
+    @field:SerializedName("alat")
+    val tools: List<String>,
 
-    @field:SerializedName("steps")
+    @field:SerializedName("bahan")
+    val materials: List<String>,
+
+    @field:SerializedName("langkah")
     val steps: List<String>
     ): Parcelable

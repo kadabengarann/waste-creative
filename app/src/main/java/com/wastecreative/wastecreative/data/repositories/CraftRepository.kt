@@ -7,12 +7,17 @@ import com.wastecreative.wastecreative.data.database.CraftEntity
 import com.wastecreative.wastecreative.data.database.WasteCreativeDB
 import com.wastecreative.wastecreative.data.models.Craft
 import com.wastecreative.wastecreative.data.models.CraftDetail
+import com.wastecreative.wastecreative.data.models.UploadResponse
 import com.wastecreative.wastecreative.data.network.ApiService
 import com.wastecreative.wastecreative.data.network.Result
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+
+
 class CraftRepository(
     private val wasteCreativeDB: WasteCreativeDB,
     private val apiService: ApiService,
@@ -38,8 +43,8 @@ class CraftRepository(
         return flow {
             emit(Result.Loading)
             try {
-                val result = apiService.getCraftList()
-                emit(Result.Success(result))
+                val result = apiService.getCraftList(4)
+                emit(Result.Success(result.data))
             } catch (e: Exception) {
                 Log.d("CraftRepository", "fetchCraftList: ${e.message.toString()} ")
                 emit(Result.Error(e.message.toString()))
@@ -51,7 +56,7 @@ class CraftRepository(
             emit(Result.Loading)
             try {
                 val result = apiService.getCraftDetail(id)
-                emit(Result.Success(result))
+                emit(Result.Success(result.data))
             } catch (e: Exception) {
                 Log.d("CraftRepository", "fetchCraftList: ${e.message.toString()} ")
                 emit(Result.Error(e.message.toString()))
@@ -64,9 +69,35 @@ class CraftRepository(
             emit(Result.Loading)
             try {
                 val result = apiService.getSearcCraftList(query)
-                emit(Result.Success(result))
+                emit(Result.Success(result.data))
             } catch (e: Exception) {
                 Log.d("CraftRepository", "fetchCraftSearchResult: ${e.message.toString()} ")
+                emit(Result.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+    suspend fun fetchCraftRecommendation(query: ArrayList<String>): Flow<Result<List<Craft>>?> {
+        return flow {
+            emit(Result.Loading)
+            try {
+                val result = apiService.getRecommendCraft(query)
+                emit(Result.Success(result.data))
+            } catch (e: Exception) {
+                Log.d("CraftRepository", "fetchCraftSearchResult: ${e.message.toString()} ")
+                emit(Result.Error(e.message.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+    suspend fun postCraft(
+        body: RequestBody
+    ): Flow<Result<UploadResponse>> {
+        return flow {
+            emit(Result.Loading)
+            try {
+                val result = apiService.uploadCraft(body)
+                emit(Result.Success(result))
+            } catch (e: Exception) {
+                Log.d("StoryRepository", "UploadStory: ${e.message.toString()} ")
                 emit(Result.Error(e.message.toString()))
             }
         }.flowOn(Dispatchers.IO)

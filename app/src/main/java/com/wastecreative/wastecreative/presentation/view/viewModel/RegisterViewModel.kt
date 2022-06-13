@@ -7,14 +7,25 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.wastecreative.wastecreative.data.models.ResponseItem
+import com.wastecreative.wastecreative.data.network.Result
+import com.wastecreative.wastecreative.data.models.UploadResponse
+import com.wastecreative.wastecreative.data.models.postUserResponse
+import com.wastecreative.wastecreative.data.models.preference.UserPreferences
 import com.wastecreative.wastecreative.data.network.ApiConfig
+import com.wastecreative.wastecreative.data.repositories.UserRepository
+import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.collect
 
 
 import retrofit2.Call
 import retrofit2.Callback
 
-class RegisterViewModel() : ViewModel(){
+class RegisterViewModel(private var userRepository: UserRepository) : ViewModel() {
     private val _sukses = MutableLiveData<Boolean>()
     val sukses : LiveData<Boolean> = _sukses
     private  val _passwordEmpty = MutableLiveData<Boolean>()
@@ -26,8 +37,18 @@ class RegisterViewModel() : ViewModel(){
     private val _nameEmpty = MutableLiveData<Boolean>()
     val nameEmpty : LiveData<Boolean> = _nameEmpty
 
+    private val _regSuccess = MutableLiveData<Result<postUserResponse>?>()
+    val regSuccess : LiveData<Result<postUserResponse>?> = _regSuccess
 
+    fun postUserRegister(name: String, email: String, password: String){
+        val avatar = ""
+        viewModelScope.launch {
+            userRepository.postUserData( name, email, password,avatar ).collect {result ->
+                _regSuccess.postValue(result)
+            }
+        }
 
+    }
     private fun checkEmptyForm(names: String , email: String,password: String): Boolean{
         var notEmpty = true
 
@@ -113,5 +134,4 @@ class RegisterViewModel() : ViewModel(){
                 })
         }
     }
-
 }

@@ -27,7 +27,7 @@ class PengaturanActivity : AppCompatActivity() {
     private fun setupViewModel() {
         mainViewModel = ViewModelProvider(
             this,
-            ViewModelFactory(UserPreferences.getInstance(dataStore))
+            ViewModelFactory(UserPreferences.getInstance(this))
         )[MainViewModel::class.java]
 //
     }

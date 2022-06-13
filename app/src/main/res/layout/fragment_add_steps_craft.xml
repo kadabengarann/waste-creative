@@ -5,128 +5,239 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.view.addcraft.AddStepsCraftFragment">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_marginTop="?attr/actionBarSize"
-    android:layout_height="match_parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/craft_materials_edit_text_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        android:hint="@string/tools_and_materials"
-        android:minHeight="200dp"
-        app:boxStrokeColor="@color/outline_stroke_color"
-        app:hintTextColor="?attr/textColorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/craft_material_input"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="top|start"
-            android:inputType="textMultiLine"
-            android:maxLines="10" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/craft_steps_edit_text_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:hint="@string/steps"
-        android:minHeight="200dp"
-        app:boxStrokeColor="@color/outline_stroke_color"
-        app:hintTextColor="?attr/textColorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/craft_materials_edit_text_layout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/craft_steps_input"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="top|start"
-            android:inputType="textMultiLine"
-            android:maxLines="10" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/prev_btn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/bg_button_secondary"
-        android:paddingStart="32dp"
-        android:paddingTop="19dp"
-        android:paddingEnd="32dp"
-        android:paddingBottom="19dp"
-        android:text="@string/back"
-        android:textColor="?attr/textColorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline5"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/upload_btn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/bg_button"
-        android:paddingStart="32dp"
-        android:paddingTop="19dp"
-        android:paddingEnd="32dp"
-        android:paddingBottom="19dp"
-        android:text="@string/upload"
-        android:textColor="?attr/colorOnSecondary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline5" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/craft_tutorialVid_edit_text_layout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        android:hint="@string/video_tutorial_link"
-        app:boxStrokeColor="@color/outline_stroke_color"
-        app:hintTextColor="?attr/textColorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/craft_steps_edit_text_layout">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/craft_vid_link_input"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:orientation="vertical" >
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="206dp" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="?attr/actionBarSize">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                    android:id="@+id/add_steps_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:text="Add"
+                    app:layout_constraintBottom_toBottomOf="@+id/craft_steps_edit_text_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/craft_steps_edit_text_layout" />
+
+                <Button
+                    android:id="@+id/add_tools_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:text="Add"
+                    app:layout_constraintBottom_toBottomOf="@+id/craft_tools_edit_text_layout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/craft_tools_edit_text_layout" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/prev_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="32dp"
+                    android:background="@drawable/bg_button_secondary"
+                    android:paddingStart="32dp"
+                    android:paddingTop="19dp"
+                    android:paddingEnd="32dp"
+                    android:paddingBottom="19dp"
+                    android:text="@string/back"
+                    android:textColor="?attr/textColorPrimary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/guideline5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/craft_tutorialVid_edit_text_layout" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/upload_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="32dp"
+                    android:background="@drawable/bg_button"
+                    android:paddingStart="32dp"
+                    android:paddingTop="19dp"
+                    android:paddingEnd="32dp"
+                    android:paddingBottom="19dp"
+                    android:text="@string/upload"
+                    android:textColor="?attr/colorOnSecondary"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/guideline5" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.5" />
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nestedScrollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/round_outline"
+                    android:fillViewport="true"
+                    android:maxHeight="150dp"
+                    android:minHeight="150dp"
+                    android:paddingTop="1dp"
+                    android:paddingBottom="1dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/craft_tools_edit_text_layout">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_tools"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:scrollbars="vertical"
+                            tools:itemCount="4"
+                            tools:listitem="@layout/list_item_input" />
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/nestedScrollView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/round_outline"
+                    android:fillViewport="true"
+                    android:maxHeight="150dp"
+                    android:minHeight="200dp"
+                    android:paddingTop="1dp"
+                    android:paddingBottom="1dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/craft_steps_edit_text_layout">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_steps"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:scrollbars="vertical"
+                            tools:itemCount="4"
+                            tools:listitem="@layout/list_item_input" />
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/craft_steps_edit_text_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:hint="@string/steps"
+                    app:boxStrokeColor="@color/outline_stroke_color"
+                    app:helperTextTextColor="@color/red_500"
+                    app:hintTextColor="?attr/textColorPrimary"
+                    app:layout_constraintEnd_toStartOf="@+id/add_steps_btn"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/nestedScrollView">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/craft_steps_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:singleLine="true" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/craft_tools_edit_text_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/tools_string"
+                    app:boxStrokeColor="@color/outline_stroke_color"
+                    app:helperTextTextColor="@color/red_500"
+                    app:hintTextColor="?attr/textColorPrimary"
+                    app:layout_constraintEnd_toStartOf="@+id/add_tools_btn"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/craft_tools_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:singleLine="true" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/craft_tutorialVid_edit_text_layout"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:hint="@string/video_tutorial_link"
+                    app:boxStrokeColor="@color/outline_stroke_color"
+                    app:hintTextColor="?attr/textColorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/nestedScrollView2">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/craft_vid_link_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <include
+                    android:id="@+id/inc_progress"
+                    layout="@layout/progress_overlay"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

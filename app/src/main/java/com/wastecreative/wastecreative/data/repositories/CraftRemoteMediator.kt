@@ -51,7 +51,7 @@ class CraftRemoteMediator(
         try {
             val responseData = apiService.getCrafts(page, state.config.pageSize)
 
-            val endOfPaginationReached = responseData.isEmpty()
+            val endOfPaginationReached = responseData.data.isEmpty()
 
             database.withTransaction {
                 if (loadType == LoadType.REFRESH) {
@@ -60,15 +60,15 @@ class CraftRemoteMediator(
                 }
                 val prevKey = if (page == 1) null else page - 1
                 val nextKey = if (endOfPaginationReached) null else page + 1
-                val keys = responseData.map {
+                val keys = responseData.data.map {
                     CraftRemoteKeys(id = it.id, prevKey = prevKey, nextKey = nextKey)
                 }
-                val craftData = responseData.map {
+                val craftData = responseData.data.map {
                     CraftEntity(
                         id = it.id,
                         it.userName,
                         it.userPhoto,
-                        it.like,
+                        0,
                         it.name,
                         it.photo,
                     )

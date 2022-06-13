@@ -16,13 +16,10 @@ data class Craft (
     @field:SerializedName("userPhoto")
     val userPhoto: String?,
 
-    @field:SerializedName("like")
-    val like: Int,
-
-    @field:SerializedName("name")
+    @field:SerializedName("nama")
     val name: String,
 
-    @field:SerializedName("photo")
+    @field:SerializedName("foto")
     var photo: String,
 
 ): Parcelable

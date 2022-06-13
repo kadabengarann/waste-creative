@@ -7,13 +7,21 @@ import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.wastecreative.wastecreative.R
 import com.wastecreative.wastecreative.data.models.Craft
+import com.wastecreative.wastecreative.data.network.Result
 import com.wastecreative.wastecreative.databinding.FragmentHomeBinding
+import com.wastecreative.wastecreative.di.ViewModelFactory
 import com.wastecreative.wastecreative.presentation.adapter.CraftsListAdapter
+import com.wastecreative.wastecreative.presentation.adapter.PagingCraftsListAdapter
+import com.wastecreative.wastecreative.presentation.view.MainActivity
+import com.wastecreative.wastecreative.presentation.view.craft.CraftViewModel
 import com.wastecreative.wastecreative.presentation.view.craft.DetailCraftActivity
+import com.wastecreative.wastecreative.presentation.view.detailMarketplace.DetailMarketplaceActivity
+import com.wastecreative.wastecreative.presentation.view.profile.ProfileActivity
 import com.wastecreative.wastecreative.presentation.view.scan.ScanActivity
 import com.wastecreative.wastecreative.utils.loadImage
 import de.hdodenhof.circleimageview.CircleImageView
@@ -29,8 +37,15 @@ class HomeFragment : Fragment() {
             arrayListOf()
         )
     }
-    private val data = ArrayList<Craft>()
+    private val factory by lazy {
+        ViewModelFactory.getInstance(requireContext())
+    }
+    private val viewModel: HomeViewModel by viewModels {
+        factory
+    }
 
+    private var avatar= ""
+    private var UName= ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -51,29 +66,55 @@ class HomeFragment : Fragment() {
             setSupportActionBar(binding.toolbar)
         }
         setHasOptionsMenu(true)
-        makeDummyData()
+        binding.contentHome.rvCrafts.apply {
+            layoutManager = GridLayoutManager(context, 2)
+            setHasFixedSize(true)
+            adapter = craftListAdapter
+        }
+
+        observeData()
         showRecyclerList()
         setupAction()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
-    private fun makeDummyData() {
-        if (data.isEmpty()) {
-            for (i in 1..4) {
-                val items = Craft(
-                    i.toString(),
-                    "Saifuddin",
-                    "https://picsum.photos/300/300?random=$i",
-                    69,
-                    "yoman $i",
-                    "https://picsum.photos/200/300?random=$i"
-                )
-                data.add(items)
+    private fun observeData() {
+        viewModel.listCraft.observe(viewLifecycleOwner){result ->
+            if (result != null) {
+                when (result) {
+                    is Result.Loading -> {
+//                        showLoading(true)
+                    }
+                    is Result.Success -> {
+//                        showLoading(false)
+                        setContent(result.data)
+                    }
+                    is Result.Error -> {
+//                        showLoading(false)
+//                        showError()
+                    }
+                }
             }
         }
+        viewModel.userData.observe(viewLifecycleOwner){
+            avatar = it.avatar
+            UName = it.name
+        }
+
+    }
+
+    private fun setContent(data: List<Craft>) {
+        craftListAdapter.setData(data)
+        craftListAdapter.setOnItemClickCallback(object : CraftsListAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: String) {
+                val intentToDetail = Intent(requireActivity(), DetailCraftActivity::class.java)
+                intentToDetail.putExtra(DetailCraftActivity.EXTRA_CRAFT, data)
+                startActivity(intentToDetail)
+            }
+        })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 
     private fun setupAction() {
@@ -88,19 +129,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showRecyclerList() {
-        binding.contentHome.rvCrafts.apply {
-            layoutManager = GridLayoutManager(context, 2)
-            setHasFixedSize(true)
-            adapter = craftListAdapter
-        }
-        craftListAdapter.setData(data)
-        craftListAdapter.setOnItemClickCallback(object : CraftsListAdapter.OnItemClickCallback {
-            override fun onItemClicked(data: String) {
-                val intentToDetail = Intent(requireActivity(), DetailCraftActivity::class.java)
-                intentToDetail.putExtra(DetailCraftActivity.EXTRA_CRAFT, data)
-                startActivity(intentToDetail)
-            }
-        })
+
     }
     override fun onCreateOptionsMenu(menu: Menu , inflater: MenuInflater){
         menu.clear()
@@ -110,18 +139,22 @@ class HomeFragment : Fragment() {
         val profileMenu = menu.findItem(R.id.menu_two)
         val layoutProfileMenu = profileMenu.actionView as FrameLayout
         val avatarImg = layoutProfileMenu.findViewById(R.id.toolbar_profile_image) as CircleImageView
-        avatarImg.loadImage("https://picsum.photos/300/300?random=69") // Change to user Avatar
         avatarImg.setOnClickListener {
-            val intent =Intent(requireContext(), ScanActivity::class.java)
+            var intent =Intent(requireActivity(), ProfileActivity::class.java)
+            intent.putExtra(ProfileActivity.EXTRA_IMG, arrayOf(avatar,UName))
             startActivity(intent)
-            Toast.makeText(requireContext(), getString(R.string.title_home), Toast.LENGTH_SHORT).show()
         }
+        viewModel.userData.observe(viewLifecycleOwner){
+            avatarImg.loadImage(it.avatar)
+        }
+
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_setting ->
+            R.id.menu_setting ->{
                 // Not implemented here
-                return false
+                return true
+            }
             else -> {}
         }
         return false
