@@ -123,8 +123,21 @@ _Below is an example of how you can instruct your audience on installing and set
   <img src="https://i.ibb.co/5Td9bH6/Main-Preview.png" height="500">
 </p>
 
-### Application Usage
-<img src="https://i.ibb.co/yW8vmwS/Gif.gif" alt="Example Usage" width="300">
+### Application Demo
+<div align="center">
+  <table style="visibility: hidden;">
+   <tr>
+     <td align="center">
+       <img src="assets/usage1.gif" alt="Example Usage 1" height="400"><br>
+       Waste Detection and get Craft Recommendation
+     </td>
+     <td align="center">
+       <img src="assets/usage2.gif" alt="Example Usage 2" height="400"><br>
+       Marketplace Forum
+     </td>
+   </tr>
+ </table>
+</div>
 
 ### Minimum Requirements
 
@@ -181,7 +194,7 @@ Don't forget to give the project a star! Thanks again!
 ## Acknowledgements
 
 <p align="center">
-  <img src="https://i.ibb.co/xFg4JLH/bangkit.png" height="200"></img>&nbsp; &nbsp;<img src="https://i.ibb.co/MNHjhZY/wastecreative.png" height="200">
+  <img src="https://i.ibb.co/xFg4JLH/bangkit.png" height="200"></img>&nbsp; &nbsp;<img src="https://i.ibb.co/mFHyQcX/Wastecreative.png" height="200">
 </p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
