@@ -20,7 +20,7 @@
 
 <p align="center">
  <a href="#">
-    <img src="https://i.ibb.co/MNHjhZY/wastecreative.png" alt="wastecreativelogo" height="150">
+    <img src="https://i.ibb.co/mFHyQcX/Wastecreative.png" alt="wastecreativelogo" height="150">
   </a>
 
   <p align="center">
@@ -35,12 +35,6 @@
     <!-- <br /> -->
     <!-- <a href="https://github.com/github_username/repo_name"><strong>Explore the Projects »</strong></a> -->
     <br />
-    <br />
-    <a href="https://github.com/kadabengarann/waste-creative" target="_blank">APK Demo</a>
-    ·
-    <a href="https://github.com/kadabengarann/waste-creative/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/kadabengarann/waste-creative/issues">Request Feature</a>
   </p>
 
 
@@ -80,10 +74,14 @@ WasteCreative is an android application that can detect household waste objects 
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
+In this project, we employed the following technologies:
 * [Kotlin](https://developer.android.com/kotlin)
+* [CameraX](https://developer.android.com/jetpack/androidx/releases/camera)
+* [Retrofit](https://square.github.io/retrofit/)
+* [Firebase Authentication](https://firebase.google.com/docs/auth)
+* [TensorFlow Lite](https://www.tensorflow.org/lite/android)
 * [Wastecreative RestAPI](https://github.com/nandaafd/wastecreative)
+* [Wastecreative ML Model](https://github.com/ahmadnurokhim/WasteCreative) 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -121,11 +119,12 @@ _Below is an example of how you can instruct your audience on installing and set
 
 ## Application
 
-![Screenshot]()
-
 <p align="center">
-  <img src="assets/splash.png" height="500"></img>&nbsp; &nbsp;<img src="assets/home.png" height="500">&nbsp; &nbsp;<img src="assets/recom_list.png" height="500">
+  <img src="https://i.ibb.co/5Td9bH6/Main-Preview.png" height="500">
 </p>
+
+### Application Usage
+<img src="https://i.ibb.co/yW8vmwS/Gif.gif" alt="Example Usage" width="300">
 
 ### Minimum Requirements
 
