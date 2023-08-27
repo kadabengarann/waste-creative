@@ -24,8 +24,8 @@
   </a>
 
   <p align="center">
-    <img src="https://img.shields.io/badge/Team-WasteCreative-9e83fc">
-    <img src="https://img.shields.io/badge/C22-PS061-9e83fc?">
+    <a href="https://github.com/Afrizal2609/WasteCreative"><img src="https://img.shields.io/badge/Team-WasteCreative-9e83fc"></a>
+    <a href="https://github.com/Afrizal2609/WasteCreative"><img src="https://img.shields.io/badge/C22-PS061-9e83fc?"></a>
   </p>
 
   <h1 align="center">WasteCreative Android Apps</h1>
