@@ -66,6 +66,11 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+
+<p align="center">
+  <img src="assets/wastecreative_prev.png" height="500">
+</p>
+
 WasteCreative is an android application that can detect household waste objects and suggest crafts that can be made based on the detection results. We will also create a marketplace for buying and selling user-generated crafts. Besides being able to reduce the amount of household waste, this application also has the potential to help raise MSMEs in the creative industry welfare. This is the reason why we want to solve this problem.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
